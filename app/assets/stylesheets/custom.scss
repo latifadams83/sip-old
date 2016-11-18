@@ -1,0 +1,29 @@
+header{
+  background: #F1F1F1;
+}
+#nav-wrapper{
+  position: relative;
+  max-width: 980px;
+  min-width: 980px;
+  margin: auto auto auto auto;
+}
+
+footer{
+  position: relative;
+  max-width: 980px;
+  min-width: 980px;
+  margin: auto auto auto auto;
+}
+#content-wrapper{
+  position: relative;
+  max-width: 980px;
+  min-width: 980px;
+  margin: 70px auto auto auto;
+  padding-left: 30px;
+  min-height: 550px;
+  background: #ECEEEF;
+  border-radius: 5px;
+}
+.active{
+  font-weight: bold;
+}
