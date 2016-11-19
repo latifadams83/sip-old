@@ -1,5 +1,6 @@
 header{
-  background: #F1F1F1;
+  background: #272822;
+  color: white;
 }
 #nav-wrapper{
   position: relative;
@@ -26,4 +27,8 @@ footer{
 }
 .active{
   font-weight: bold;
+}
+
+#admin_menu{
+  float: left;
 }
