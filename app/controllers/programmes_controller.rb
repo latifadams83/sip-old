@@ -5,7 +5,6 @@ class ProgrammesController < ApplicationController
   # GET /programmes.json
   def index
     @programmes = Programme.all
-    @programme = Programme.new
   end
 
   # GET /programmes/1
@@ -29,13 +28,11 @@ class ProgrammesController < ApplicationController
 
     respond_to do |format|
       if @programme.save
-        format.html { redirect_to "/programmes"  }
+        format.html { redirect_to @programme, notice: 'Programme was successfully created.' }
         format.json { render :show, status: :created, location: @programme }
-        format.js
       else
         format.html { render :new }
         format.json { render json: @programme.errors, status: :unprocessable_entity }
-        format.js
       end
     end
   end
@@ -72,6 +69,6 @@ class ProgrammesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def programme_params
-      params.require(:programme).permit(:name)
+      params.require(:programme).permit(:name, :code)
     end
 end

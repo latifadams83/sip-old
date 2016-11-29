@@ -1,11 +1,12 @@
-<% if Programme.exists? %>
 <p id="notice"><%= notice %></p>
 
+<h3>Programmes</h3>
 <table class="w3-table-all">
-  <thead >
+  <thead>
     <tr class="w3-teal">
       <th>Programme</th>
-      <th class="w3-center"colspan="2">Actions</th>
+      <th class="w3-center">Code</th>
+      <th class="w3-center">Actions</th>
     </tr>
   </thead>
 
@@ -13,18 +14,15 @@
     <% @programmes.each do |programme| %>
       <tr>
         <td><%= programme.name %></td>
-        <td class="w3-center"><%= link_to 'Edit', edit_programme_path(programme) %></td>
-        <td class="w3-center"><%= link_to 'Delete', programme, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class="w3-center"><%= programme.code %></td>
+        <td class="w3-center"><%= link_to 'Edit', edit_programme_path(programme) %>&nbsp;|&nbsp;
+        <%= link_to 'Del', programme, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<% else%>
-  <p>
-    No programme found!
-  </p>
-<% end %>
 <br>
 
-<%= link_to '+', new_programme_path, :class => "w3-btn-floating w3-teal w3-right" %>
+<%= link_to '+', new_programme_path, class: "w3-right w3-btn-floating w3-teal"%>

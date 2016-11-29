@@ -17,7 +17,7 @@ class ProgrammesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create programme" do
     assert_difference('Programme.count') do
-      post programmes_url, params: { programme: { name: @programme.name } }
+      post programmes_url, params: { programme: { code: @programme.code, name: @programme.name } }
     end
 
     assert_redirected_to programme_url(Programme.last)
@@ -34,7 +34,7 @@ class ProgrammesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update programme" do
-    patch programme_url(@programme), params: { programme: { name: @programme.name } }
+    patch programme_url(@programme), params: { programme: { code: @programme.code, name: @programme.name } }
     assert_redirected_to programme_url(@programme)
   end
 
