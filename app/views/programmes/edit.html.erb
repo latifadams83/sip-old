@@ -1,5 +1,12 @@
-<h1>Editing Programme</h1>
+<fieldset class="w3-margin-top">
+  <legend class="w3-label"><b>Editing <%= @programme.name%></b></legend>
 
-<%= render 'form', programme: @programme %>
+  <div class="w3-round w3-theme-l4">
+    <%= render 'form', programme: @programme %>
+    <%= link_to 'Cancel', programmes_path, class: "w3-btn w3 w3-round w3-left w3-margin-bottom" %>
 
-<%= link_to 'Back', programmes_path %>
+    </div>
+
+  </div>
+
+</fieldset>

@@ -1,34 +1,26 @@
 class BadgesController < ApplicationController
   before_action :set_badge, only: [:show, :edit, :update, :destroy]
 
-  # GET /badges
-  # GET /badges.json
   def index
     @badges = Badge.all
   end
 
-  # GET /badges/1
-  # GET /badges/1.json
   def show
   end
 
-  # GET /badges/new
   def new
     @badge = Badge.new
   end
 
-  # GET /badges/1/edit
   def edit
   end
 
-  # POST /badges
-  # POST /badges.json
   def create
     @badge = Badge.new(badge_params)
 
     respond_to do |format|
       if @badge.save
-        format.html { redirect_to @badge, notice: 'Badge was successfully created.' }
+        format.html { redirect_to badges_path, notice: 'Badge was successfully created.' }
         format.json { render :show, status: :created, location: @badge }
       else
         format.html { render :new }
@@ -37,12 +29,10 @@ class BadgesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /badges/1
-  # PATCH/PUT /badges/1.json
   def update
     respond_to do |format|
       if @badge.update(badge_params)
-        format.html { redirect_to @badge, notice: 'Badge was successfully updated.' }
+        format.html { redirect_to badges_path, notice: 'Badge was successfully updated.' }
         format.json { render :show, status: :ok, location: @badge }
       else
         format.html { render :edit }
@@ -51,8 +41,6 @@ class BadgesController < ApplicationController
     end
   end
 
-  # DELETE /badges/1
-  # DELETE /badges/1.json
   def destroy
     @badge.destroy
     respond_to do |format|
@@ -69,6 +57,6 @@ class BadgesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def badge_params
-      params.require(:badge).permit(:name)
+      params.require(:badge).permit(:name, :programme_id, :level_id, :start_date, :end_date, :active)
     end
 end

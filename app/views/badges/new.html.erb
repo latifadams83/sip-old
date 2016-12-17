@@ -1,5 +1,12 @@
-<h1>New Badge</h1>
+<fieldset class="w3-margin-top ">
+  <legend class="w3-label"><b>New Badge</b></legend>
 
-<%= render 'form', badge: @badge %>
+  <div class="w3-round w3-theme-l4">
+    <%= render 'form', badge: @badge %>
+    <%= link_to 'Cancel', badges_path, class: "w3-btn w3 w3-round w3-left w3-margin-bottom" %>
 
-<%= link_to 'Back', badges_path %>
+    </div>
+
+  </div>
+
+</fieldset>

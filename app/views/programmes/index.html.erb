@@ -3,7 +3,7 @@
 <h3>Programmes</h3>
 <table class="w3-table-all">
   <thead>
-    <tr class="w3-teal">
+    <tr class="w3-theme-d4">
       <th>Programme</th>
       <th class="w3-center">Code</th>
       <th class="w3-center">Actions</th>
@@ -15,14 +15,12 @@
       <tr>
         <td><%= programme.name %></td>
         <td class="w3-center"><%= programme.code %></td>
-        <td class="w3-center"><%= link_to 'Edit', edit_programme_path(programme) %>&nbsp;|&nbsp;
-        <%= link_to 'Del', programme, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <td class="w3-center"><%= link_to 'Edit', edit_programme_path(programme), class: "w3-btn w3-round w3-tiny w3-amber" %>
+        <%= link_to 'Del', programme, method: :delete, data: { confirm: 'Are you sure?' }, class: "w3-btn w3-round w3-tiny w3-red" %>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to '+', new_programme_path, class: "w3-right w3-btn-floating w3-teal"%>
+<%= link_to '+', new_programme_path, class: "w3-right w3-btn w3-theme-d4 w3-tiny"%>

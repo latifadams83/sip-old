@@ -2,6 +2,16 @@
 
 one:
   name: MyString
+  programme_id: 1
+  level_id: 1
+  start_date: 2016-12-15
+  end_date: 2016-12-15
+  active: false
 
 two:
   name: MyString
+  programme_id: 1
+  level_id: 1
+  start_date: 2016-12-15
+  end_date: 2016-12-15
+  active: false

@@ -19,10 +19,9 @@ footer{
   position: relative;
   max-width: 980px;
   min-width: 980px;
-  margin: 70px auto auto auto;
+  margin: 100px auto auto auto;
   padding-left: 30px;
-  min-height: 550px;
-  background: #ECEEEF;
+  min-height: 500px;
   border-radius: 5px;
 }
 .active{
@@ -34,4 +33,25 @@ footer{
 }
 a {
   text-decoration: none;
+}
+
+.w3-input{
+  max-height: 25px !important;
+  max-width: 300px !important;
+  padding: 1px !important;
+  background: #F2F1F0
+}
+
+.w3-select{
+  max-height: 25px !important;
+  max-width: 298px !important;
+  padding: 1px !important;
+}
+
+.small-form{
+  // max-width: 500px;
+}
+
+.date-select{
+  max-width: 95px !important;
 }
