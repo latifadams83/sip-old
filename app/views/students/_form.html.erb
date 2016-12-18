@@ -1,0 +1,143 @@
+<%= form_for(student) do |f| %>
+  <% if student.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(student.errors.count, "error") %> prohibited this student from being saved:</h2>
+
+      <ul>
+      <% student.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+      <fieldset class="w3-round w3-theme-l4">
+        <legend>Placement</legend>
+        <div class="w3-row-padding">
+          <div class="w3-col m6">
+            <%= f.label :placed_id, "Placed ID:", class: "w3-label" %>
+            <%= f.text_field :placed_id, class: "w3-input w3-medium w3-border w3-round"%>
+          </div>
+
+          <div class="w3-col m6">
+            <div><%= f.label :placed_date, "Placed Date:", class: "w3-label " %></div>
+            <div><%= f.date_select :placed_date,{:order=>[:day, :month, :year]}, {class: "w3-select w3-round date-select w3-medium"}  %></div>
+          </div>
+        </div>
+      </fieldset>
+      <br>
+      <fieldset class="w3-round w3-theme-l4">
+        <legend>Basic Info</legend>
+        <div class="w3-row-padding">
+
+          <div class="w3-col m6">
+            <div><%= f.label :first_name, "First Name:", class: "w3-label" %></div>
+            <div><%= f.text_field :first_name, class: "w3-input w3-medium w3-border w3-round"%></div>
+          </div>
+
+          <div class="w3-col m6">
+            <div><%= f.label :last_name, class: "w3-label" %></div>
+            <div><%= f.text_field :last_name, class: "w3-input w3-medium w3-border w3-round" %></div>
+
+          </div>
+        </div>
+
+        <div class="w3-row-padding">
+          <div class="w3-col m6">
+            <%= f.label :gender, class: "w3-label" %>
+            <%= f.text_field :gender, class: "w3-input w3-medium w3-border w3-round" %>
+          </div>
+          <div class="w3-col m6">
+            <div><%= f.label :date_of_birth, class: "w3-label" %></div>
+            <div><%= f.date_select :date_of_birth,{:order=>[:day, :month, :year]}, {class: "w3-select w3-round date-select w3-medium"}  %></div>
+          </div>
+        </div>
+
+        <div class="w3-row-padding">
+          <div class="w3-col m12">
+            <div><%= f.label :religion, class: "w3-label" %></div>
+            <div><%= f.text_field :religion, class: "w3-input w3-medium w3-border w3-round" %></div>
+          </div>
+        </div>
+      </fieldset>
+      <br>
+      <fieldset class="w3-round w3-theme-l4">
+        <legend>Enrollment Info</legend>
+        <div class="w3-row-padding">
+          <div class="w3-col m6">
+            <div><%= f.label :programme_id, class: "w3-label" %></div>
+            <div><%= f.select(:programme_id, Programme.all.map{|p| [p.name, p.id]}, {:include_blank => true}, { :class => "w3-select w3-round" }) %></div>
+          </div>
+          <div class="w3-col m6">
+            <div><%= f.label :level_id, class: "w3-label" %></div>
+            <div><%= f.select(:programme_id, Level.all.map{|l| [l.name, l.id]}, {:include_blank => true}, { :class => "w3-select w3-round" }) %></div>
+          </div>
+        </div>
+        <div class="w3-row-padding">
+          <div class="w3-col m6">
+            <div><%= f.label :badge_id, class: "w3-label" %></div>
+            <div><%= f.select(:programme_id, Badge.all.map{|l| [b.name, b.id]}, {:include_blank => true}, { :class => "w3-select w3-round" }) %></div>
+          </div>
+          <div class="w3-col m6">
+            <div><%= f.label :badge_id, "House", class: "w3-label" %></div>
+            <div><%= f.text_field :badge_id, class: "w3-input w3-medium w3-border w3-round" %></div>
+          </div>
+        </div>
+      </fieldset>
+      <br>
+      <fieldset class="w3-round w3-theme-l4">
+        <legend>Contact Info</legend>
+        <div class="w3-row-padding">
+          <div class="w3-col m12">
+            <div><%= f.label :address, class: "w3-label" %></div>
+            <div><%= f.text_field :address, class: "w3-input w3-medium w3-border w3-round" %></div>
+          </div>
+        </div>
+
+        <div class="w3-row-padding">
+          <div class="w3-col m6">
+            <div><%= f.label :city, class: "w3-label" %></div>
+            <div><%= f.text_field :city, class: "w3-input w3-medium w3-border w3-round" %></div>
+          </div>
+          <div class="w3-col m6">
+            <div><%= f.label :region, class: "w3-label" %></div>
+            <div><%= f.text_field :region, class: "w3-input w3-medium w3-border w3-round" %></div>
+          </div>
+        </div>
+
+        <div class="w3-row-padding">
+          <div class="w3-col m6">
+            <div><%= f.label :phone, class: "w3-label" %></div>
+            <div><%= f.text_field :phone, class: "w3-input w3-medium w3-border w3-round" %></div>
+          </div>
+          <div class="w3-col m6">
+            <div><%= f.label :email, class: "w3-label" %></div>
+            <div><%= f.text_field :email, class: "w3-input w3-medium w3-border w3-round" %></div>
+          </div>
+        </div>
+      </fieldset>
+      <br>
+      <fieldset class="w3-round w3-theme-l4">
+        <legend>Guardian Details</legend>
+        <div class="w3-row-padding">
+          <div class="w3-col m12">
+            <div><%= f.label :guardian_id, "Guardian:", class: "w3-label" %></div>
+            <div><%= f.number_field :guardian_id, class: "w3-input w3-medium w3-border w3-round" %></div>
+          </div>
+        </div>
+      </fieldset>
+      <br>
+      <fieldset class="w3-round w3-theme-l4">
+        <legend>Account</legend>
+        <div class="w3-row-padding">
+          <div class="w3-col m12">
+            <div><%= f.label :user_id, class: "w3-label" %></div>
+            <div><%= f.number_field :user_id, class: "w3-input w3-medium w3-border w3-round" %></div>
+          </div>
+        </div>
+      </fieldset>
+
+    <div class="w3-row-padding">
+      <div class="w3-col m12">
+        <%= f.submit :Submit,  class: "w3-btn w3-round w3-theme-d4 w3-right w3-margin-top" %>
+    <% end %>

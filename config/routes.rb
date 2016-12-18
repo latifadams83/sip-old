@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :guardians
+
+  resources :students
   resources :terms
   resources :calendars
   resources :badges

@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @guardian.title %>
+</p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @guardian.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @guardian.last_name %>
+</p>
+
+<p>
+  <strong>Occupation:</strong>
+  <%= @guardian.occupation %>
+</p>
+
+<p>
+  <strong>Relation:</strong>
+  <%= @guardian.relation %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @guardian.address %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @guardian.city %>
+</p>
+
+<p>
+  <strong>Region:</strong>
+  <%= @guardian.region %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @guardian.phone %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @guardian.email %>
+</p>
+
+<p>
+  <strong>Education:</strong>
+  <%= @guardian.education %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @guardian.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_guardian_path(@guardian) %> |
+<%= link_to 'Back', guardians_path %>

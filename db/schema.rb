@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161216223044) do
+ActiveRecord::Schema.define(version: 20161218021911) do
 
   create_table "badges", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "name"
@@ -32,6 +32,24 @@ ActiveRecord::Schema.define(version: 20161216223044) do
     t.datetime "updated_at",                null: false
   end
 
+  create_table "guardians", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string   "title"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "occupation"
+    t.string   "relation"
+    t.string   "address"
+    t.string   "city"
+    t.string   "region"
+    t.string   "phone"
+    t.string   "email"
+    t.string   "education"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_guardians_on_user_id", using: :btree
+  end
+
   create_table "levels", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "level"
     t.string   "name"
@@ -42,6 +60,32 @@ ActiveRecord::Schema.define(version: 20161216223044) do
   create_table "programmes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "name"
     t.string "code"
+  end
+
+  create_table "students", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string   "placed_id"
+    t.date     "placed_date"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "gender"
+    t.date     "date_of_birth"
+    t.string   "religion"
+    t.integer  "programme_id"
+    t.integer  "level_id"
+    t.integer  "badge_id"
+    t.string   "address"
+    t.string   "city"
+    t.string   "region"
+    t.string   "phone"
+    t.string   "email"
+    t.integer  "guardian_id"
+    t.integer  "user_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["badge_id"], name: "index_students_on_badge_id", using: :btree
+    t.index ["level_id"], name: "index_students_on_level_id", using: :btree
+    t.index ["placed_id"], name: "index_students_on_placed_id", using: :btree
+    t.index ["programme_id"], name: "index_students_on_programme_id", using: :btree
   end
 
   create_table "terms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|

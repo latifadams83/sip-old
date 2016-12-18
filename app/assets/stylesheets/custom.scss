@@ -36,20 +36,19 @@ a {
 }
 
 .w3-input{
-  max-height: 25px !important;
   max-width: 300px !important;
-  padding: 1px !important;
-  background: #F2F1F0
+  max-height: 25px !important;
+  padding: 1px !important
 }
 
 .w3-select{
-  max-height: 25px !important;
   max-width: 298px !important;
+  max-height: 25px !important;
   padding: 1px !important;
 }
 
-.small-form{
-  // max-width: 500px;
+fieldset{
+  color: inherit;
 }
 
 .date-select{

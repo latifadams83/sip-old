@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Students</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Placed</th>
+      <th>Placed date</th>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Gender</th>
+      <th>Date of birth</th>
+      <th>Religion</th>
+      <th>Programme</th>
+      <th>Level</th>
+      <th>Badge</th>
+      <th>Address</th>
+      <th>City</th>
+      <th>Region</th>
+      <th>Phone</th>
+      <th>Email</th>
+      <th>Guardian</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @students.each do |student| %>
+      <tr>
+        <td><%= student.placed_id %></td>
+        <td><%= student.placed_date %></td>
+        <td><%= student.first_name %></td>
+        <td><%= student.last_name %></td>
+        <td><%= student.gender %></td>
+        <td><%= student.date_of_birth %></td>
+        <td><%= student.religion %></td>
+        <td><%= student.programme_id %></td>
+        <td><%= student.level_id %></td>
+        <td><%= student.badge_id %></td>
+        <td><%= student.address %></td>
+        <td><%= student.city %></td>
+        <td><%= student.region %></td>
+        <td><%= student.phone %></td>
+        <td><%= student.email %></td>
+        <td><%= student.guardian_id %></td>
+        <td><%= student.user_id %></td>
+        <td><%= link_to 'Show', student %></td>
+        <td><%= link_to 'Edit', edit_student_path(student) %></td>
+        <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Student', new_student_path %>

@@ -1,0 +1,2 @@
+json.extract! guardian, :id, :title, :first_name, :last_name, :occupation, :relation, :address, :city, :region, :phone, :email, :education, :user_id, :created_at, :updated_at
+json.url guardian_url(guardian, format: :json)
