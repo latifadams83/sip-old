@@ -1,7 +1,15 @@
 Rails.application.routes.draw do
   resources :guardians
 
-  resources :students
+  resources :students do
+    member do
+      get :guardians
+      get :new_guardian
+      put :update_guardian
+      post :add_guardian
+      delete :remove_guardian
+    end
+  end
   resources :terms
   resources :calendars
   resources :badges

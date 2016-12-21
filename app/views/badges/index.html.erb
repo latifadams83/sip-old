@@ -16,7 +16,7 @@
   <tbody>
     <% @badges.each do |badge| %>
       <tr>
-        <td><%= Level.find(badge.level_id).level+badge.name %></td>
+        <td><%= Level.find(badge.level_id).lev+badge.name %></td>
         <td><%= Programme.find(badge.programme_id).name %></td>
         <td><%= Level.find(badge.level_id).name %></td>
         <td><%= badge.start_date.year.to_s+"-"+badge.end_date.year.to_s %></td>

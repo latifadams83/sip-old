@@ -9,8 +9,8 @@ class CreateStudents < ActiveRecord::Migration[5.0]
       t.date :date_of_birth
       t.string :religion
       t.integer :programme_id
-      t.integer :level_id
       t.integer :badge_id
+      t.string :house
       t.string :address
       t.string :city
       t.string :region
@@ -23,7 +23,6 @@ class CreateStudents < ActiveRecord::Migration[5.0]
     end
     add_index("students", "placed_id")
     add_index("students", "programme_id")
-    add_index("students", "level_id")
     add_index("students", "badge_id")
   end
 

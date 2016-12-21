@@ -20,7 +20,7 @@ class StudentsController < ApplicationController
 
     respond_to do |format|
       if @student.save
-        format.html {redirect_to new_guardian_path, notice: "Student Record Saved Successfully. Please fill the Parent Details." }
+        format.html {redirect_to new_guardian_student_path(:id=>@student.id),  notice: "Student Record Saved Successfully. Please fill the Parent Details." }
         format.json { render :show, status: :created, location: @student }
       else
         format.html { render :new }
@@ -29,14 +29,20 @@ class StudentsController < ApplicationController
     end
   end
 
-  def add_guardian
-    @student = Student.find params[:id], :include => [:guardians]
-    @guardian = Guardian.new params[:guardian]
-    if request.post? and @guardian.save
-      redirect_to :controller => "student", :action => "add_guardian", :id => @student.id
-    end
+  def new_guardian
+    @guardian = Guardian.new()
   end
 
+  def add_guardian
+    @guardian = Guardian.new(guardian_params)
+    if @guardian.save
+      @student = Student.find(params[:id])
+      @guardian.students << @student
+      redirect_to student_path(@student.id), notice: "Student successfully placed"
+    else
+      render "new_guardian"
+    end
+  end
 
   def update
     respond_to do |format|
@@ -66,6 +72,10 @@ class StudentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_params
-      params.require(:student).permit(:placed_id, :placed_date, :first_name, :last_name, :gender, :date_of_birth, :religion, :programme_id, :level_id, :badge_id, :address, :city, :region, :phone, :email, :guardian_id, :user_id)
+      params.require(:student).permit(:placed_id, :placed_date, :first_name, :last_name, :gender, :date_of_birth, :religion, :programme_id, :level_id, :badge_id, :address, :city, :region, :phone, :email, :guardian_id, :user_id, :image, :denomination)
+    end
+
+    def guardian_params
+      params.require(:guardian).permit(:title, :first_name, :last_name, :occupation, :relation, :address, :city, :region, :phone, :email, :education, :user_id)
     end
 end

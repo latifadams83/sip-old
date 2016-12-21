@@ -1,31 +1,37 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Students Information system</title>
+    <title>SIP</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+<body>
 
-  <body >
+<%= render "layouts/admin_menu"%>
 
-    <div class="w3-row">
-      <%= render "layouts/admin_menu"%>
-    </div>
+<!-- Main content -->
+<div class="w3-main" style="margin-left:300px">
 
-      <div class="w3-row">
+  <div class="w3-row w3-padding-64 w3-round" id="main-content"><!-- Content row -->
 
-        <div class="w3-container w3-padding-16 w3-theme-l4" id="content-wrapper">
-          <%= yield %>
-        </div>
+    <div class="w3-col m12 w3-container"><!-- Page Content -->
 
+      <%= yield %>
+
+    </div><!-- End of Page content -->
+
+  </div><!-- End of Content row -->
+
+   <div class="w3-row w3-padding-64">
+      <div class="w3-col m12 w3-container ">
+      <hr>
+        <p> @copy <%= Time.now.year %></p>
       </div>
+  </div>
 
-      <div class="w3-row">
-        <hr>
-        <footer >&copy 2016</footer>
-      </div>
+</div>
+<!-- END MAIN -->
+</body>
 
-  </body>
 </html>

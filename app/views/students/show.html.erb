@@ -1,5 +1,8 @@
 <p id="notice"><%= notice %></p>
 
+
+
+
 <p>
   <strong>Placed:</strong>
   <%= @student.placed_id %>
@@ -40,10 +43,6 @@
   <%= @student.programme_id %>
 </p>
 
-<p>
-  <strong>Level:</strong>
-  <%= @student.level_id %>
-</p>
 
 <p>
   <strong>Badge:</strong>
@@ -84,6 +83,9 @@
   <strong>User:</strong>
   <%= @student.user_id %>
 </p>
+<div class="w3-container">
+  <%= image_tag @student.image_url.to_s, class: "w3-border w3-padding w3-card-4"%>
+</div>
 
 <%= link_to 'Edit', edit_student_path(@student) %> |
 <%= link_to 'Back', students_path %>

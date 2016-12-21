@@ -20,7 +20,7 @@ class BadgesController < ApplicationController
 
     respond_to do |format|
       if @badge.save
-        format.html { redirect_to badges_path, notice: 'Badge was successfully created.' }
+        format.html { redirect_to badges_path, notice: 'New class successfully created.' }
         format.json { render :show, status: :created, location: @badge }
       else
         format.html { render :new }
@@ -32,7 +32,7 @@ class BadgesController < ApplicationController
   def update
     respond_to do |format|
       if @badge.update(badge_params)
-        format.html { redirect_to badges_path, notice: 'Badge was successfully updated.' }
+        format.html { redirect_to badges_path, notice: 'Class successfully updated.' }
         format.json { render :show, status: :ok, location: @badge }
       else
         format.html { render :edit }
@@ -44,7 +44,7 @@ class BadgesController < ApplicationController
   def destroy
     @badge.destroy
     respond_to do |format|
-      format.html { redirect_to badges_url, notice: 'Badge was successfully destroyed.' }
+      format.html { redirect_to badges_url, notice: 'Class successfully deleted.' }
       format.json { head :no_content }
     end
   end

@@ -15,5 +15,6 @@
 //= require turbolinks
 //= require students
 //= require guardians
+//= require navbar
 // require_tree .
 

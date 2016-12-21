@@ -1,6 +1,5 @@
-header{
-  background: #272822;
-  color: white;
+body{
+  background: #F5F5F5
 }
 #nav-wrapper{
   position: relative;
@@ -9,31 +8,6 @@ header{
   margin: auto auto auto auto;
 }
 
-footer{
-  position: relative;
-  max-width: 980px;
-  min-width: 980px;
-  margin: auto auto auto auto;
-}
-#content-wrapper{
-  position: relative;
-  max-width: 980px;
-  min-width: 980px;
-  margin: 100px auto auto auto;
-  padding-left: 30px;
-  min-height: 500px;
-  border-radius: 5px;
-}
-.active{
-  font-weight: bold;
-}
-
-#admin_menu{
-  float: left;
-}
-a {
-  text-decoration: none;
-}
 
 .w3-input{
   max-width: 300px !important;
@@ -54,4 +28,15 @@ fieldset{
 
 .date-select{
   max-width: 95px !important;
+}
+
+#main-content{
+  padding-right: 5%;
+}
+
+#menu-bar-icon {
+    width: 20px;
+    height: 3px;
+    background-color: black;
+    margin: 2px 0;
 }
