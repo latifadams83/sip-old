@@ -1,0 +1,2 @@
+json.extract! staff, :id, :staff_id, :date_join, :first_name, :, :gender, :date_of_birth, :qualification, :specialization, :grade, :job_description, :date_of_first_appointment, :marital_status, :spouse_name, :no_of_children, :image, :address, :city, :region, :, :email, :active, :religion, :user_id, :created_at, :updated_at
+json.url staff_url(staff, format: :json)

@@ -1,0 +1,169 @@
+<%= form_for(staff) do |f| %>
+  <% if staff.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(staff.errors.count, "error") %> prohibited this staff from being saved:</h2>
+
+      <ul>
+      <% staff.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <fieldset class="w3-round">
+    <legend>Employment details</legend>
+    <div class="w3-row-padding">
+      <div class="w3-col m6">
+        <div><%= f.label :staff_id, "Staff ID", class: "w3-label" %></div>
+        <div><%= f.text_field :staff_id, class: "w3-input w3-medium w3-border w3-round", :required=>true %></div>
+      </div>
+      <div class="w3-col m6">
+        <div><%= f.label :date_join, class: "w3-label" %></div>
+        <div><%= f.date_select :date_join,{:order=>[:day, :month, :year]}, {class: "w3-select w3-round date-select w3-border w3-medium", :required=>true}  %></div>
+      </div>
+    </div>
+
+    <div class="w3-row-padding">
+      <div class="w3-col m6">
+        <div><%= f.label :specialization, class: "w3-label" %></div>
+        <div><%= f.text_field :specialization, class: "w3-input w3-medium w3-border w3-round", :required=>true %></div>
+      </div>
+      <div class="w3-col m6">
+        <div><%= f.label :job_description, class: "w3-label" %></div>
+        <div><%= f.text_field :job_description, class: "w3-input w3-medium w3-border w3-round", :required=>true%></div>
+      </div>
+    </div>
+    <div class="w3-row-padding">
+      <div class="w3-col m6">
+        <div><%= f.label :qualification, class: "w3-label" %></div>
+        <div><%= f.text_field :qualification, class: "w3-input w3-medium w3-border w3-round", :required=>true%></div>
+      </div>
+      <div class="w3-col m6">
+        <%= f.label :grade, class: "w3-label" %>
+        <%= f.text_field :grade, class: "w3-input w3-medium w3-border w3-round", :required=>true %>
+      </div>
+    </div>
+    <div class="w3-row-padding">
+      <div class="w3-col m6">
+        <div><%= f.label :date_of_first_appointment, class: "w3-label" %></div>
+        <div><%= f.text_field :date_of_first_appointment, class: "w3-input w3-medium w3-border w3-round", :required=>true %></div>
+      </div>
+  </fieldset>
+  <br>
+  <fieldset class="w3-round">
+    <legend>Personal Details</legend>
+    <div class="w3-row-padding">
+      <div class="w3-col m6 ">
+        <div><%= f.label :first_name, class: "w3-label" %></div>
+        <div><%= f.text_field :first_name, class: "w3-input w3-medium w3-border w3-round", :required=>true %></div>
+      </div>
+      <div class="w3-col m6 ">
+        <div><%= f.label :last_name, class: "w3-label" %></div>
+        <div><%= f.text_field :last_name, class: "w3-input w3-medium w3-border w3-round", :required=>true %></div>
+      </div>
+    </div>
+    <div class="w3-row-padding">
+      <div class="w3-col m6">
+        <div><%= f.label :gender, class: "w3-label" %></div>
+        <div><%= f.select(:gender, {Male: :M, Female: :F}, {:include_blank => true}, { :class => "w3-select w3-round w3-border w3-margin-bottom", :required=>true }) %></div>
+      </div>
+
+      <div class="w3-col m6">
+        <div><%= f.label :date_of_birth, class: "w3-label" %></div>
+        <div><%= f.date_select :date_of_birth,{:order=>[:day, :month, :year]}, {class: "w3-select w3-round date-select w3-border w3-medium", :required=>true}  %></div>
+      </div>
+    </div>
+    <div class="w3-row-padding">
+      <div class="w3-col m6">
+        <%= f.label :religion, class: "w3-label" %>
+        <%= f.text_field :religion, class: "w3-input w3-medium w3-border w3-round" %>
+      </div>
+      <div class="w3-col m6">
+        <%= f.label :marital_status, class: "w3-label" %>
+        <div><%= f.select(:marital_status, {Single: :Single, Married: :Married}, {:include_blank => true}, { :class => "w3-select w3-round w3-border w3-margin-bottom"}) %></div>
+      </div>
+    </div>
+
+    <div class="w3-row-padding">
+      <div class="w3-col m6">
+        <div><%= f.label :spouse_name, class: "w3-label" %></div>
+        <div><%= f.text_field :spouse_name, class: "w3-input w3-medium w3-border w3-round"%></div>
+      </div>
+      <div class="w3-col m6">
+        <div><%= f.label :no_of_children, class: "w3-label" %></div>
+        <div><%= f.number_field :no_of_children, class: "w3-input w3-medium w3-border w3-round"  %></div>
+      </div>
+    </div>
+    <br>
+    <div class="w3-row-padding">
+      <div class="w3-col m12 w3-theme-l3 w3-round">
+        <div class="w3-padding">
+          <%= f.label :image, class: "w3-label" %>
+          <%= f.file_field :image%>
+        </div>
+      </div>
+    </div>
+    <div class="w3-row-padding">
+      <div class="w3-col 12 w3-margin-top">
+        <%= f.label :active, "Staff Active?", class: "w3-label" %>
+        <%= f.check_box :active %>
+      </div>
+    </div>
+  </fieldset>
+  <br>
+  <fieldset class="w3-round">
+    <legend>Contact Details</legend>
+    <div class="w3-row-padding">
+      <div class="w3-col m12">
+        <div><%= f.label :address, class: "w3-label" %></div>
+        <div><%= f.text_field :address, class: "w3-input w3-medium w3-border w3-round" %></div>
+      </div>
+    </div>
+
+    <div class="w3-row-padding">
+      <div class="w3-col m6">
+        <div><%= f.label :city, class: "w3-label" %></div>
+        <div><%= f.text_field :city, class: "w3-input w3-medium w3-border w3-round" %></div>
+      </div>
+
+      <div class="w3-col m6">
+        <div><%= f.label :region, class: "w3-label" %></div>
+        <div><%= f.text_field :region, class: "w3-input w3-medium w3-border w3-round" %></div>
+      </div>
+
+    </div>
+
+    <div class="w3-row-padding">
+      <div class="w3-col m6">
+        <div><%= f.label :phone, class: "w3-label" %></div>
+        <div><%= f.text_field :phone, class: "w3-input w3-medium w3-border w3-round"  %></div>
+      </div>
+      <div class="w3-col m6">
+        <div><%= f.label :email, class: "w3-label" %></div>
+        <div><%= f.text_field :email, class: "w3-input w3-medium w3-border w3-round" %></div>
+      </div>
+    </div>
+  </fieldset>
+  <br>
+  <fieldset class="w3-round " ><!--Portal Accounts Form -->
+    <legend>
+        Allow Portal Access? &nbsp;&nbsp;
+        <label for="chkNo"><input type="radio" id="chkNo" name="chkUser" checked="Yes" onclick="ShowHideDiv()"/>No</label>
+        &nbsp;&nbsp;
+        <label for="chkYes"><input type="radio" id="chkYes" name="chkUser" onclick="ShowHideDiv()"/>Yes</label>
+    </legend>
+
+    <div id="dvUser" style="display: none;" class="w3-row-padding">
+      <%= unless action_name.eql("new") %>
+      <%= text_field_tag :username%>
+      <%= password_field_tag :password %>
+      <%= text_field_tag :user_role %>
+      <% end %>
+    </div>
+  </fieldset><!--End of Portal Account Form -->
+
+  <div class="w3-row-padding">
+    <div class="w3-col m12">
+      <%= f.submit :Save, class: "w3-btn w3-round  w3-right w3-theme-d4 w3-margin-top" %>
+
+<% end %>

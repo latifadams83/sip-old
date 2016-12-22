@@ -12,10 +12,9 @@ class CreateGuardians < ActiveRecord::Migration[5.0]
       t.string :phone
       t.string :email
       t.string :education
-      t.integer :user_id
       t.timestamps
+      t.integer :user_id
     end
-    add_index("guardians", "user_id")
   end
 
   def down

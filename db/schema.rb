@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161220204420) do
+ActiveRecord::Schema.define(version: 20161221142655) do
 
   create_table "badges", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "name"
@@ -44,10 +44,9 @@ ActiveRecord::Schema.define(version: 20161220204420) do
     t.string   "phone"
     t.string   "email"
     t.string   "education"
-    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_guardians_on_user_id", using: :btree
+    t.integer  "user_id"
   end
 
   create_table "levels", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
@@ -60,6 +59,35 @@ ActiveRecord::Schema.define(version: 20161220204420) do
   create_table "programmes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "name"
     t.string "code"
+  end
+
+  create_table "staffs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string   "staff_id"
+    t.date     "date_join"
+    t.string   "first_name",                default: "",   null: false
+    t.string   "last_name",                 default: "",   null: false
+    t.string   "gender",                    default: "",   null: false
+    t.date     "date_of_birth"
+    t.string   "qualification"
+    t.string   "specialization"
+    t.string   "grade"
+    t.string   "job_description"
+    t.string   "date_of_first_appointment"
+    t.string   "marital_status"
+    t.string   "spouse_name"
+    t.integer  "no_of_children"
+    t.string   "image"
+    t.string   "address"
+    t.string   "city"
+    t.string   "region"
+    t.string   "phone"
+    t.string   "email"
+    t.boolean  "active",                    default: true, null: false
+    t.string   "religion"
+    t.integer  "user_id"
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+    t.index ["email"], name: "index_staffs_on_email", using: :btree
   end
 
   create_table "students", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
@@ -98,6 +126,24 @@ ActiveRecord::Schema.define(version: 20161220204420) do
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.index ["calendar_id"], name: "index_terms_on_calendar_id", using: :btree
+  end
+
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string   "user_role",              default: "", null: false
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
 end
