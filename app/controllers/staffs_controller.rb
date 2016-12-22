@@ -19,14 +19,11 @@ class StaffsController < ApplicationController
 
   def create
     # unless params[:foo].present?
-    @staff = Staff.new(staff_params)
-    respond_to do |format|
-      if @staff.save
-        format.html { redirect_to @staff, notice: 'Staff was successfully created.' }
-        format.json { render :show, status: :created, location: @staff }
-      else
-        format.html { render :new }
-        format.json { render json: @staff.errors, status: :unprocessable_entity }
+    if params[:email].present? && params[:password].present? && params[:user_role].present?
+      @user = User.new(user_params)
+      if @user.save
+        @staff = Staff.new(staff_params)
+        @user.staffs
       end
     end
   end
@@ -58,7 +55,7 @@ class StaffsController < ApplicationController
     end
 
     def staff_params
-      params.require(:staff).permit(:staff_id, :date_join, :first_name, :gender, :date_of_birth, :qualification, :specialization, :grade, :job_description, :date_of_first_appointment, :marital_status, :spouse_name, :no_of_children, :image, :address, :city, :region, :email, :active, :religion, :user_id)
+      params.require(:staff).permit(:staff_id, :date_join, :first_name, :gender, :date_of_birth, :qualification, :specialization, :grade, :job_description, :date_of_first_appointment, :marital_status, :spouse_name, :no_of_children, :image, :address, :city, :region, :active, :religion, :user_id)
     end
 
     def user_params

@@ -134,13 +134,9 @@
     </div>
 
     <div class="w3-row-padding">
-      <div class="w3-col m6">
+      <div class="w3-col m12">
         <div><%= f.label :phone, class: "w3-label" %></div>
         <div><%= f.text_field :phone, class: "w3-input w3-medium w3-border w3-round"  %></div>
-      </div>
-      <div class="w3-col m6">
-        <div><%= f.label :email, class: "w3-label" %></div>
-        <div><%= f.text_field :email, class: "w3-input w3-medium w3-border w3-round" %></div>
       </div>
     </div>
   </fieldset>
@@ -154,11 +150,21 @@
     </legend>
 
     <div id="dvUser" style="display: none;" class="w3-row-padding">
-      <%= unless action_name.eql("new") %>
-      <%= text_field_tag :username%>
-      <%= password_field_tag :password %>
-      <%= text_field_tag :user_role %>
-      <% end %>
+      <div class="w3-row-padding">
+        <div class="w3-col m4">
+          <%= label_tag :email, :Email, class: "w3-label" %>
+          <%= email_field_tag :email, "", class: "w3-input w3-medium w3-border w3-round" %>
+        </div>
+        <div class="w3-col m4">
+          <%= label_tag :password, :Password, class: "w3-label" %>
+          <%= password_field_tag :password, "", class: "w3-input w3-medium w3-border w3-round" %>
+        </div>
+        <div class="w3-col m4">
+          <%= label_tag :user_role, :Role, class: "w3-label" %>
+          <%= select_tag :user_role, raw("<option></option><option>Student</option><option>Teacher</option><option>Admin</option>"), class: "w3-select w3-round w3-border"%>
+
+        </div>
+      </div>
     </div>
   </fieldset><!--End of Portal Account Form -->
 
