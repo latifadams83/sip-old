@@ -3,6 +3,8 @@ class StaffsController < ApplicationController
 
   def index
     @staffs = Staff.all
+    @category = Category.all
+    @department = Department.all
   end
 
   def show
@@ -45,6 +47,21 @@ class StaffsController < ApplicationController
     end
   end
 
+  #Search Actions
+  def search
+    @search_staff = SearchStaff.new
+  end
+
+  def search_create
+    @search_staff = SearchStaff.create(search_params)
+    redirect_to @search_staff
+  end
+
+  def search_staff
+    @results = SearchStaff.find(params[:id])
+  end
+  # End of search actions
+
   #View staff member to be archived
   def disable
     @staff = Staff.find(params[:id])
@@ -53,8 +70,8 @@ class StaffsController < ApplicationController
   #Move staff member from staff table to the Archive staff table
   def archive
     @staff = Staff.find(params[:id])
-    @arc_staff = ArchiveStaff.new(archive_staff_params(params[:id]))
-    if @arc_staff.save
+    @archive_staff = ArchiveStaff.new(archive_staff_params(params[:id]))
+    if @archive_staff.save
       @staff.destroy
       redirect_to staffs_path, notice: 'Staff Remove Succcessfully'
     end
@@ -90,6 +107,10 @@ class StaffsController < ApplicationController
     def archive_staff_params(id)
       @staff = Staff.find(id)
       return {id: @staff.id, staff_id: @staff.staff_id, date_join: @staff.date_join, first_name: @staff.first_name, last_name: @staff.last_name, gender: @staff.gender, date_of_birth: @staff.date_of_birth, qualification: @staff.qualification, category_id: @staff.category_id, grade: @staff.grade, department_id: @staff.department_id, date_of_first_appointment: @staff.date_of_first_appointment, marital_status: @staff.marital_status, spouse_name: @staff.spouse_name, no_of_children: @staff.no_of_children, image: @staff.image, address: @staff.address, city: @staff.city, region: @staff.region, religion: @staff.religion, user_id: @staff.user_id}
+    end
+
+    def search_params
+      params.permit(:staff_id, :firstname, :lastname, :category, :department)
     end
 
 end

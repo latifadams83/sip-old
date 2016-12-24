@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161224163138) do
+ActiveRecord::Schema.define(version: 20161224191042) do
 
   create_table "archive_staffs", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer  "id"
@@ -103,6 +103,14 @@ ActiveRecord::Schema.define(version: 20161224163138) do
   create_table "programmes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "name"
     t.string "code"
+  end
+
+  create_table "search_staffs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string  "lastname"
+    t.string  "firstname"
+    t.string  "staff_id"
+    t.integer "category"
+    t.integer "department"
   end
 
   create_table "staffs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|

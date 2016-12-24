@@ -14,6 +14,11 @@ Rails.application.routes.draw do
       get :disable
       post :archive
     end
+    collection do
+      get :search
+      get :search_staff
+      post :search_create
+    end
   end
 
   resources :students do
@@ -25,7 +30,7 @@ Rails.application.routes.draw do
       delete :remove_guardian
     end
   end
-  
+
   resources :terms
   resources :calendars
   resources :badges

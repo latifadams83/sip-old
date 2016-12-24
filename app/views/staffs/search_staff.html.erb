@@ -1,9 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h4>Staffs</h4>
-<div class="w3-container">
-  <%= link_to "Search", search_staffs_path, class: "w3-btn w3-round w3-theme-d4"%>
-</div>
+
 
 <table class="w3-table-all">
   <thead>
@@ -19,9 +17,9 @@
     <% @staffs.each do |staff| %>
       <tr>
         <td><%= link_to "#{staff.first_name.capitalize} #{staff.last_name.capitalize}", staff %></td>
-        <td><%= staff.staff_id %></td>
-        <td><%= Category.find(staff.category_id).name.capitalize %></td>
-        <td><%= Department.find(staff.department_id).name.upcase %></td>
+        <td><%= @results.staff_id %></td>
+        <td><%= Category.find(@results.category_id).name.capitalize %></td>
+        <td><%= Department.find(@results.department_id).name.upcase %></td>
       </tr>
     <% end %>
   </tbody>
