@@ -10,7 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161221142655) do
+ActiveRecord::Schema.define(version: 20161224163138) do
+
+  create_table "archive_staffs", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer  "id"
+    t.string   "staff_id"
+    t.date     "date_join"
+    t.string   "first_name",                default: "",   null: false
+    t.string   "last_name",                 default: "",   null: false
+    t.string   "gender",                    default: "",   null: false
+    t.date     "date_of_birth"
+    t.string   "qualification"
+    t.integer  "category_id"
+    t.string   "department_id"
+    t.string   "grade"
+    t.date     "date_of_first_appointment"
+    t.string   "marital_status"
+    t.string   "spouse_name"
+    t.integer  "no_of_children"
+    t.string   "image"
+    t.string   "address"
+    t.string   "city"
+    t.string   "region"
+    t.string   "phone"
+    t.string   "mobile"
+    t.string   "email"
+    t.boolean  "active",                    default: true, null: false
+    t.string   "religion"
+    t.integer  "user_id"
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+  end
 
   create_table "badges", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "name"
@@ -30,6 +60,20 @@ ActiveRecord::Schema.define(version: 20161221142655) do
     t.boolean  "active",     default: true
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+  end
+
+  create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string   "name",       default: "", null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  create_table "departments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string   "name"
+    t.integer  "category_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["category_id"], name: "index_departments_on_category_id", using: :btree
   end
 
   create_table "guardians", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
@@ -69,10 +113,10 @@ ActiveRecord::Schema.define(version: 20161221142655) do
     t.string   "gender",                    default: "",   null: false
     t.date     "date_of_birth"
     t.string   "qualification"
-    t.string   "specialization"
+    t.integer  "category_id"
+    t.string   "department_id"
     t.string   "grade"
-    t.string   "job_description"
-    t.string   "date_of_first_appointment"
+    t.date     "date_of_first_appointment"
     t.string   "marital_status"
     t.string   "spouse_name"
     t.integer  "no_of_children"
@@ -81,6 +125,7 @@ ActiveRecord::Schema.define(version: 20161221142655) do
     t.string   "city"
     t.string   "region"
     t.string   "phone"
+    t.string   "mobile"
     t.string   "email"
     t.boolean  "active",                    default: true, null: false
     t.string   "religion"

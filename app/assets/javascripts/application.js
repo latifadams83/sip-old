@@ -12,9 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require staffs
 //= require turbolinks
 //= require students
 //= require guardians
 //= require navbar
-// require_tree .
-

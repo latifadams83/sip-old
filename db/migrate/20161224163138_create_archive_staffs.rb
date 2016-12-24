@@ -1,6 +1,7 @@
-class CreateStaffs < ActiveRecord::Migration[5.0]
+class CreateArchiveStaffs < ActiveRecord::Migration[5.0]
   def up
-    create_table :staffs do |t|
+    create_table :archive_staffs, id: false do |t|
+      t.integer :id
       t.string :staff_id
       t.date :date_join
       t.string :first_name, null: false, default: ""
@@ -25,13 +26,10 @@ class CreateStaffs < ActiveRecord::Migration[5.0]
       t.boolean :active, null: false, default: true
       t.string :religion
       t.integer :user_id
-
       t.timestamps
     end
-    add_index :staffs, :email
   end
-
   def down
-    drop_table :staffs
+    drop_table :archive_staffs
   end
 end

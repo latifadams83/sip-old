@@ -1,0 +1,10 @@
+<h4>Disable Staff member</h4>
+  <%= form_for(@staff,url: archive_staff_path, :method => 'post') do |f| %>
+    <fieldset class="w3-round">
+      <p >
+        Are you sure you want to Remove
+        <strong><%= @staff.first_name.capitalize+" "+@staff.last_name.capitalize%></strong>
+      </p>
+      <%= f.submit("Disable", class: "w3-btn w3-theme-d4 w3-round w3-right")%>
+    </fieldset>
+  <% end %>

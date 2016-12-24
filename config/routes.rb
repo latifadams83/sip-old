@@ -1,7 +1,20 @@
 Rails.application.routes.draw do
-  resources :staffs
+
+  root "pages#home"
+  get "/home", to: "pages#home"
+
+  resources :departments
+  resources :categories
   devise_for :users
   resources :guardians
+
+  resources :staffs do
+    member do
+      get :delete
+      get :disable
+      post :archive
+    end
+  end
 
   resources :students do
     member do
@@ -12,11 +25,10 @@ Rails.application.routes.draw do
       delete :remove_guardian
     end
   end
+  
   resources :terms
   resources :calendars
   resources :badges
   resources :levels
   resources :programmes
-  root "pages#home"
-  get "/home", to: "pages#home"
 end

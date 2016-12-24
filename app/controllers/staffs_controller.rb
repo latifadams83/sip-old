@@ -1,8 +1,6 @@
 class StaffsController < ApplicationController
   before_action :set_staff, only: [:show, :edit, :update, :destroy]
 
-  # GET /staffs
-  # GET /staffs.json
   def index
     @staffs = Staff.all
   end
@@ -18,12 +16,19 @@ class StaffsController < ApplicationController
   end
 
   def create
-    # unless params[:foo].present?
+    @user = User.new(user_params)
+    @staff = Staff.new(staff_params)
     if params[:email].present? && params[:password].present? && params[:user_role].present?
-      @user = User.new(user_params)
       if @user.save
-        @staff = Staff.new(staff_params)
-        @user.staffs
+        @user.staffs << @staff
+        redirect_to @staff, notice: "Staff Succcessfully Created"
+      end
+    else
+      @staff = Staff.new(staff_params)
+      if @staff.save
+        redirect_to @staff, notice: "Staff Succcessfully Created"
+      else
+        render "new"
       end
     end
   end
@@ -40,6 +45,25 @@ class StaffsController < ApplicationController
     end
   end
 
+  #View staff member to be archived
+  def disable
+    @staff = Staff.find(params[:id])
+  end
+
+  #Move staff member from staff table to the Archive staff table
+  def archive
+    @staff = Staff.find(params[:id])
+    @arc_staff = ArchiveStaff.new(archive_staff_params(params[:id]))
+    if @arc_staff.save
+      @staff.destroy
+      redirect_to staffs_path, notice: 'Staff Remove Succcessfully'
+    end
+  end
+
+  def delete
+    @staff = Staff.find(params[:id])
+  end
+
   def destroy
     @staff.destroy
     respond_to do |format|
@@ -54,11 +78,18 @@ class StaffsController < ApplicationController
       @staff = Staff.find(params[:id])
     end
 
+
     def staff_params
-      params.require(:staff).permit(:staff_id, :date_join, :first_name, :gender, :date_of_birth, :qualification, :specialization, :grade, :job_description, :date_of_first_appointment, :marital_status, :spouse_name, :no_of_children, :image, :address, :city, :region, :active, :religion, :user_id)
+      params.require(:staff).permit(:staff_id, :date_join, :first_name, :last_name, :gender, :date_of_birth, :qualification, :category_id, :grade, :department_id, :date_of_first_appointment, :marital_status, :spouse_name, :no_of_children, :image, :address, :city, :region, :active, :religion, :user_id)
     end
 
     def user_params
-      params.require(:user).permit(:email, :password, :user_role)
+      params.permit(:email, :password, :user_role)
     end
+
+    def archive_staff_params(id)
+      @staff = Staff.find(id)
+      return {id: @staff.id, staff_id: @staff.staff_id, date_join: @staff.date_join, first_name: @staff.first_name, last_name: @staff.last_name, gender: @staff.gender, date_of_birth: @staff.date_of_birth, qualification: @staff.qualification, category_id: @staff.category_id, grade: @staff.grade, department_id: @staff.department_id, date_of_first_appointment: @staff.date_of_first_appointment, marital_status: @staff.marital_status, spouse_name: @staff.spouse_name, no_of_children: @staff.no_of_children, image: @staff.image, address: @staff.address, city: @staff.city, region: @staff.region, religion: @staff.religion, user_id: @staff.user_id}
+    end
+
 end

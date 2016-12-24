@@ -1,6 +1,7 @@
-<h1>Editing Staff</h1>
+<h4>Editing <%= @staff.first_name.capitalize+" "+@staff.last_name.capitalize%></h4>
 
 <%= render 'form', staff: @staff %>
 
-<%= link_to 'Show', @staff %> |
-<%= link_to 'Back', staffs_path %>
+<%= link_to 'Cancel', staffs_path, class: "w3-btn w3-round w3-left"%>
+</div>
+</div>

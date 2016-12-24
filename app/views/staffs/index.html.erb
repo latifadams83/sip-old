@@ -2,63 +2,23 @@
 
 <h1>Staffs</h1>
 
-<table>
+<table class="w3-table-all">
   <thead>
-    <tr>
-      <th>Staff</th>
-      <th>Date join</th>
-      <th>First name</th>
-      <th></th>
-      <th>Gender</th>
-      <th>Date of birth</th>
-      <th>Qualification</th>
-      <th>Specialization</th>
-      <th>Grade</th>
-      <th>Job description</th>
-      <th>Date of first appointment</th>
-      <th>Marital status</th>
-      <th>Spouse name</th>
-      <th>No of children</th>
-      <th>Image</th>
-      <th>Address</th>
-      <th>City</th>
-      <th>Region</th>
-      <th></th>
-      <th>Email</th>
-      <th>Active</th>
-      <th>Religion</th>
-      <th>User</th>
-      <th colspan="3"></th>
+    <tr class="w3-theme-d4">
+      <th>Name</th>
+      <th>Staff ID</th>
+      <th>Category</th>
+      <th>Department</th>
     </tr>
   </thead>
 
   <tbody>
     <% @staffs.each do |staff| %>
       <tr>
+        <td><%= link_to "#{staff.first_name.capitalize} #{staff.last_name.capitalize}", staff %></td>
         <td><%= staff.staff_id %></td>
-        <td><%= staff.date_join %></td>
-        <td><%= staff.first_name %></td>
-        <td><%= staff.gender %></td>
-        <td><%= staff.date_of_birth %></td>
-        <td><%= staff.qualification %></td>
-        <td><%= staff.specialization %></td>
-        <td><%= staff.grade %></td>
-        <td><%= staff.job_description %></td>
-        <td><%= staff.date_of_first_appointment %></td>
-        <td><%= staff.marital_status %></td>
-        <td><%= staff.spouse_name %></td>
-        <td><%= staff.no_of_children %></td>
-        <td><%= staff.image %></td>
-        <td><%= staff.address %></td>
-        <td><%= staff.city %></td>
-        <td><%= staff.region %></td>
-        <td><%= staff.email %></td>
-        <td><%= staff.active %></td>
-        <td><%= staff.religion %></td>
-        <td><%= staff.user_id %></td>
-        <td><%= link_to 'Show', staff %></td>
-        <td><%= link_to 'Edit', edit_staff_path(staff) %></td>
-        <td><%= link_to 'Destroy', staff, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= Category.find(staff.category_id).name.capitalize %></td>
+        <td><%= Department.find(staff.department_id).name.upcase %></td>
       </tr>
     <% end %>
   </tbody>
