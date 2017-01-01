@@ -1,0 +1,2 @@
+module StaffDepartmentsHelper
+end

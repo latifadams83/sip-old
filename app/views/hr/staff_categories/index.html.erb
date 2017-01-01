@@ -1,0 +1,28 @@
+<%= provide(:page_title, "Staff Members")%>
+<%= provide(:staff_active, "active")%>
+
+<h4>Categories</h4>
+
+<table class="w3-table-all">
+  <thead>
+    <tr class="w3-theme-d4">
+      <th>Category</th>
+      <th class="w3-center">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @staff_categories.each do |staff_category| %>
+      <tr>
+        <td><%= staff_category.name %></td>
+        <td class="w3-center w3-bottom-group">
+          <%= link_to 'Edit', edit_staff_category_path(staff_category), class: "w3-btn w3-round, w3-tiny w3-amber" %>
+          <%= link_to 'Delete', staff_category, method: :delete, data: { confirm: 'Are you sure?' }, class: "w3-btn w3-round w3-tiny w3-red"%>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<%= link_to '+ Staff Category', new_staff_category_path, class: "w3-btn w3-right w3-tiny w3-round w3-theme-d4" %>

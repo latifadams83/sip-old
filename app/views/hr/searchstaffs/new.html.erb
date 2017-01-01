@@ -1,0 +1,39 @@
+<%= provide(:page_title, "Search staff")%>
+<%= provide(:staff_active, "active")%>
+
+<fieldset>
+  <legend><strong>Search</strong></legend>
+
+  <%= form_for(@searchstaff) do |f| %>
+
+    <div class="w3-row-padding">
+      <%= f.label :staff_id, "Staff ID", class: "w3-label" %>
+      <%= f.text_field :staff_id, class: "w3-input w3-card" %>
+    </div>
+
+    <div class="w3-row-padding">
+      <%= f.label :first_name, "First Name", class: "w3-label" %>
+      <%= f.text_field :first_name, class: "w3-input w3-card" %>
+    </div>
+
+    <div class="w3-row-padding">
+      <%= f.label :last_name, "Last Name", class: "w3-label"  %>
+      <%= f.text_field :last_name, class: "w3-input w3-card" %>
+    </div>
+
+    <div class="w3-row-padding">
+      <%= f.label :staff_category_id, "Category", class: "w3-label" %>
+      <%= f.collection_select :staff_category_id, StaffCategory.order(:name), :id, :name, {include_blank:true}, {class: "w3-input w3-round w3-card w3-margin-bottom"} %>
+    </div>
+
+    <div class="w3-row-padding">
+      <%= f.label :staff_department_id, "Department", class: "w3-label" %>
+      <%= f.grouped_collection_select :staff_department_id, StaffCategory.order(:name), :staff_departments,:name, :id, :name, {include_blank:true}, {class: "w3-input w3-round w3-border w3-margin-bottom"} %>
+    </div>
+
+    <div class="w3-row-padding">
+      <%= link_to "Back", root_path, class: "w3-btn w3-round "%>
+      <%= f.submit "submit", class: "w3-btn w3-round w3-theme-d4" %>
+    </div>
+  <% end %>
+</fieldset>

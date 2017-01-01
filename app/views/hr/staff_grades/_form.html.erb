@@ -1,0 +1,26 @@
+<%= form_for(staff_grade) do |f| %>
+  <% if staff_grade.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(staff_grade.errors.count, "error") %> prohibited this staff_grade from being saved:</h2>
+
+      <ul>
+      <% staff_grade.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name, class: "w3-label" %>
+    <%= f.text_field :name, class: "w3-input w3-border w3-round" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :staff_category_id, "Category", class: "w3-label" %>
+    <%= f.collection_select :staff_category_id, StaffCategory.order(:name), :id, :name, {include_blank:true}, {class: "w3-input w3-round w3-border w3-margin-bottom"} %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Save", class: "w3-btn w3-round w3-right w3-theme-d4" %>
+<% end %>

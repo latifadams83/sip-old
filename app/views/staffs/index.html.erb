@@ -1,9 +1,5 @@
-<p id="notice"><%= notice %></p>
-
-<h4>Staffs</h4>
-<div class="w3-container">
-  <%= link_to "Search", search_staffs_path, class: "w3-btn w3-round w3-theme-d4"%>
-</div>
+<%= provide(:page_title, "All Staff members")%>
+<%= provide(:staff_active, "active")%>
 
 <table class="w3-table-all">
   <thead>
@@ -20,13 +16,11 @@
       <tr>
         <td><%= link_to "#{staff.first_name.capitalize} #{staff.last_name.capitalize}", staff %></td>
         <td><%= staff.staff_id %></td>
-        <td><%= Category.find(staff.category_id).name.capitalize %></td>
-        <td><%= Department.find(staff.department_id).name.upcase %></td>
+        <td><%= StaffCategory.find(staff.staff_category_id).name.capitalize %></td>
+        <td><%= StaffDepartment.find(staff.staff_department_id).name.capitalize %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
 
 <%= link_to 'New Staff', new_staff_path %>

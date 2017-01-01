@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161224191042) do
+ActiveRecord::Schema.define(version: 20161231104956) do
 
   create_table "archive_staffs", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer  "id"
@@ -21,9 +21,10 @@ ActiveRecord::Schema.define(version: 20161224191042) do
     t.string   "gender",                    default: "",   null: false
     t.date     "date_of_birth"
     t.string   "qualification"
-    t.integer  "category_id"
-    t.string   "department_id"
-    t.string   "grade"
+    t.integer  "staff_grade_id"
+    t.integer  "staff_category_id"
+    t.integer  "staff_department_id"
+    t.integer  "staff_position_id"
     t.date     "date_of_first_appointment"
     t.string   "marital_status"
     t.string   "spouse_name"
@@ -62,20 +63,6 @@ ActiveRecord::Schema.define(version: 20161224191042) do
     t.datetime "updated_at",                null: false
   end
 
-  create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.string   "name",       default: "", null: false
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-  end
-
-  create_table "departments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.string   "name"
-    t.integer  "category_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["category_id"], name: "index_departments_on_category_id", using: :btree
-  end
-
   create_table "guardians", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "title"
     t.string   "first_name"
@@ -105,12 +92,39 @@ ActiveRecord::Schema.define(version: 20161224191042) do
     t.string "code"
   end
 
-  create_table "search_staffs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.string  "lastname"
-    t.string  "firstname"
+  create_table "searchstaffs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string  "staff_id"
-    t.integer "category"
-    t.integer "department"
+    t.string  "first_name"
+    t.string  "last_name"
+    t.integer "staff_category_id"
+    t.integer "staff_department_id"
+  end
+
+  create_table "staff_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "staff_departments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string   "name"
+    t.integer  "staff_category_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  create_table "staff_grades", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string   "name"
+    t.integer  "staff_category_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  create_table "staff_positions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string   "name"
+    t.integer  "staff_category_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
   create_table "staffs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
@@ -121,9 +135,10 @@ ActiveRecord::Schema.define(version: 20161224191042) do
     t.string   "gender",                    default: "",   null: false
     t.date     "date_of_birth"
     t.string   "qualification"
-    t.integer  "category_id"
-    t.string   "department_id"
-    t.string   "grade"
+    t.integer  "staff_grade_id"
+    t.integer  "staff_category_id"
+    t.integer  "staff_department_id"
+    t.integer  "staff_position_id"
     t.date     "date_of_first_appointment"
     t.string   "marital_status"
     t.string   "spouse_name"
@@ -161,10 +176,9 @@ ActiveRecord::Schema.define(version: 20161224191042) do
     t.string   "email"
     t.integer  "guardian_id"
     t.integer  "user_id"
+    t.string   "image"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
-    t.string   "image"
-    t.string   "denomination"
     t.index ["badge_id"], name: "index_students_on_badge_id", using: :btree
     t.index ["placed_id"], name: "index_students_on_placed_id", using: :btree
     t.index ["programme_id"], name: "index_students_on_programme_id", using: :btree

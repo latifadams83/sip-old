@@ -1,37 +1,74 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>SIP</title>
+    <title>SIP | <%=yield(:page_title)%></title>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
-<body>
+<body class="">
 
-<%= render "layouts/admin_menu"%>
+<!-- Header container -->
+  <div class="w3-container w3-top w3-theme-d4 w3-large w3-padding" style="z-index:4">
+    <button class="w3-btn w3-hide-large w3-padding-0 w3-hover-text-grey" onclick="w3_open();">
+      Menu
+    </button>
+    <span class="w3-left">Logo</span>
+    <span class="w3-right">Login</span>
 
-<!-- Main content -->
-<div class="w3-main" style="margin-left:300px">
+  </div><!-- Header container -->
 
-  <div class="w3-row w3-padding-64 w3-round" id="main-content"><!-- Content row -->
-
-    <div class="w3-col m12 w3-container"><!-- Page Content -->
-
-      <%= yield %>
-
-    </div><!-- End of Page content -->
-
-  </div><!-- End of Content row -->
-
-   <div class="w3-row w3-padding-64">
-      <div class="w3-col m12 w3-container ">
-      <hr>
-        <p> @copy <%= Time.now.year %></p>
+  <!-- Sidenav/menu -->
+  <nav class="w3-sidenav w3-round w3-collapse w3-gray w3-theme-d2" style="z-index:3;width:250px; " id="sidenav"><br>
+    <div class="w3-container w3-row">
+      <div class="w3-col s4">
+          <%= image_tag("logo.png", size: "46x46", class: "w3-circle")%>
       </div>
-  </div>
+      <div class="w3-col s8">
+        <span>Welcome, <strong>Admin</strong></span><br>
+      </div>
+    </div>
+      <strong><hr></strong>
+    <div class="w3-container w3-padding-0">
+      <b>Dashboard</b>
+    </div>
+    <%= render "layouts/dashboard"%>
+  </nav> <!-- End of Side navigations -->
 
-</div>
-<!-- END MAIN -->
+  <!-- Overlay effect when opening sidenav on small screens -->
+  <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE! -->
+  <div class="w3-main  w3-padding" style="margin-left:250px;margin-top:60px; margin-right: 100px;">
+
+    <!-- Page Notifications -->
+    <% if notice.present? %>
+    <div class="w3-panel w3-margin-top w3-round w3-amber" id="notice">
+        <p><%= notice %></p>
+    </div>
+    <% end %>
+
+    <!-- Page content -->
+    <div class="w3-container  w3-round content">
+      <header class="w3-container" style="padding-top:22px">
+        <h5><b> <%= yield(:page_title)%></b></h5>
+      </header>
+
+      <div class="w3-row-padding w3-margin-bottom">
+
+        <%= yield %>
+
+      </div>
+    </div>
+
+    <br>
+    <!-- Footer -->
+    <footer class="w3-container w3-padding-16 w3-light-grey">&copy <%= Time.now().year%> </footer>
+
+  </div>
+<!-- End page content -->
+
 </body>
 
 <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
 </html>

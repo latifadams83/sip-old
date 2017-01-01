@@ -1,0 +1,54 @@
+<%= provide(:page_title, "Staff")%>
+<%= provide(:staff_active, "active")%>
+
+<div class="w3-container">
+  <div class="w3-row-padding">
+    <div class="w3-col m12 w3-bottombar">
+      <h4><b>Settings</b></h4>
+    </div>
+  </div>
+  <div class="w3-row-padding">
+    <div class="w3-col m6 w3-panel ">
+      <strong><%= link_to "Staff Categories", staff_categories_path%></strong><br>
+      Create and manage staff categories
+    </div>
+
+    <div class="w3-col m6 w3-panel ">
+      <strong><%= link_to "Staff Departments", staff_departments_path%></strong><br>
+      Create and manage staff Departments
+    </div>
+  </div>
+
+  <div class="w3-row-padding">
+    <div class="w3-col m6 w3-panel ">
+      <strong><%= link_to "Staff Grades", staff_grades_path%></strong><br>
+      Create and manage staff Grades
+    </div>
+
+    <div class="w3-col m6 w3-panel ">
+      <strong><%= link_to "Staff Positions", staff_positions_path%></strong><br>
+      Create and manage staff Positions
+    </div>
+  </div>
+</div>
+<br>
+<div class="w3-container">
+  <div class="w3-row-padding">
+    <div class="w3-col m12 w3-bottombar">
+      <h4><b>Management</b></h4>
+    </div>
+  </div>
+  <div class="w3-row-padding">
+    <div class="w3-col m6 w3-panel ">
+      <strong><%= link_to "Staff Admission", new_staff_path%></strong><br>
+      Admit new staff member
+    </div>
+
+    <div class="w3-col m6 w3-panel ">
+      <strong><%= link_to "Staff Lessons", ""%></strong><br>
+      Assign lessons to staff members
+    </div>
+  </div>
+
+  </div>
+</div>

@@ -8,9 +8,10 @@ class CreateStaffs < ActiveRecord::Migration[5.0]
       t.string :gender, null: false, default: ""
       t.date :date_of_birth
       t.string :qualification
-      t.integer :category_id
-      t.string :department_id
-      t.string :grade
+      t.integer :staff_grade_id
+      t.integer :staff_category_id
+      t.integer :staff_department_id
+      t.integer :staff_position_id
       t.date :date_of_first_appointment
       t.string :marital_status
       t.string :spouse_name

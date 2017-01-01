@@ -1,0 +1,12 @@
+<%= provide(:page_title, "New staff Department")%>
+<%= provide(:staff_active, "active")%>
+
+<fieldset class="w3-round">
+
+<%= render 'form', staff_department: @staff_department %>
+
+<%= link_to 'Back', staff_departments_path, class: "w3-btn w3-round w3-left" %>
+
+  </div>
+
+</fieldset>

@@ -1,0 +1,6 @@
+<%= provide(:page_title, "New staff Category")%>
+<%= provide(:staff_active, "active")%>
+
+<%= render 'form', staff_category: @staff_category %>
+
+<%= link_to 'Back', staff_categories_path, class: "w3-btn w3-round w3-theme-d4 w3-margin-bottom" %>

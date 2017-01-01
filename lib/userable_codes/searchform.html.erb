@@ -1,0 +1,18 @@
+<%= provide(:page_title, "Staffs")%>
+<%= provide(:staff_active, "active")%>
+<%= javascript 'dynamic_departments'%>
+<%= link_to "Add Category", add_category_staffs_path, class: "w3-btn w3-theme-d4 w3-round"%>
+
+
+<fieldset class="w3-round">
+  <%= form_tag(staffs_path, method: "get") do %>
+    <%= label_tag(:name, "Name:", class: "w3-label") %>
+    <%= search_field_tag(:name, "", class: "w3-input w3-border w3-round") %>
+
+    <%= label_tag(:cat, "Category:", class: "w3-label") %>
+    <%= select_tag(:cat, options_from_collection_for_select(Category.all, :id, :name)) %>
+  <div id="">  <%= label_tag(:dept, "Department:") %>
+    <%= select_tag(:dept, options_from_collection_for_select(Department.all, :id, :name)) %></div>
+    <%= submit_tag("Search") %>
+  <% end %>
+</fieldset>

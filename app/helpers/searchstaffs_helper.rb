@@ -1,0 +1,2 @@
+module SearchstaffsHelper
+end

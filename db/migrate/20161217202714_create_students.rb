@@ -18,6 +18,7 @@ class CreateStudents < ActiveRecord::Migration[5.0]
       t.string :email
       t.integer :guardian_id
       t.integer :user_id
+      t.string :image
 
       t.timestamps
     end

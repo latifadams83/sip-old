@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require staffs
+//= require searchstaffs
 //= require turbolinks
 //= require students
 //= require guardians

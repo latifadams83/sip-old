@@ -14,12 +14,15 @@ body{
   max-height: 25px !important;
   padding: 1px !important;
   background: #F2F1F0;
+  border-radius: 5px !important;
 }
 
 .w3-select{
   max-width: 298px !important;
   max-height: 25px !important;
   padding: 1px !important;
+  border-radius: 5px !important;
+
 }
 
 fieldset{
@@ -30,16 +33,24 @@ fieldset{
   max-width: 95px !important;
 }
 
-#main-content{
-  padding-right: 5%;
+.main{
+  max-width: 980px;
+  margin: 0px auto 0px auto;
+}
+#sidenav{
+  max-width: 980px !important;
+  margin: 0px auto 0px auto !important;
+
+  a:hover{
+    font-weight: bolder;
+    
+  }
+  .active{
+    font-weight: bolder;
+    background-color: black;
+  }
 }
 
-#menu-bar-icon {
-    width: 20px;
-    height: 3px;
-    background-color: black;
-    margin: 2px 0;
-}
 .img-frame{
   width: 100px;
   height: 100px;

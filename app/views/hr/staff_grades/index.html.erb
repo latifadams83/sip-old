@@ -1,0 +1,28 @@
+<%= provide(:page_title, "Staff Grades")%>
+<%= provide(:staff_active, "active")%>
+
+<table class="w3-table-all ">
+  <thead>
+    <tr class="w3-theme-d4">
+      <th>Grade</th>
+      <th>Category</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @staff_grades.each do |staff_grade| %>
+      <tr>
+        <td><%= staff_grade.name %></td>
+        <td><%= staff_grade.staff_category.name.capitalize %></td>
+        <td>
+        <%= link_to 'Edit', edit_staff_grade_path(staff_grade), class: "w3-btn w3-tiny w3-amber"  %>
+        <%= link_to 'Delete', staff_grade, method: :delete, data: { confirm: 'Are you sure?' }, class: "w3-btn w3-tiny w3-red"  %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<%= link_to '+ Staff Grade', new_staff_grade_path, class: "w3-btn w3-tiny w3-theme-d4 w3-right w3-round"  %>

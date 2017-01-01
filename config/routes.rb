@@ -1,25 +1,26 @@
 Rails.application.routes.draw do
 
   root "pages#home"
-  get "/home", to: "pages#home"
 
-  resources :departments
-  resources :categories
   devise_for :users
   resources :guardians
 
-  resources :staffs do
-    member do
-      get :delete
-      get :disable
-      post :archive
+  scope module: :hr do   #The human resource module
+    get "staffs/settings" => "staffs#settings"
+    get "staffs/manage" => "staffs#manage"
+    resources :staffs do
+      member do
+        get :delete
+        get :confirm_archive
+        post :archive
+      end
     end
-    collection do
-      get :search
-      get :search_staff
-      post :search_create
-    end
-  end
+    resources :staff_positions
+    resources :staff_grades
+    resources :staff_departments
+    resources :staff_categories
+    resources :searchstaffs
+  end  #The human resource module
 
   resources :students do
     member do
