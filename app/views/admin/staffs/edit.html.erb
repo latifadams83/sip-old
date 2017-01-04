@@ -1,0 +1,8 @@
+<%= provide(:page_title, "Edit #{@staff.first_name.capitalize+' '+@staff.last_name.capitalize}")%>
+<%= provide(:staff_active, "w3-theme-d4 w3-round")%>
+
+<%= render 'form', staff: @staff, url: admin_staff_path( @staff) %>
+
+<%= link_to 'Cancel', admin_staffs_path, class: "w3-btn w3-round w3-left"%>
+</div>
+</div>

@@ -1,0 +1,11 @@
+<%= provide(:page_title, "New staff Department")%>
+<%= provide(:staff_active, "w3-theme-d4 w3-round")%>
+<%= provide(:staff_department_active, " w3-black")%>
+
+
+
+<%= render 'form', staff_department: @staff_department, url: admin_staff_departments_url %>
+
+<%= link_to 'Cancel', admin_staff_departments_path, class: "w3-btn w3-round w3-left w3-margin-right" %>
+
+  </div>

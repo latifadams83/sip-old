@@ -1,21 +1,8 @@
-var mySidenav = document.getElementById("mySidenav");
-
-// Get the DIV with overlay effect
-var overlayBg = document.getElementById("myOverlay");
-
-// Toggle between showing and hiding the sidenav, and add overlay effect
-function w3_open() {
-    if (mySidenav.style.display === 'block') {
-        mySidenav.style.display = 'none';
-        overlayBg.style.display = "none";
+function toggleSmallScreenMenu() {
+    var x = document.getElementById("smallScreenMenu");
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
     } else {
-        mySidenav.style.display = 'block';
-        overlayBg.style.display = "block";
+        x.className = x.className.replace(" w3-show", "");
     }
-}
-
-// Close the sidenav with the close button
-function w3_close() {
-    mySidenav.style.display = "none";
-    overlayBg.style.display = "none";
 }

@@ -1,0 +1,33 @@
+<%= provide(:page_title, "Search staff")%>
+<%= provide(:staff_active, "w3-theme-d4 w3-round")%>
+<%= provide(:search_staff_active, " w3-black")%>
+
+<% if @searchstaff.staff_members.empty?%>
+  <div class="w3-panel w3-theme-l4 w3-border w3-round w3-card-2">
+    <h4 >No Records found</h4>
+  </div>
+<%else%>
+
+  <table class="w3-table-all">
+    <thead>
+      <tr class="w3-theme-d4">
+        <th>Name</th>
+        <th>Staff ID</th>
+        <th>Category</th>
+        <th>Department</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @searchstaff.staff_members.each do |staff| %>
+        <tr>
+          <td><%= link_to "#{staff.first_name.capitalize} #{staff.last_name.capitalize}", admin_staff_path(staff) %></td>
+          <td><%= staff.staff_id %></td>
+          <td><%= StaffCategory.find(staff.staff_category_id).name.capitalize %></td>
+          <td><%= StaffDepartment.find(staff.staff_department_id).name.upcase %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+<%end%>

@@ -1,0 +1,25 @@
+<!--
+<li class="w3-hide-small"><%= link_to "Home", root_path, class: "w3-hover-white #{yield(:home_active)}"%></li>
+<li class="w3-hide-small"><%= link_to "Staff", admin_staffs_path, class: "w3-hover-white #{yield(:staff_active)}"%></li> -->
+
+<!-- Navbar on small screens -->
+<ul class="w3-navbar w3-theme-d1 w3-round w3-card-2 w3-left-align w3-large" id="navbar">
+  <li class="w3-hide-medium w3-hide-large w3-opennav w3-right">
+    <a class="w3-padding-large w3-medium" href="javascript:void(0);" onclick="toggleSmallScreenMenu()" title="Toggle Navigation Menu"> Menu</a>
+  </li>
+  <li><%= link_to image_tag("logo.png", size: "40x40", class: "w3-circle"), root_path, class: ""%></li>
+  <li class="w3-hide-small"><a href="#" class="w3-padding-large ">Link 1</a></li>
+  <li class="w3-hide-small"><a href="#" class="w3-padding-large ">Link 2</a></li>
+  <li class="w3-hide-small"><a href="#" class="w3-padding-large ">Link 3</a></li>
+  <li class="w3-right w3-hide-small"><a href="#" class="w3-padding-large">Logout</a></li>
+</ul>
+
+<!-- Navbar on small screens -->
+<div id="smallScreenMenu" class="w3-hide w3-hide-large w3-hide-medium">
+  <ul class="w3-navbar w3-left-align w3-large w3-black">
+    <li><a  href="#" class=" w3-medium">Link 1</a></li>
+    <li><a  href="#" class=" w3-medium">Link 2</a></li>
+    <li><a  href="#" class=" w3-medium">Link 3</a></li>
+    <li ><a href="#" class=" w3-medium" >Logout</a></li>
+  </ul>
+</div>

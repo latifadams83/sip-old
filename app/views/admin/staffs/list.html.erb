@@ -1,0 +1,28 @@
+<%= provide(:page_title, "All Staff members")%>
+<%= provide(:staff_active, "w3-theme-d4 w3-round")%>
+
+<table class="w3-table-all">
+  <thead>
+    <tr class="w3-theme-d4">
+      <th>Name</th>
+      <th>Staff ID</th>
+      <th>Category</th>
+      <th>Department</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @staffs.each do |staff| %>
+      <tr>
+        <td><%= link_to "#{staff.first_name.capitalize} #{staff.last_name.capitalize}", admin_staff_path(staff) %></td>
+        <td><%= staff.staff_id %></td>
+        <td><%= StaffCategory.find(staff.staff_category_id).name.capitalize %></td>
+        <td><%= StaffDepartment.find(staff.staff_department_id).name.upcase %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Staff', new_admin_staff_path %>

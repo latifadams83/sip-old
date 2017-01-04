@@ -1,2 +1,0 @@
-class SearchStaff < ApplicationRecord
-end

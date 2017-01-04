@@ -1,0 +1,27 @@
+<%= provide(:page_title, "Staff Categories")%>
+<%= provide(:staff_active, "w3-theme-d4 w3-round")%>
+<%= provide(:staff_categories_active, " w3-black")%>
+
+<table class="w3-table-all">
+  <thead>
+    <tr class="w3-theme-d4">
+      <th>Category</th>
+      <th class="w3-center">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @staff_categories.each do |category| %>
+      <tr>
+        <td><%= category.name %></td>
+        <td class="w3-center w3-bottom-group">
+          <%= link_to 'Edit', edit_admin_staff_category_path(category), class: "w3-btn w3-round, w3-tiny w3-amber" %>
+          <%= link_to 'Delete', admin_staff_category_path(category), method: :delete, data: { confirm: 'Are you sure?' }, class: "w3-btn w3-round w3-tiny w3-red"%>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<%= link_to '+ Staff Category', new_admin_staff_category_path, class: "w3-btn w3-right w3-tiny w3-round w3-theme-d4" %>

@@ -1,0 +1,13 @@
+<%= provide(:page_title, "New staff Category")%>
+<%= provide(:staff_active, "w3-theme-d4 w3-round")%>
+<%= provide(:staff_categories_active, " w3-black")%>
+
+<%= render 'form', staff_category: @staff_category, url: admin_staff_categories_url(@staff_category) %>
+
+
+  <%= link_to 'Cancel', admin_staff_categories_path, class: "w3-btn w3-round " %>
+  </div>
+
+</div>
+
+</fieldset>

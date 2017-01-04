@@ -5,36 +5,35 @@ Rails.application.routes.draw do
   devise_for :users
   resources :guardians
 
-  scope module: :hr do   #The human resource module
-    get "staffs/settings" => "staffs#settings"
-    get "staffs/manage" => "staffs#manage"
+  namespace :admin do
+    resources :staff_categories, :staff_grades, :staff_positions, :staff_departments, :searchstaffs
     resources :staffs do
       member do
         get :delete
         get :confirm_archive
         post :archive
       end
-    end
-    resources :staff_positions
-    resources :staff_grades
-    resources :staff_departments
-    resources :staff_categories
-    resources :searchstaffs
-  end  #The human resource module
 
-  resources :students do
-    member do
-      get :guardians
-      get :new_guardian
-      put :update_guardian
-      post :add_guardian
-      delete :remove_guardian
+      collection do
+        get :list
+        get :search
+        post :search_create
+        get :search_results
+      end
     end
+
+    resources :calendars, :terms, :levels, :badges, :programmes
+    resources :students do
+      member do
+        get :guardians
+        get :new_guardian
+        put :update_guardian
+        post :add_guardian
+        delete :remove_guardian
+      end
+    end
+
   end
 
-  resources :terms
-  resources :calendars
-  resources :badges
-  resources :levels
-  resources :programmes
+
 end
