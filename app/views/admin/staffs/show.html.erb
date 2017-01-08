@@ -1,9 +1,9 @@
 <%= provide(:page_title, "#{@staff.first_name+' '+@staff.last_name}")%>
-<%= provide(:staff_active, "w3-theme-d4 w3-round")%>
+<%= provide(:staff_active, "activelink")%>
 
 <div class="w3-container">
   <div class="w3-row   w3-padding-0"><!-- page actions -->
-    <div class="w3-col m12 w3-padding-0 w3-topbar">
+    <div class="w3-col m12 w3-padding-0 ">
       <ul class="w3-navbar w3-card-2 w3-theme-d3 w3-right w3-tiny">
         <li ><%= link_to '< Back', search_admin_staffs_path ,class: "w3-border"%></li>
         <li class="w3-dropdown-hover">

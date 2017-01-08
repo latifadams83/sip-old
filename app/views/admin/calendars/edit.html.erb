@@ -1,0 +1,7 @@
+<%= provide(:page_title, "Edit Calendar")%>
+<%= provide(:settings_active, "activelink")%>
+
+<%= render 'form', calendar: @calendar %>
+
+<%= link_to 'Show', @calendar %> |
+<%= link_to 'Back', calendars_path %>

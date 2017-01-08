@@ -1,5 +1,5 @@
 <%= provide(:page_title, "Archive #{@staff.first_name.capitalize+' '+@staff.last_name.capitalize}")%>
-<%= provide(:staff_active, "w3-theme-d4 w3-round")%>
+<%= provide(:staff_active, "activelink")%>
 
   <%= form_for(@staff,url: archive_admin_staff_path, :method => 'post') do |f| %>
     <fieldset class="w3-round">

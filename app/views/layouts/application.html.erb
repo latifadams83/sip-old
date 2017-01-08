@@ -11,7 +11,6 @@
       <li class="w3-opennav w3-right w3-hide-large">
         <a class="w3-hover-white w3-large w3-theme-l1" href="javascript:void(0)" onclick="openActions()">Menu</a>
       </li>
-      <%= render "layouts/admin_dashboard"%>
   </ul>
 
   <!-- Sidenav/menu -->
@@ -24,7 +23,7 @@
         <span>Welcome, <strong>Admin</strong></span><br>
       </div>
     </div>
-    
+
     <%= yield(:page_actions)%>
 
   </nav>

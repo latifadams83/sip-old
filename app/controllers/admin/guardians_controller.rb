@@ -11,32 +11,18 @@ module Admin
     end
 
     def new
-      @student = Student.last
-
       @guardian = Guardian.new
     end
 
     def edit
     end
 
-    def create
-      @guardian = Guardian.new(guardian_params)
-
-      respond_to do |format|
-        if @guardian.save
-          format.html { redirect_to @guardian, notice: 'Guardian was successfully created.' }
-        else
-          format.html { render :new }
-        end
-      end
-    end
-
     def update
       respond_to do |format|
         if @guardian.update(guardian_params)
-          format.html { redirect_to @guardian, notice: 'Guardian was successfully updated.' }
+          format.html { redirect_to admin_guardian_path(@guardian), notice: 'Guardian was successfully updated.' }
         else
-          format.html { render :edit }
+          format.html { render :edit, notice: "Guardian could not be updated" }
         end
       end
     end
@@ -44,7 +30,7 @@ module Admin
     def destroy
       @guardian.destroy
       respond_to do |format|
-        format.html { redirect_to guardians_url, notice: 'Guardian was successfully destroyed.' }
+        format.html { redirect_to admin_guardians_url, notice: 'Guardian was successfully destroyed.' }
       end
     end
 
@@ -56,7 +42,7 @@ module Admin
 
       # Never trust parameters from the scary internet, only allow the white list through.
       def guardian_params
-        params.require(:guardian).permit(:title, :first_name, :last_name, :occupation, :relation, :address, :city, :region, :phone, :email, :education, :user_id)
+        params.permit(:title, :first_name, :last_name, :occupation, :relation, :address, :city, :region, :phone, :email, :education, :user_id)
       end
   end
 

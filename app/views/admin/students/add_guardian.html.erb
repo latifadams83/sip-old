@@ -1,0 +1,4 @@
+<%= provide(:page_title, "Guardian")%>
+<%= provide(:students_active, "activelink")%>
+
+<%= render 'guardian_form', guardian: @guardian, url: create_guardian_admin_student_url %>

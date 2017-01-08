@@ -1,0 +1,9 @@
+<%= provide(:page_title, "Calendars")%>
+<%= provide(:settings_active, "activelink")%>
+
+<div class="w3-container">
+  <%= calendar do |date|%>
+    <%= date.day %>
+  <% end%>
+</div>
+<%= link_to 'New Calendar', new_calendar_path %>

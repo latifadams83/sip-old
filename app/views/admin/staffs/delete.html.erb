@@ -1,5 +1,5 @@
  <%= provide(:page_title, "Remove #{@staff.first_name.capitalize+' '+@staff.last_name.capitalize}")%>
- <%= provide(:staff_active, "w3-theme-d4 w3-round")%>
+ <%= provide(:staff_active, "activelink")%>
 
   <%= form_for(admin_staff_path(@staff), :method => 'delete') do |f| %>
     <fieldset class="w3-round">

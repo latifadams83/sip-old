@@ -4,10 +4,12 @@ module Admin
     before_action :set_staff, only: [:show, :edit, :update, :destroy]
 
     def index
+      @searchstaff = Searchstaff.new
+
     end
 
     def list
-      @staffs = Staff.all.limit(20)
+      @staffs = Staff.all
     end
 
 

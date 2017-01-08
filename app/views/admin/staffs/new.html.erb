@@ -1,9 +1,8 @@
 <%= provide(:page_title, "New staff")%>
-<%= provide(:staff_active, "w3-theme-d4 w3-round")%>
-<%= provide(:new_staff_active, " w3-black")%>
+<%= provide(:staff_active, "activelink")%>
 
 <%= render 'form', staff: @staff, url: admin_staffs_url %>
 
-<%= link_to 'Cancel', admin_staffs_path, class: "w3-btn w3-round  w3-left w3-margin-top"%>
-</div>
+  <%= link_to 'Cancel', admin_staffs_path, class: "w3-btn w3-round  w3-left"%>
+  </div>
 </div>

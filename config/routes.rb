@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
 
   root "pages#home"
-
+  get "javascripts/navbar" => "javascripts#navbar"
   devise_for :users
-  resources :guardians
 
   namespace :admin do
     resources :staff_categories, :staff_grades, :staff_positions, :staff_departments, :searchstaffs
@@ -22,15 +21,20 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :calendars, :terms, :levels, :badges, :programmes
+    resources :calendars, :terms, :levels, :badges, :programmes, :guardians
     resources :students do
       member do
-        get :guardians
-        get :new_guardian
-        put :update_guardian
-        post :add_guardian
-        delete :remove_guardian
+        get :add_guardian
+        post :create_guardian
       end
+
+      collection do
+        get :list
+        get :search
+        post :search_create
+        get :search_results
+      end
+
     end
 
   end

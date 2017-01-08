@@ -1,6 +1,5 @@
 <%= provide(:page_title, "New Staff Grade")%>
-<%= provide(:staff_active, "w3-theme-d4 w3-round")%>
-<%= provide(:staff_grades_active, " w3-black")%>
+<%= provide(:staff_active, "activelink")%>
 
   <%= render 'form', staff_grade: @staff_grade, url: admin_staff_grades_path %>
 

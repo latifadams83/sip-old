@@ -1,6 +1,5 @@
 <%= provide(:page_title, "Edit Staff Position")%>
-<%= provide(:staff_active, "w3-theme-d4 w3-round")%>
-<%= provide(:staff_positions_active, " w3-black")%>
+<%= provide(:staff_active, "activelink")%>
 
   <%= render 'form', staff_position: @staff_position, url: admin_staff_position_path(@staff_position) %>
 

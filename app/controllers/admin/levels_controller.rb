@@ -1,7 +1,7 @@
 module Admin
   class LevelsController < ApplicationController
     layout "admin"
-    before_action :set_level, only: [:show, :edit, :update, :destroy]
+    before_action :set_level, only: [:edit, :update, :destroy]
 
     def index
       @levels = Level.all
@@ -22,7 +22,7 @@ module Admin
 
       respond_to do |format|
         if @level.save
-          format.html { redirect_to levels_path, notice: 'Level was successfully created.' }
+          format.html { redirect_to admin_levels_path, notice: 'Level was successfully created.' }
         else
           format.html { render :new }
         end
@@ -32,7 +32,7 @@ module Admin
     def update
       respond_to do |format|
         if @level.update(level_params)
-          format.html { redirect_to levels_path, notice: 'Level was successfully updated.' }
+          format.html { redirect_to admin_levels_path, notice: 'Level was successfully updated.' }
         else
           format.html { render :edit }
         end
@@ -42,7 +42,7 @@ module Admin
     def destroy
       @level.destroy
       respond_to do |format|
-        format.html { redirect_to levels_url, notice: 'Level was successfully destroyed.' }
+        format.html { redirect_to admin_levels_url, notice: 'Level was successfully destroyed.' }
       end
     end
 

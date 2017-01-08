@@ -1,0 +1,10 @@
+<%= provide(:page_title, "New Badge")%>
+<%= provide(:settings_active, "activelink")%>
+
+<fieldset class="w3-input-group w3-round w3-theme-l4 w3-margin-bottom">
+  <legend class="w3-container w3-hide">Bade Details</legend>
+  <legend class="w3-container w3-white">Placement Details</legend>
+  <%= render 'form', badge: @badge, url: admin_badges_url %>
+  <%= link_to 'Cancel', admin_badges_path, class: "w3-btn w3 w3-round w3-left w3-margin-bottom" %>
+</div>
+</fieldset>

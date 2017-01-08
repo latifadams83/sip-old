@@ -1,50 +1,35 @@
 module Admin
   class ProgrammesController < ApplicationController
     layout "admin"
-    before_action :set_programme, only: [:show, :edit, :update, :destroy]
+    before_action :set_programme, only: [:edit, :update, :destroy]
 
-    # GET /programmes
-    # GET /programmes.json
     def index
       @programmes = Programme.all
     end
 
-    # GET /programmes/1
-    # GET /programmes/1.json
-    def show
-    end
-
-    # GET /programmes/new
     def new
       @programme = Programme.new
     end
 
-    # GET /programmes/1/edit
     def edit
     end
 
-    # POST /programmes
-    # POST /programmes.json
     def create
       @programme = Programme.new(programme_params)
 
       respond_to do |format|
         if @programme.save
-          format.html { redirect_to programmes_path, notice: 'Programme was successfully created.' }
-          format.json { render :show, status: :created, location: @programme }
+          format.html { redirect_to admin_programmes_path, notice: 'Programme was successfully created.' }
         else
           format.html { render :new }
-          format.json { render json: @programme.errors, status: :unprocessable_entity }
         end
       end
     end
 
-    # PATCH/PUT /programmes/1
-    # PATCH/PUT /programmes/1.json
     def update
       respond_to do |format|
         if @programme.update(programme_params)
-          format.html { redirect_to programmes_path, notice: 'Programme was successfully updated.' }
+          format.html { redirect_to admin_programmes_path, notice: 'Programme was successfully updated.' }
           format.json { render :show, status: :ok, location: @programme }
         else
           format.html { render :edit }
@@ -53,12 +38,10 @@ module Admin
       end
     end
 
-    # DELETE /programmes/1
-    # DELETE /programmes/1.json
     def destroy
       @programme.destroy
       respond_to do |format|
-        format.html { redirect_to programmes_url, notice: 'Programme was successfully destroyed.' }
+        format.html { redirect_to admin_programmes_url, notice: 'Programme was successfully destroyed.' }
         format.json { head :no_content }
       end
     end

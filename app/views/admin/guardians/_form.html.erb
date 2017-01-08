@@ -1,0 +1,75 @@
+<div class="w3-container" id="new-guardian">
+  <div  class="w3-container"  id="nf">
+    <%= form_for(guardian, url: url) do |f| %>
+    <fieldset class="w3-input-group w3-round w3-theme-l4 w3-margin-bottom">
+      <legend class="w3-container w3-white">Personal Details</legend>
+        <div class="w3-row-padding">
+          <div class="w3-col m12">
+            <%= f.label :title, class: "w3-label" %>
+            <%= f.select(:title, {Mr: :Mr, Mrs: :Mrs, Ms: :Ms, Master: :Master, Dr: :Dr, Prof: :Prof, Maulvi: :Maulvi, Mallam: :Mallam, Reverend: :Reverend, Sheik: :Sheik, Father: :Father, Brother: :Brother, Sister: :Sister, Pastor: :Pastor}, {:include_blank => true}, { :class => "w3-input" }) %>
+          </div>
+        </div>
+        <div class="w3-row-padding">
+          <div class="w3-col m6">
+            <%= f.label :first_name, class: "w3-label" %>
+            <%= f.text_field :first_name, class: "w3-input" %>
+          </div>
+          <div class="w3-col m6">
+            <div><%= f.label :last_name, class: "w3-label" %></div>
+            <div><%= f.text_field :last_name, class: "w3-input" %></div>
+          </div>
+        </div>
+
+        <div class="w3-row-padding">
+          <div class="w3-col m6">
+            <div><%= f.label :education, class: "w3-label" %></div>
+            <%= f.text_field :education, class: "w3-input" %>
+          </div>
+          <div class="w3-col m6">
+            <%= f.label :occupation, class: "w3-label" %>
+            <%= f.text_field :occupation, class: "w3-input" %>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="w3-input-group w3-round w3-theme-l4 w3-margin-bottom">
+        <legend class="w3-container w3-white">Contact Details</legend>
+        <div class="w3-row-padding">
+          <div class="w3-col m12">
+            <%= f.label :address, class: "w3-label" %>
+            <%= f.text_field :address, class: "w3-input" %>
+          </div>
+        </div>
+
+        <div class="w3-row-padding">
+          <div class="w3-col m6">
+            <%= f.label :city, class: "w3-label" %>
+            <%= f.text_field :city, class: "w3-input" %>
+          </div>
+          <div class="w3-col m6">
+            <%= f.label :region, class: "w3-label" %>
+            <%= f.select(:region, {"Upper West" => "Upper West", "Upper East" => "Upper East", "Northern" => "Northern", "Brong Ahafo" => "Brong Ahafo", "Asanti" => "Asanti", "Eastern" => "Eastern", "Central" => "Central", "Western" => "Western", "Volta" => "Volta", "Greater Accra" => "Greater Accra", "Other" => "Other"}, {:include_blank => true}, { :class => "w3-input" }) %></div>
+        </div>
+
+        <div class="w3-row-padding">
+          <div class="w3-col m6">
+            <%= f.label :phone, class: "w3-label" %>
+            <div><%= f.text_field :phone, class: "w3-input w3-round w3-medium" %></div>
+          </div>
+          <div class="w3-col m6">
+            <div><%= f.label :email, class: "w3-label" %></div>
+            <div><%= f.text_field :email, class: "w3-input w3-round w3-medium" %></div>
+          </div>
+        </div>
+      </fieldset>
+      <fieldset class="w3-input-group w3-round w3-theme-l4 w3-margin-bottom">
+        <legend class="w3-container w3-white">Relation To Ward</legend>
+        <div class="w3-row-padding">
+          <div class="w3-col m12">
+            <%= f.text_field :relation, class: "w3-input w3-round w3-medium" %>
+          </div>
+        </div>
+      </fieldset>
+      <div class="w3-row-padding">
+        <%= f.submit :Save, class: "w3-btn w3-round w3-theme-d4 w3-right w3-margin-top" %>
+    <% end %>

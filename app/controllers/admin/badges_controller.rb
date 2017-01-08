@@ -1,13 +1,10 @@
 module Admin
   class BadgesController < ApplicationController
     layout "admin"
-    before_action :set_badge, only: [:show, :edit, :update, :destroy]
+    before_action :set_badge, only: [:edit, :update, :destroy]
 
     def index
       @badges = Badge.all
-    end
-
-    def show
     end
 
     def new
@@ -22,7 +19,7 @@ module Admin
 
       respond_to do |format|
         if @badge.save
-          format.html { redirect_to badges_path, notice: 'New class successfully created.' }
+          format.html { redirect_to admin_badges_path, notice: 'New class successfully created.' }
         else
           format.html { render :new }
         end
@@ -32,7 +29,7 @@ module Admin
     def update
       respond_to do |format|
         if @badge.update(badge_params)
-          format.html { redirect_to badges_path, notice: 'Class successfully updated.' }
+          format.html { redirect_to admin_badges_path, notice: 'Class successfully updated.' }
         else
           format.html { render :edit }
         end
@@ -42,8 +39,7 @@ module Admin
     def destroy
       @badge.destroy
       respond_to do |format|
-        format.html { redirect_to badges_url, notice: 'Class successfully deleted.' }
-        format.json { head :no_content }
+        format.html { redirect_to admin_badges_url, notice: 'Class successfully deleted.' }
       end
     end
 

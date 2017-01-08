@@ -1,0 +1,27 @@
+  <%= form_for(programme, url: url) do |f| %>
+    <% if programme.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(programme.errors.count, "error") %> prohibited this programme from being saved:</h2>
+
+        <ul>
+        <% programme.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="w3-row-padding">
+      <br>
+      <%= f.label :name, class: "w3-label" %>
+      <%= f.text_field :name, class: "w3-input w3-border w3-round "%>
+    </div>
+    <br>
+    <div class="w3-row-padding">
+      <%= f.label :code, class: "w3-label" %>
+      <%= f.text_field :code, class: "w3-input w3-border w3-round" %>
+    </div>
+    <br>
+    <div class="actions">
+      <%= f.submit :Submit,  class: "w3-btn w3-theme-d4 w3-round w3-right w3-margin-bottom " %>
+  <% end %>

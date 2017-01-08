@@ -1,0 +1,7 @@
+<%= provide(:page_title, "Guardian")%>
+<%= provide(:students_active, "activelink")%>
+
+<%= render 'form', guardian: @guardian, url: admin_guardian_path(@guardian) %>
+
+<%= link_to 'Back', admin_guardians_path, class: 'w3-btn w3-round w3-left' %>
+</div>

@@ -1,9 +1,5 @@
 module ApplicationHelper
-  def javascript(*files)
-    content_for(:head){javascript_include_tag(*files)}
-  end
-
-  def stylesheet(*files)
-    content_for(:head){stylesheet_include_tag(*files)} 
+  def error_messages_for(object)
+    render(partial: "application/error_messages", locals: {object: object})
   end
 end
