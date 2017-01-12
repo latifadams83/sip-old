@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type: 
+  cert_earned: MyString
+  institution: MyString
+  duration: MyString
+
+two:
+  type: 
+  cert_earned: MyString
+  institution: MyString
+  duration: MyString

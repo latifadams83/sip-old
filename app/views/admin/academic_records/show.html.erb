@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @academic_record.type %>
+</p>
+
+<p>
+  <strong>Cert earned:</strong>
+  <%= @academic_record.cert_earned %>
+</p>
+
+<p>
+  <strong>Institution:</strong>
+  <%= @academic_record.institution %>
+</p>
+
+<p>
+  <strong>Duration:</strong>
+  <%= @academic_record.duration %>
+</p>
+
+<%= link_to 'Edit', edit_academic_record_path(@academic_record) %> |
+<%= link_to 'Back', academic_records_path %>

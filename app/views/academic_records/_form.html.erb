@@ -1,0 +1,36 @@
+<%= form_for(academic_record) do |f| %>
+  <% if academic_record.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(academic_record.errors.count, "error") %> prohibited this academic_record from being saved:</h2>
+
+      <ul>
+      <% academic_record.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :type, class: "w3-label" %><br>
+    <%= f.select(:type, {Academic: :Academic, Professional: :Professional}, {:include_blank => true}, { :class => "w3-input", :required=>true }) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :cert_earned, class: "w3-label" %>
+    <%= f.text_field :cert_earned, class: "w3-input" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :institution, class: "w3-label" %>
+    <%= f.text_field :institution, class: "w3-input" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :duration, class: "w3-label" %>
+    <%= f.text_field :duration, class: "w3-input" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Save", class: "w3-btn w3-round w3-theme-l1 w3-margin-left" %>
+<% end %>

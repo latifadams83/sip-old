@@ -24,6 +24,7 @@ module Admin
       @student = Student.new(student_params)
       respond_to do |format|
         if @student.save
+
           format.html {redirect_to add_guardian_admin_student_path(@student),  notice: "Student Record Saved Successfully. Please fill the Parent Details." }
           format.json { render :show, status: :created, location: @student }
         else
@@ -32,23 +33,6 @@ module Admin
         end
       end
     end
-
-
-    def add_guardian
-      @guardian = Guardian.new
-    end
-
-    def create_guardian
-      @guardian = Guardian.new(guardian_params)
-      if @guardian.save
-        @student = Student.find(params[:id])
-        @guardian.students << @student
-        redirect_to admin_student_path(@student), notice: "Student successfully placed"
-      else
-        render "add_guardian"
-      end
-    end
-
 
     def update
       respond_to do |format|
@@ -67,6 +51,21 @@ module Admin
       respond_to do |format|
         format.html { redirect_to admin_students_url, notice: 'Student was successfully destroyed.' }
         format.json { head :no_content }
+      end
+    end
+
+    def add_guardian
+      @guardian = Guardian.new
+    end
+
+    def create_guardian
+      @guardian = Guardian.new(guardian_params)
+      if @guardian.save
+        @student = Student.find(params[:id])
+        @guardian.students << @student
+        redirect_to admin_student_path(@student), notice: "Student successfully placed"
+      else
+        render "add_guardian"
       end
     end
 

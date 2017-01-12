@@ -24,17 +24,19 @@ module Admin
     end
 
     def create
-      @user = User.new(user_params)
       @staff = Staff.new(staff_params)
-      if params[:email].present? && params[:password].present? && params[:user_role].present?
-        if @user.save
-          @user.staffs << @staff
-          redirect_to admin_staff_path( @staff), notice: "Staff Succcessfully Created"
+      if @staff.email.present?
+        if @staff.save
+          generated_password = Devise.friendly_token.first(8)
+          user = User.create!(:email => @staff.email, :password => generated_password)
+          # RegistrationMailer.welcome(user, generated_password).deliver
+          redirect_to admin_staff_path(@staff), notice: "staff created with email: #{generated_password}"
+        else
+          render "new"
         end
       else
-        @staff = Staff.new(staff_params)
         if @staff.save
-          redirect_to admin_staff_path( @staff), notice: "Staff Succcessfully Created"
+          redirect_to admin_staff_path(@staff), notice: "staff created with email: without Email"
         else
           render "new"
         end
@@ -109,7 +111,7 @@ module Admin
 
 
       def staff_params
-        params.require(:staff).permit(:staff_id, :date_join, :first_name, :last_name, :gender, :date_of_birth, :qualification, :staff_category_id, :staff_grade_id, :staff_department_id, :staff_position_id, :date_of_first_appointment, :marital_status, :spouse_name, :no_of_children, :image, :address, :city, :region, :active, :religion, :user_id)
+        params.require(:staff).permit(:staff_id, :date_join, :first_name, :last_name, :gender, :date_of_birth, :staff_category_id, :staff_grade_id, :staff_department_id, :staff_position_id, :date_of_first_appointment, :marital_status, :spouse_name, :no_of_children, :image, :address, :city, :region, :phone, :mobile, :status, :religion, :user_id, :qualification, :email)
       end
 
       def archive_staff_params(id)
@@ -117,8 +119,8 @@ module Admin
         return {id: @staff.id, staff_id: @staff.staff_id, date_join: @staff.date_join, first_name: @staff.first_name, last_name: @staff.last_name, gender: @staff.gender, date_of_birth: @staff.date_of_birth, qualification: @staff.qualification, staff_category_id: @staff.staff_category_id, staff_grade_id: @staff.staff_grade_id, staff_department_id: @staff.staff_department_id, date_of_first_appointment: @staff.date_of_first_appointment, marital_status: @staff.marital_status, spouse_name: @staff.spouse_name, no_of_children: @staff.no_of_children, image: @staff.image, address: @staff.address, city: @staff.city, region: @staff.region, religion: @staff.religion, user_id: @staff.user_id}
       end
 
-      def user_params
-        params.permit(:email, :password, :user_role)
+      def user_params(password)
+        params.permit(:email, password: password)
       end
 
       def search_params

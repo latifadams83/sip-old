@@ -40,7 +40,7 @@
     <li><%= link_to "Search staff", admin_staffs_path %></li>
     <li><%= link_to "Add staff", new_admin_staff_path %></li>
     <li class="w3-dropdown-hover">
-      <a href="#">Settings</a>
+      <a href="#">Settings <%= image_tag("caret.gif", class: "caret")%></a>
       <div class="w3-dropdown-content w3-theme-d4 w3-card-4">
         <%= link_to "Staff Categories", admin_staff_categories_path%>
         <%= link_to "Staff Departments", admin_staff_departments_path%>

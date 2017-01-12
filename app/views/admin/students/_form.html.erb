@@ -1,8 +1,8 @@
 <%= form_for(student,url: url) do |f| %>
   <%= error_messages_for(f.object)%>
 
-  <fieldset class="w3-input-group w3-round w3-amber w3-margin-bottom">
-    <legend class="w3-container w3-white">Placement Details</legend>
+  <fieldset class="w3-accordion-content w3-round w3-amber w3-margin-bottom">
+    <legend class="w3-btn-block w3-left-align w3-theme-d1">Placement Details</legend>
       <div class="w3-row-padding">
         <div class="w3-col m6">
           <%= f.label :placed_id, "Placed ID:", class: "w3-label w3-validate" %>
@@ -16,8 +16,8 @@
       </div>
     </fieldset>
 
-    <fieldset class="w3-input-group w3-round w3-theme-l4 w3-margin-bottom">
-      <legend class="w3-container w3-white">Personal Details</legend>
+    <fieldset class="w3-accordion-content w3-round w3-theme-l4 w3-margin-bottom">
+      <legend class="w3-btn-block w3-left-align w3-theme-d1">Personal Details</legend>
       <div class="w3-row-padding">
 
         <div class="w3-col m6">
@@ -51,8 +51,8 @@
       </div>
     </fieldset>
 
-    <fieldset class="w3-input-group w3-round w3-theme-l4 w3-margin-bottom">
-      <legend class="w3-container w3-white">Enrollment Details</legend>
+    <fieldset class="w3-accordion-content w3-round w3-theme-l4 w3-margin-bottom">
+      <legend class="w3-btn-block w3-left-align w3-theme-d1">Enrollment Details</legend>
       <div class="w3-row-padding">
         <div class="w3-col m6">
           <div><%= f.label :programme_id, class: "w3-label" %></div>
@@ -71,8 +71,8 @@
       </div>
     </fieldset>
 
-    <fieldset class="w3-input-group w3-round w3-theme-l4 w3-margin-bottom">
-      <legend class="w3-container w3-white">Contact Details</legend>
+    <fieldset class="w3-accordion-content w3-round w3-theme-l4 w3-margin-bottom">
+      <legend class="w3-btn-block w3-left-align w3-theme-d1">Contact Details</legend>
       <div class="w3-row-padding">
         <div class="w3-col m12">
           <div><%= f.label :address, class: "w3-label" %></div>
@@ -103,8 +103,8 @@
       </div>
     </fieldset>
 
-    <fieldset class="w3-input-group w3-round w3-theme-l4 w3-margin-bottom">
-      <legend class="w3-container w3-white">Student Image</legend>
+    <fieldset class="w3-accordion-content w3-round w3-theme-l4 w3-margin-bottom">
+      <legend class="w3-btn-block w3-left-align w3-theme-d1">Headshot</legend>
       <div class="w3-row-padding">
         <div class="w3-col m12 w3-margin">
           <%= f.file_field :image, class: " w3-round" %>
@@ -114,5 +114,5 @@
 
     <div class="w3-row-padding">
       <div class="w3-col m12">
-        <%= f.submit  "Save >", class: "w3-btn w3-round w3-theme-d4 w3-right w3-margin-top" %>
+        <%= f.submit  "Save & Continue", class: "w3-btn w3-round w3-theme-d4 w3-right w3-margin-top" %>
   <% end %>

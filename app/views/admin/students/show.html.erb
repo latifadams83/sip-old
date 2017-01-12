@@ -2,6 +2,8 @@
 <%= provide(:students_active, "activelink")%>
 
 <div class="w3-container">
+  
+  <!--Profil Image -->
   <div class="w3-row-padding">
     <div class="w3-col s2 profile-img">
         <%= image_tag @student.image_url.to_s, class: " w3-container w3-padding-0 w3-round img-frame" %>
@@ -9,7 +11,7 @@
 
       <!-- Tabs -->
     <div class="w3-col s10 page-nav">
-      <ul class="w3-navbar w3-card-2 w3-light-grey w3-tiny">
+      <ul class="w3-navbar w3-card-2 w3-light-grey w3-tiny w3-right">
         <li><%= link_to "< Back", admin_students_path, class: "w3-theme-d1 w3-margin-right " %></li>
        <li class="w3-dropdown-hover w3-hide-small"><%= link_to "Profile", admin_student_path(@student), class: "w3-theme-d1 w3-margin-right"%>
          <div class="w3-dropdown-content w3-theme-d1 w3-light-gray ">
@@ -87,9 +89,9 @@
             <td class="w3-right" ><strong>Guardian:</strong></td>
             <td colspan="3">
               <% if @student.guardian.present? %>
-                <%= link_to "#{student_guardian(@student)}", admin_guardian_path(@student) %>
+                <%= link_to "#{student_guardian(@student)}", admin_guardian_path(@student.guardian_id) %>
               <% else %>
-                <%= link_to "Add Guardian", add_guardian_admin_student_path(@student)%>
+              <%= link_to "Add Guardian", add_guardian_admin_student_path(@student)%>
               <% end %>
             </td>
           </tr>

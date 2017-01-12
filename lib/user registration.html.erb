@@ -1,0 +1,59 @@
+@staff.active ? "Current" : "Past"
+
+
+<div class="w3-row-padding">
+  <div class="w3-col 12 w3-margin-top">
+    <%= f.label :status, "Staff Active?", class: "w3-label" %>
+    <%= f.select(:marital_status, {Current: :Current, Released: :Released ,Transferred: :Transferred, Retired: :Retired, Sacked: :Sacked, Dead: :Dead, Other: :Other }, {:include_blank => true}, { :class => "w3-input"}) %>
+  </div>
+</div>
+
+
+def create
+  @user = User.new(user_params)
+  @staff = Staff.new(staff_params)
+  if params[:email].present? && params[:password].present? && params[:user_role].present?
+    if @user.save
+      @user.staffs << @staff
+      redirect_to admin_staff_path( @staff), notice: "Staff Succcessfully Created"
+    end
+  else
+    @staff = Staff.new(staff_params)
+    if @staff.save
+      redirect_to admin_staff_path( @staff), notice: "Staff Succcessfully Created"
+    else
+      render "new"
+    end
+  end
+end
+
+
+
+<% if params[:id].blank? %>
+<fieldset class="w3-round w3-theme-l4" ><!--Portal Accounts Form -->
+  <legend>
+      Allow Portal Access? &nbsp;&nbsp;
+      <label for="chkNo"><input type="radio" id="chkNo" name="chkUser" checked="Yes" onclick="ShowHideDiv()"/>No</label>
+      &nbsp;&nbsp;
+      <label for="chkYes"><input type="radio" id="chkYes" name="chkUser" onclick="ShowHideDiv()"/>Yes</label>
+  </legend>
+
+  <div id="dvUser" style="display: none;" class="w3-row-padding">
+    <div class="w3-row-padding">
+      <div class="w3-col m4">
+        <%= label_tag :email, :Email, class: "w3-label" %>
+        <%= email_field_tag :email, "", class: "w3-input" %>
+      </div>
+      <div class="w3-col m4">
+        <%= label_tag :password, :Password, class: "w3-label" %>
+        <%= password_field_tag :password, "", class: "w3-input" %>
+      </div>
+      <div class="w3-col m4">
+        <%= label_tag :user_role, :Role, class: "w3-label" %>
+        <%= select_tag :user_role, raw("<option></option><option>Student</option><option>Teacher</option><option>Admin</option>"), class: "w3-input"%>
+
+      </div>
+    </div>
+  </div>
+</fieldset><!--End of Portal Account Form -->
+<% end %>

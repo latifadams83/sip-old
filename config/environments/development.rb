@@ -9,6 +9,9 @@ Rails.application.configure do
   # Do not eager load code on boot.
   config.eager_load = false
 
+  #Devise Gem Configuration
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
   # Show full error reports.
   config.consider_all_requests_local = true
 
@@ -44,7 +47,6 @@ Rails.application.configure do
 
   # Suppress logger output for asset requests.
   config.assets.quiet = true
-
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 

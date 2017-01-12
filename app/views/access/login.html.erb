@@ -1,0 +1,18 @@
+<%= form_tag(access_attempt_login_path, method: :post) do %>
+
+<fieldset class="w3-accordion-content w3-round w3-theme-l4 w3-margin-bottom">
+  <legend class="w3-btn-block w3-left-align w3-theme-d1">Please Login</legend>
+    <div class="w3-row-padding w3-padding-16">
+        <%= label_tag :email, "Email", class: "w3-label" %>
+        <%= email_field_tag :email,"", class: "w3-input" %>
+    </div>
+
+    <div class="w3-row-padding w3-padding-16">
+      <%= label_tag :password,"Password", class: "w3-label" %>
+      <%= password_field_tag :password, "", class: "w3-input ", :required=>true %>
+    </div>
+    <div class="w3-row-padding">
+      <%= submit_tag "Login In", class: "w3-btn w3-round w3-theme-d4 w3-margin-bottom" %>
+    </div>
+  </fieldset>
+<% end %>

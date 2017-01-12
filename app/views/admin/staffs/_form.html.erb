@@ -1,7 +1,6 @@
 <%= form_for(staff, url: url) do |f| %>
-
-  <fieldset class="w3-round">
-    <legend><strong>General Information</strong></legend>
+<div class="w3-btn-block w3-left-align w3-theme-d1">School Information</div>
+  <div class="w3-container w3-accordion-content w3-light-gray w3-card ">
     <div class="w3-row-padding">
       <div class="w3-col m6">
         <div><%= f.label :staff_id, "Staff ID", class: "w3-label" %></div>
@@ -38,10 +37,16 @@
         <div><%= f.label :date_of_first_appointment, class: "w3-label" %></div>
         <div><%= f.text_field :date_of_first_appointment, class: "w3-input datepicker", :required=>true %></div>
       </div>
-  </fieldset>
+      <div class="w3-col m6">
+        <div><%= f.label :qualification, class: "w3-label" %></div>
+        <div><%= f.text_field :qualification, class: "w3-input" %></div>
+      </div>
+    </div>
+  </div>
+
   <br>
-  <fieldset class="w3-round">
-    <legend><strong>Personal Information</strong></legend>
+  <div class="w3-btn-block w3-left-align w3-theme-d1">Personal Details</div>
+    <div class="w3-container w3-accordion-content w3-light-gray w3-card ">
     <div class="w3-row-padding">
       <div class="w3-col m6 ">
         <div><%= f.label :first_name, class: "w3-label" %></div>
@@ -69,7 +74,7 @@
         <div><%= f.select(:religion, {Islam: :Islam, Christianity: :Christianity, Traditional: :Traditional, Other: :Other}, {:include_blank => true}, { :class => "w3-input" }) %></div>
       </div>
       <div class="w3-col m6">
-        <%= f.label :marital_status, class: "w3-label" %>
+        <%= f.label :marital_, class: "w3-label" %>
         <div><%= f.select(:marital_status, {Single: :Single, Married: :Married}, {:include_blank => true}, { :class => "w3-input"}) %></div>
       </div>
     </div>
@@ -86,23 +91,17 @@
     </div>
     <br>
     <div class="w3-row-padding">
-      <div class="w3-col m12 w3-theme-l3 w3-round">
-        <div class="w3-padding w3-round">
+      <div class="w3-col m12 w3-theme-l3 w3-round w3-margin-bottom">
+        <div class="w3-padding w3-round ">
           <%= f.label :image, class: "w3-label" %>
           <%= f.file_field :image%>
         </div>
       </div>
     </div>
-    <div class="w3-row-padding">
-      <div class="w3-col 12 w3-margin-top">
-        <%= f.label :active, "Staff Active?", class: "w3-label" %>
-        <%= f.check_box :active %>
-      </div>
-    </div>
-  </fieldset>
+  </div>
   <br>
-  <fieldset class="w3-round">
-    <legend><strong>Contact Information</strong></legend>
+  <div class="w3-btn-block w3-left-align w3-theme-d1">Contact Details</div>
+    <div class="w3-container w3-accordion-content w3-light-gray w3-card ">
     <div class="w3-row-padding">
       <div class="w3-col m12">
         <div><%= f.label :address, class: "w3-label" %></div>
@@ -119,7 +118,6 @@
       <div class="w3-col m6">
         <div><%= f.label :region, class: "w3-label" %></div>
         <div><%= f.select(:region, {"Upper West" => "Upper West", "Upper East" => "Upper East", "Northern" => "Northern", "Brong Ahafo" => "Brong Ahafo", "Asanti" => "Asanti", "Eastern" => "Eastern", "Central" => "Central", "Western" => "Western", "Volta" => "Volta", "Greater Accra" => "Greater Accra", "Other" => "Other"}, {:include_blank => true}, { :class => "w3-input" }) %></div>
-
       </div>
 
     </div>
@@ -130,41 +128,12 @@
         <div><%= f.text_field :phone, class: "w3-input"  %></div>
       </div>
       <div class="w3-col m6">
-        <div><%= f.label :phone,:Mobile, class: "w3-label" %></div>
-        <div><%= f.text_field :phone, class: "w3-input"  %></div>
+        <div><%= f.label :email, class: "w3-label" %></div>
+        <div><%= f.email_field :email, class: "w3-input"  %></div>
       </div>
     </div>
-  </fieldset>
+  </div>
   <br>
-  <% if params[:id].blank? %>
-  <fieldset class="w3-round " ><!--Portal Accounts Form -->
-    <legend>
-        Allow Portal Access? &nbsp;&nbsp;
-        <label for="chkNo"><input type="radio" id="chkNo" name="chkUser" checked="Yes" onclick="ShowHideDiv()"/>No</label>
-        &nbsp;&nbsp;
-        <label for="chkYes"><input type="radio" id="chkYes" name="chkUser" onclick="ShowHideDiv()"/>Yes</label>
-    </legend>
-
-    <div id="dvUser" style="display: none;" class="w3-row-padding">
-      <div class="w3-row-padding">
-        <div class="w3-col m4">
-          <%= label_tag :email, :Email, class: "w3-label" %>
-          <%= email_field_tag :email, "", class: "w3-input" %>
-        </div>
-        <div class="w3-col m4">
-          <%= label_tag :password, :Password, class: "w3-label" %>
-          <%= password_field_tag :password, "", class: "w3-input" %>
-        </div>
-        <div class="w3-col m4">
-          <%= label_tag :user_role, :Role, class: "w3-label" %>
-          <%= select_tag :user_role, raw("<option></option><option>Student</option><option>Teacher</option><option>Admin</option>"), class: "w3-input"%>
-
-        </div>
-      </div>
-    </div>
-  </fieldset><!--End of Portal Account Form -->
-  <% end %>
-
   <div class="w3-row-padding">
     <div class="w3-col m12">
       <%= f.submit "Save", class: "w3-btn w3-round  w3-right w3-theme-d4" %>

@@ -42,7 +42,7 @@ module Admin
 
       # Never trust parameters from the scary internet, only allow the white list through.
       def guardian_params
-        params.permit(:title, :first_name, :last_name, :occupation, :relation, :address, :city, :region, :phone, :email, :education, :user_id)
+        params.require(:guardian).permit(:title, :first_name, :last_name, :occupation, :relation, :address, :city, :region, :phone, :email, :education)
       end
   end
 

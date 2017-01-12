@@ -8,6 +8,7 @@ class CreateStaffs < ActiveRecord::Migration[5.0]
       t.string :gender, null: false, default: ""
       t.date :date_of_birth
       t.string :qualification
+      t.integer :academic_record_id
       t.integer :staff_grade_id
       t.integer :staff_category_id
       t.integer :staff_department_id
@@ -23,7 +24,7 @@ class CreateStaffs < ActiveRecord::Migration[5.0]
       t.string :phone
       t.string :mobile
       t.string :email
-      t.boolean :active, null: false, default: true
+      t.string :status, null: false, default: :Current
       t.string :religion
       t.integer :user_id
 
