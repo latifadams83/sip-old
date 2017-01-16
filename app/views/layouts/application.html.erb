@@ -1,60 +1,40 @@
 <!DOCTYPE html>
-<html>
+<html >
   <head>
-    <title>SIP | <%=yield(:page_title)%></title>
+    <title>SIP | <%= yield(:page_title)%></title>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  </head>
-<body >
-  <ul class="w3-navbar w3-top w3-theme-d2 w3-padding w3-left-align w3-medium">
-      <li class="w3-hide-small"><%= image_tag("logo.png", size: "40x40", class: "w3-circle")%></li>
-      <li class="w3-opennav w3-right w3-hide-large">
-        <a class="w3-hover-white w3-large w3-theme-l1" href="javascript:void(0)" onclick="openActions()">Menu</a>
-      </li>
-  </ul>
+<body class="w3-gray">
 
-  <!-- Sidenav/menu -->
-  <nav class="w3-sidenav w3-collapse w3-theme-d2 " style="z-index:3;width:250px;margin-top:40px;" id="pageActions"><br>
-    <div class="w3-container w3-row">
-      <div class="w3-col s4">
-        <%= image_tag("logo.png", size: "40x40", class: "w3-circle")%>
-      </div>
-      <div class="w3-col s8">
-        <span>Welcome, <strong>Admin</strong></span><br>
-      </div>
+  <!-- Navbar -->
+  <% if user_signed_in? %>
+    <div class="w3-top w3-theme-d1 center-position " id="navbar">
+      <ul class="w3-navbar w3-card-2 w3-left-align w3-large ">
+        <li>
+          <%= link_to image_tag("logo.png", size: "40x40", class: "w3-circle"), root_path%>
+        </li>
+
+        <li class="w3-dropdown-hover w3-right w3-medium w3-margin-top">
+          <%= link_to "#{current_user.email}", "javascript:void();" %>
+          <div class="w3-dropdown-content w3-theme-d4 w3-card-4 w3-small">
+            <%= link_to "Sign Out", destroy_user_session_path, :method => :delete %>
+          </div>
+        </li>
     </div>
-
-    <%= yield(:page_actions)%>
-
-  </nav>
-
-  <!-- !PAGE ! -->
-  <div class="w3-main" style="margin-left:250px;margin-top:50px;">
-
-  <!-- Page Notifications -->
-  <% if notice.present? %>
-  <div class="w3-panel w3-margin-top w3-round w3-amber" id="notice">
-      <p><%= notice %></p>
-  </div>
   <% end %>
 
-  <!-- Page title -->
-  <div class="w3-container" style="padding-top:22px"><h5><%= yield(:page_title)%></h5></div>
+  <!-- Page Messages -->
 
-  <!-- Page Content -->
-  <div class="w3-row-padding w3-margin-bottom">
-    <div class="w3-container w3-padding-16">
-      <%= yield %>
-    </div>
-  </div>
+  <!-- Content -->
+  <div class="w3-row-padding" id="page-container">
 
-  <!-- Page footer -->
-  <footer class="w3-container w3-padding-16 w3-light-grey">
-    &copy <%= Time.now.year%>
-  </footer>
+      <div class="w3-content  w3-round w3-padding-16" id="page-content">
+
+        <%= yield %>
+
+      </div>
 
   </div>
-  <!-- End page content -->
 
 
 </body>

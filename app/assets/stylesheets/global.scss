@@ -1,11 +1,18 @@
 body{
-  // background: #6E6E6E
+  // background: #696969
+}
+#navbar{
+
 }
 
-
 fieldset{
-  color: inherit;
   border: none;
+  legend a{
+    text-decoration: none;
+  }
+  a:hover{
+    color: blue;
+  }
 }
 
 .date-select{
@@ -32,4 +39,9 @@ fieldset{
 .caret{
   display: inline-block;
   vertical-align: middle;
+}
+.center-position{
+  position: relative;
+  margin: auto auto auto auto;
+  max-width: 980px;
 }

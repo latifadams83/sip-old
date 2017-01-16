@@ -1,0 +1,36 @@
+<%= provide(:page_title, "Staff Categorys")%>
+<%= provide(:staff_active, "activelink")%>
+
+<h3>Staff Categories</h3>
+<table class="w3-table-all">
+  <thead>
+    <tr class="w3-theme-d4">
+      <th>Category</th>
+      <th >Actions</th>
+    </tr>
+  </thead>
+
+  <tbody id="staff_category_table">
+    <%= render @staff_categories %>
+  </tbody>
+</table>
+<button onclick="$('#newCategory').show();" class="w3-btn w3-tiny  w3-theme-d2 w3-right">+</button>
+
+<%= form_for(@staff_category, method: :post, remote: true) do |f| %>
+  <div id="newCategory" class="w3-modal w3-round">
+    <div class="w3-modal-content w3-card-8 w3-animate-opacity w3-round" style="max-width:500px">
+      <div class="w3-container w3-border-bottom  w3-light-grey w3-round">
+        <h5>New Category</h5>
+      </div>
+      <div class="w3-container">
+        <%= f.label :name, class: "w3-label" %>
+        <%= f.text_field :name, class: "c-name w3-input w3-medium w3-border w3-round", :required=>true %>
+      </div>
+
+      <div class="w3-container w3-border-top w3-padding w3-light-grey">
+        <%= f.submit :Submit,  class: "w3-btn w3-theme-d4 w3-round w3-right w3-margin-bottom " %>
+        <button onclick="$('#newCategory').hide();" type="button" class="w3-btn w3-red">Cancel</button>
+      </div>
+    </div>
+  </div>
+<% end %>

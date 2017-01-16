@@ -1,0 +1,5 @@
+$("#updateCategory_<%= @staff_category.id%>").fadeOut(1000);
+$("#categoryRow_<%= @staff_category.id%>").fadeOut(500, function() {
+  $(this).remove();
+  $("#staff_category_table").prepend("<%= j render @staff_category %>")
+});

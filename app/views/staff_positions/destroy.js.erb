@@ -1,0 +1,4 @@
+$("#updatePosition_<%= @staff_position.id%>").fadeOut(1000);
+$("#positionRow_<%= @staff_position.id%>").fadeOut(500, function() {
+  $(this).remove();
+});

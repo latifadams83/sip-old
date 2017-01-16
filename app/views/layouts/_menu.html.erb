@@ -1,0 +1,81 @@
+<% if user.role.name == "super" %>
+  <div class="w3-top w3-theme-d1 center-position " id="navbar">
+    <ul class="w3-navbar w3-left-align ">
+      <li class="w3-hide-medium w3-hide-large w3-opennav w3-right w3-margin-top">
+        <a class="w3-padding-large w3-medium" href="javascript:void(0);" onclick="toggleSmallScreenMenu()" title="Toggle Navigation Menu"> Menu</a>
+      </li>
+      <li >
+        <%= link_to image_tag("logo.png", size: "40x40", class: "w3-circle"), root_path, class: ""%>
+      </li>
+
+      <li class="w3-hide-small ">
+        <%= link_to "Settings",programmes_path, class: "w3-margin-top tablink #{yield(:settings_active)}"%>
+      </li>
+      <li class="w3-hide-small ">
+        <%= link_to "Students", students_path, class: "w3-margin-top tablink #{yield(:students_active)}"%>
+      </li>
+      <li class="w3-hide-small ">
+        <%= link_to "Staff", staffs_path, class: "w3-margin-top tablink #{yield(:staff_active)}"%>
+      </li>
+      <li class="w3-dropdown-hover w3-right w3-margin-top">
+        <%= link_to current_user.email, ""%>
+        <div class="w3-dropdown-content w3-theme-d4 w3-card-4 w3-small">
+          <%= link_to "Sign Out", destroy_user_session_path, :method => :delete %>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Navbar on small screens -->
+  <div id="smallScreenMenu" class="w3-hide w3-hide-large w3-hide-medium">
+    <ul class="w3-navbar w3-left-align w3-large w3-black">
+      <li><%= link_to "Students", search_staffs_path, class: "w3-medium"%></li>
+      <li><%= link_to "Staff", staffs_path, class: "w3-medium"%></li>
+    </ul>
+  </div>
+
+  <!-- Super actions Tabs -->
+  <div class="w3-container w3-hide-small w3-theme-d4 sub-menu center-position" >
+
+    <ul class="w3-navbar w3-hide w3-tiny w3-padding-0" id="<%= yield(:settings_active)%>">
+      <li><%= link_to "Programmes", programmes_path %></li>
+      <li><%= link_to "Badges", badges_path %></li>
+      <li><%= link_to "Grade Levels", levels_path %></li>
+    </ul>
+
+    <ul class="w3-navbar w3-hide w3-tiny w3-padding-0" id="<%= yield(:staff_active)%>">
+      <li><%= link_to "Search staff", staffs_path %></li>
+      <li><%= link_to "Add staff", new_staff_path %></li>
+      <li class="w3-dropdown-hover">
+        <a href="#">Settings <%= image_tag("caret.gif", class: "caret")%></a>
+        <div class="w3-dropdown-content w3-theme-d4 w3-card-4">
+          <%= link_to "Staff Categories", staff_categories_path%>
+          <%= link_to "Staff Departments", staff_departments_path%>
+          <%= link_to "Staff Grades", staff_grades_path%>
+          <%= link_to "Staff Positions", staff_positions_path%>
+        </div>
+      </li>
+    </ul>
+
+    <ul class="w3-navbar w3-hide w3-tiny w3-padding-0" id="<%= yield(:students_active)%>">
+      <li><a href="#">Search students</a></li>
+      <li><%= link_to "Add Student", new_student_path %></li>
+      <li class="w3-dropdown-hover">
+        <a href="#">Settings</a>
+        <div class="w3-dropdown-content w3-theme-d4 w3-card-4">
+          <%= link_to "Programmes", programmes_path%>
+          <%= link_to "Levels", levels_path%>
+          <%= link_to "Badges", badges_path%>
+        </div>
+      </li>
+    </ul>
+  </div>
+<% elsif user.role.name == "admin" %>
+
+<% elsif user.role.name == "staff"%>
+
+<% elsif user.role.name == "student"%>
+
+<% elsif user.role.name == "guardian"%>
+
+<% end %>

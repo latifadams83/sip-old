@@ -1,0 +1,31 @@
+<tr id="progRow_<%= programme.id%>">
+  <td><%= programme.name %></td>
+  <td><%= programme.code %></td>
+  <td class="">
+    <button onclick="$('#updateProgramme_<%= programme.id%>').show();" class="w3-btn w3-tiny  w3-amber">+</button>
+    <%= link_to "Del", programme_path(programme), method: :delete, data: { confirm: 'Are you sure?' }, class: "w3-btn w3-round w3-tiny w3-red", remote: true %>
+
+    <div id="updateProgramme_<%= programme.id%>" class="w3-modal w3-round">
+    <%= form_for(programme, method: :put, remote: true) do |f| %>
+        <div class="w3-modal-content w3-card-8 w3-animate-opacity w3-round" style="max-width:500px">
+          <div class="w3-container w3-border-bottom  w3-light-grey w3-round">
+            <h5>Edit Programme</h5>
+          </div>
+            <div class="w3-container">
+              <%= f.label :name, class: "w3-label" %>
+              <%= f.text_field :name, class: "programme_name w3-input w3-border w3-round", required: true%>
+            </div>
+            <div class="w3-container">
+              <%= f.label :code, class: "w3-label" %>
+              <%= f.text_field :code, class: "programme_code w3-input w3-border w3-round" %>
+            </div>
+
+          <div class="w3-container w3-border-top w3-padding w3-light-grey">
+            <%= f.submit :Update,  class: "w3-btn w3-theme-d4 w3-round w3-right w3-margin-bottom " %>
+            <button onclick="$('#updateProgramme_<%= programme.id%>').fadeOut();" type="button" class="w3-btn w3-red">Cancel</button>
+          </div>
+        </div>
+        <% end %>
+      </div>
+  </td>
+</tr>

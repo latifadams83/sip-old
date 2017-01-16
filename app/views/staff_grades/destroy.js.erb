@@ -1,0 +1,4 @@
+$("#updateGrade_<%= @staff_grade.id%>").fadeOut(1000);
+$("#gradeRow_<%= @staff_grade.id%>").fadeOut(500, function() {
+  $(this).remove();
+});

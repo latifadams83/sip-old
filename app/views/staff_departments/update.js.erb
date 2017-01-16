@@ -1,0 +1,5 @@
+$("#updateDepartment_<%= @staff_department.id%>").fadeOut(1000);
+$("#departmentRow_<%= @staff_department.id%>").fadeOut(500, function() {
+  $(this).remove();
+  $("#staff_department_table").prepend("<%= j render @staff_department %>")
+});

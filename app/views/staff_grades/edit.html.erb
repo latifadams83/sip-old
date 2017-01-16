@@ -1,0 +1,7 @@
+<%= provide(:page_title, "Edit Staff Grade")%>
+<%= provide(:staff_active, "activelink")%>
+
+  <%= render 'form', staff_grade: @staff_grade, url: staff_grade_path(@staff_grade) %>
+
+  <%= link_to 'Cancel', staff_grades_path, class: "w3-btn w3-round w3-left w3-margin-right" %>
+  </div>

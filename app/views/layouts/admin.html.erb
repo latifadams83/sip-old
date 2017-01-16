@@ -7,35 +7,26 @@
 <body class="w3-gray">
 
   <!-- Navbar -->
-  <div class="w3-top">
+  <%= user_menu(current_user)%>
 
-    <%= render "layouts/admin_menu"%>
-
-  </div>
-
+  <!-- Page Messages -->
+  <%= notice_messages(notice) %>
+  <%= alert_messages(alert) %>
+  
   <!-- Content -->
-  <p class="alert"><%= alert %></p>
+  <div class="w3-row-padding" id="page-container">
+      <div class="w3-content" id="page-content">
 
-  <div class="w3-row-padding w3-round w3-card-2 w3-container" id="page-content">
+        <%= yield %>
 
-    <% if notice.present? %>
-    <div class="w3-panel w3-margin-top w3-small w3-round w3-theme-l2" id="notice">
-      <p><%= notice %></p>
-    </div>
-    <% end %>
-
-    <div class="w3-col s12 w3-content w3-padding-8" >
-      <%= yield %>
-    </div>
-
+      </div>
   </div>
 
   <!-- Footer -->
-  <footer class="w3-container w3-padding-64 w3-opacity" id="page-footer">
+  <footer class="w3-container w3-padding-64 w3-opacity center-position">
    <p>&copy <%= Time.now.year()%></p>
   </footer>
 
 </body>
 <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
 </html>

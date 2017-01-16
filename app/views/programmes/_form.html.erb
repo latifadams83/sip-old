@@ -1,0 +1,18 @@
+  <%= form_for(programme, url: url) do |f| %>
+  <%= error_messages_for(f.object)%>
+
+    <div class="w3-btn-block w3-left-align w3-theme-d1">Programme Details</div>
+    <div class="w3-container w3-accordion-content w3-theme-l4 ">
+      <div class="w3-row-padding">
+        <br>
+        <%= f.label :name, class: "w3-label" %>
+        <%= f.text_field :name, class: "w3-input w3-border w3-round "%>
+      </div>
+      <div class="w3-row-padding">
+        <%= f.label :code, class: "w3-label" %>
+        <%= f.text_field :code, class: "w3-input w3-border w3-round" %>
+      </div>
+      <div class="w3-row-padding">
+        <%= f.submit :Submit,  class: "w3-btn w3-theme-d4 w3-round w3-right w3-margin-bottom " %>
+
+  <% end %>

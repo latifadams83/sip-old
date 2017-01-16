@@ -1,0 +1,12 @@
+<%= provide(:page_title, "New staff Category")%>
+<%= provide(:staff_active, "activelink")%>
+
+<%= render 'form', staff_category: @staff_category, url: admin_staff_categories_url(@staff_category) %>
+
+
+  <%= link_to 'Cancel', admin_staff_categories_path, class: "w3-btn w3-round w3-left w3-margin-right" %>
+  </div>
+
+</div>
+
+</fieldset>

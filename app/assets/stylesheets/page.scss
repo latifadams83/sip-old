@@ -1,10 +1,6 @@
-  #page-content{
+  #page-container{
     position: relative;
     max-width: 980px;
-    margin: 100px auto auto auto;
-  }
-  #page-footer{
-    position: relative;
-    max-width: 980px;
-    margin: auto auto auto auto;
+    min-width: 200px;
+    margin: 50px auto auto auto;
   }

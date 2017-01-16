@@ -1,15 +1,17 @@
 Rails.application.routes.draw do
 
-  root "pages#home"
-
-  get 'access/menu'
-  get 'access/login'
-  post 'access/attempt_login'
-  get 'access/logout'
-
+  devise_for :users
+  devise_scope :user do
+    authenticated :user do
+      root :to => 'staffs#index'
+    end
+    unauthenticated :user do
+      root :to => 'devise/sessions#new'
+    end
+  end
   resources :academic_records
-  namespace :admin do
-    resources :staff_categories, :staff_grades, :staff_positions, :staff_departments, :searchstaffs
+
+    resources :staff_categories, :staff_grades, :staff_positions, :staff_departments, :searchstaffs, :roles, :users
     resources :staffs do
       member do
         get :delete
@@ -40,8 +42,6 @@ Rails.application.routes.draw do
       end
 
     end
-
-  end
 
 
 end

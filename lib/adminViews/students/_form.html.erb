@@ -1,0 +1,118 @@
+<%= form_for(student,url: url) do |f| %>
+  <%= error_messages_for(f.object)%>
+
+  <fieldset class="w3-accordion-content w3-round w3-amber w3-margin-bottom">
+    <legend class="w3-btn-block w3-left-align w3-theme-d1">Placement Details</legend>
+      <div class="w3-row-padding">
+        <div class="w3-col m6">
+          <%= f.label :placed_id, "Placed ID:", class: "w3-label w3-validate" %>
+          <%= f.text_field :placed_id, class: "w3-input", :required=>true%>
+        </div>
+
+        <div class="w3-col m6">
+          <div><%= f.label :placed_date, "Placed Date:", class: "w3-label " %></div>
+          <div><%= f.text_field :placed_date, class: "w3-input datepicker", :required=>true%></div>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset class="w3-accordion-content w3-round w3-theme-l4 w3-margin-bottom">
+      <legend class="w3-btn-block w3-left-align w3-theme-d1">Personal Details</legend>
+      <div class="w3-row-padding">
+
+        <div class="w3-col m6">
+          <div><%= f.label :first_name, "First Name:", class: "w3-label" %></div>
+          <%= f.text_field :first_name, class: "w3-input", :required=>true%>
+        </div>
+
+        <div class="w3-col m6">
+          <div><%= f.label :last_name, class: "w3-label" %></div>
+          <div><%= f.text_field :last_name, class: "w3-input", :required=>true%></div>
+
+        </div>
+      </div>
+
+      <div class="w3-row-padding">
+        <div class="w3-col m6">
+          <div><%= f.label :gender, class: "w3-label" %></div>
+          <div><%= f.select(:gender, {Male: :M, Female: :F}, {:include_blank => true}, { :class => "w3-input", :required=>true }) %></div>
+        </div>
+        <div class="w3-col m6">
+          <div><%= f.label :date_of_birth, class: "w3-label" %></div>
+          <div><%= f.text_field :date_of_birth, class: "w3-input datepicker" %></div>
+        </div>
+      </div>
+
+      <div class="w3-row-padding">
+        <div class="w3-col m12">
+          <div><%= f.label :religion, class: "w3-label" %></div>
+          <div><%= f.select(:religion, {Islam: :Islam, Christianity: :Christianity, Traditonal: :Traditional, Other: :Other}, {:include_blank => true}, { :class => "w3-input" }) %></div>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset class="w3-accordion-content w3-round w3-theme-l4 w3-margin-bottom">
+      <legend class="w3-btn-block w3-left-align w3-theme-d1">Enrollment Details</legend>
+      <div class="w3-row-padding">
+        <div class="w3-col m6">
+          <div><%= f.label :programme_id, class: "w3-label" %></div>
+          <div><%= f.select(:programme_id, Programme.all.map{|p| [p.name, p.id]}, {:include_blank => true}, { :class => "w3-input", :required=>true }) %></div>
+        </div>
+        <div class="w3-col m6">
+          <div><%= f.label :badge_id, :Class, class: "w3-label" %></div>
+          <div><%= f.select(:badge_id, Badge.all.map{|b| [Level.find(b.level_id).lev+b.name, b.id]}, {:include_blank => true}, { :class => "w3-input", :required=>true }) %></div>
+        </div>
+      </div>
+      <div class="w3-row-padding">
+        <div class="w3-col m12">
+          <div><%= f.label :badge_id, "House", class: "w3-label" %></div>
+          <div><input type="text" name="name" value="" class="w3-input"></div>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset class="w3-accordion-content w3-round w3-theme-l4 w3-margin-bottom">
+      <legend class="w3-btn-block w3-left-align w3-theme-d1">Contact Details</legend>
+      <div class="w3-row-padding">
+        <div class="w3-col m12">
+          <div><%= f.label :address, class: "w3-label" %></div>
+          <div><%= f.text_field :address, class: "w3-input" %></div>
+        </div>
+      </div>
+
+      <div class="w3-row-padding">
+        <div class="w3-col m6">
+          <div><%= f.label :city, class: "w3-label" %></div>
+          <div><%= f.text_field :city, class: "w3-input" %></div>
+        </div>
+        <div class="w3-col m6">
+          <div><%= f.label :region, class: "w3-label" %></div>
+          <div><%= f.select(:region, {"Upper West"=>"Upper West", "Upper East"=>"Upper East", "Northern"=>"Northern", "Brong Ahafo"=>"Brong Ahafo", "Asante"=>"Asante", "Eastern"=>"Eastern", "Central"=>"Central", "Western"=>"Western", "Volta"=>"Volta", "Greater Accra"=>"Greater Accra", "Other"=>"Other"}, {:include_blank => true}, { :class => "w3-input" }) %></div>
+        </div>
+      </div>
+
+      <div class="w3-row-padding">
+        <div class="w3-col m6">
+          <div><%= f.label :phone, class: "w3-label" %></div>
+          <div><%= f.phone_field :phone, class: "w3-input" %></div>
+        </div>
+        <div class="w3-col m6">
+          <div><%= f.label :email, class: "w3-label" %></div>
+          <div><%= f.email_field :email, class: "w3-input" %></div>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset class="w3-accordion-content w3-round w3-theme-l4 w3-margin-bottom">
+      <legend class="w3-btn-block w3-left-align w3-theme-d1">Headshot</legend>
+      <div class="w3-row-padding">
+        <div class="w3-col m12 w3-margin">
+          <%= f.file_field :image, class: " w3-round" %>
+        </div>
+      </div>
+    </fieldset>
+
+    <div class="w3-row-padding">
+      <div class="w3-col m12">
+        <%= f.submit  "Save & Continue", class: "w3-btn w3-round w3-theme-d4 w3-right w3-margin-top" %>
+  <% end %>

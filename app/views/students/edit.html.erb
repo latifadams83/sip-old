@@ -1,0 +1,7 @@
+<%= provide(:page_title, "Edit students")%>
+<%= provide(:students_active, "activelink")%>
+
+<%= render 'form', student: @student, url: student_path(@student) %>
+
+<%= link_to 'Show', student_path(@student) %> |
+<%= link_to 'Back', students_path %>

@@ -1,0 +1,9 @@
+<%= provide(:page_title, "Edit Programme")%>
+<%= provide(:settings_active, "activelink")%>
+
+    <%= render 'form', programme: @programme, url: programme_path(@programme) %>
+    <%= link_to 'Cancel', programmes_path, class: "w3-btn w3 w3-round w3-left w3-margin-bottom" %>
+
+    </div>
+  </div>
+</div>

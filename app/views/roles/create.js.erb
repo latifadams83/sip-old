@@ -1,0 +1,4 @@
+$("#newRole").fadeOut(1000);
+$(".r_name").val("");
+$("#role_table").append("<%= j render @role %>");
+$("#role_<%= @role.id%>").hide().fadeIn(1000);

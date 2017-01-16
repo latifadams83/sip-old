@@ -1,10 +1,13 @@
 class User < ApplicationRecord
-
-  has_secure_password
-
+  belongs_to :role
   has_many :staffs
   has_many :students
   has_many :guardians
 
-  validates_presence_of :email
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable, :registerable,
+  devise :database_authenticatable,
+         :recoverable, :rememberable, :trackable, :validatable
+
+  validates_presence_of :role_id
 end

@@ -1,0 +1,32 @@
+<tr id="departmentRow_<%= staff_department.id%>">
+  <td><%= staff_department.name %></td>
+  <td><%= StaffCategory.find(staff_department.staff_category_id).name %></td>
+  <td>
+    <button onclick="$('#updateDepartment_<%= staff_department.id%>').show();" class="w3-btn w3-tiny  w3-amber">Edit</button>
+    <%= link_to "Del", staff_department_path(staff_department), method: :delete, data: { confirm: 'Are you sure?' }, class: "w3-btn w3-round w3-tiny w3-red", remote: true %>
+
+    <div id="updateDepartment_<%= staff_department.id%>" class="w3-modal w3-round">
+    <%= form_for(staff_department, method: :put, remote: true) do |f| %>
+        <div class="w3-modal-content w3-card-8 w3-animate-opacity w3-round" style="max-width:500px">
+          <div class="w3-container w3-border-bottom  w3-light-grey w3-round">
+            <h5>Edit Staff Department</h5>
+          </div>
+          <div class="w3-container">
+            <%= f.label :name, class: "w3-label" %>
+            <%= f.text_field :name, class: "w3-input w3-border w3-round w3-margin-bottom" %>
+          </div>
+
+          <div class="w3-container">
+            <%= f.label :staff_category_id,"Deparment", class: "w3-label" %>
+            <%= f.collection_select :staff_category_id, StaffCategory.order(:name), :id, :name, {include_blank:true}, {class: "w3-input w3-round w3-border w3-margin-bottom"} %>
+          </div>
+
+          <div class="w3-container w3-border-top w3-padding w3-light-grey">
+            <%= f.submit :Update,  class: "w3-btn w3-theme-d4 w3-round w3-right w3-margin-bottom " %>
+            <button onclick="$('#updateDepartment_<%= staff_department.id%>').fadeOut();" type="button" class="w3-btn w3-red">Cancel</button>
+          </div>
+        </div>
+        <% end %>
+      </div>
+  </td>
+</tr>

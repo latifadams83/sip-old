@@ -1,0 +1,36 @@
+<%= provide(:page_title, "Roles")%>
+<%= provide(:settings_active, "activelink")%>
+
+<h3>Roles</h3>
+<table class="w3-table-all">
+  <thead>
+    <tr class="w3-theme-d2">
+      <th>Role</th>
+      <th >Actions</th>
+    </tr>
+  </thead>
+
+  <tbody id="roles_table">
+    <%= render @roles %>
+  </tbody>
+</table>
+<button onclick="$('#newRole').show();" class="w3-btn w3-tiny  w3-theme-d2 w3-right">+</button>
+
+<%= form_for(@role, method: :post, remote: true) do |f| %>
+  <div id="newRole" class="w3-modal w3-round">
+    <div class="w3-modal-content w3-card-8 w3-animate-opacity w3-round" style="max-width:500px">
+      <div class="w3-container w3-border-bottom  w3-light-grey w3-round">
+        <h5>New Role</h5>
+      </div>
+        <div class="w3-container">
+          <%= f.label :name, class: "w3-label" %>
+          <%= f.text_field :name, class: "r_name w3-input w3-border w3-round", required: true%>
+        </div>
+
+      <div class="w3-container w3-border-top w3-padding w3-light-grey">
+        <%= f.submit :Create,  class: "w3-btn w3-theme-d4 w3-round w3-right w3-margin-bottom " %>
+        <button onclick="$('#newRole').hide();" type="button" class="w3-btn w3-red">Cancel</button>
+      </div>
+    </div>
+  </div>
+<% end %>

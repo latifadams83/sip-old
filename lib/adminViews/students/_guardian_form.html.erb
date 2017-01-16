@@ -1,0 +1,105 @@
+
+<div class="w3-container w3-padding-top ">
+  <%= radio_button_tag(:choose, "new", class: "w3-radio", checked: true) %>
+  <%= label_tag(:choose_new, "New Guardian", class: "w3-label") %>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <%= radio_button_tag(:choose, "exist", class: "w3-radio") %>
+  <%= label_tag(:choose_exist, "Existing Guardian", class: "w3-label") %>
+</div>
+
+<div id="form-new" class="w3-margin-top guardian-details">
+    <%= form_for(@guardian, url: url) do |f| %>
+    <fieldset class="w3-input-group w3-round w3-theme-l4 w3-margin-bottom">
+      <legend class="w3-container w3-white">Basic Info</legend>
+      <div class="w3-row-padding">
+        <div class="w3-col m12">
+          <%= f.label :title, class: "w3-label" %>
+          <%= f.select(:title, {Mr: :Mr, Mrs: :Mrs, Ms: :Ms, Master: :Master, Dr: :Dr, Prof: :Prof, Maulvi: :Maulvi, Mallam: :Mallam, Reverend: :Reverend, Sheik: :Sheik, Father: :Father, Brother: :Brother, Sister: :Sister, Pastor: :Pastor}, {:include_blank => true}, { :class => "w3-input" }) %>
+        </div>
+      </div>
+      <div class="w3-row-padding">
+        <div class="w3-col m6">
+          <%= f.label :first_name, class: "w3-label" %>
+          <%= f.text_field :first_name, class: "w3-input" %>
+        </div>
+        <div class="w3-col m6">
+          <div><%= f.label :last_name, class: "w3-label" %></div>
+          <div><%= f.text_field :last_name, class: "w3-input" %></div>
+        </div>
+      </div>
+
+      <div class="w3-row-padding">
+        <div class="w3-col m6">
+          <div><%= f.label :education, class: "w3-label" %></div>
+          <%= f.text_field :education, class: "w3-input" %>
+        </div>
+        <div class="w3-col m6">
+          <%= f.label :occupation, class: "w3-label" %>
+          <%= f.text_field :occupation, class: "w3-input" %>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset class="w3-input-group w3-round w3-theme-l4 w3-margin-bottom" >
+      <legend class="w3-container w3-white">Contact Details</legend>
+      <div class="w3-row-padding">
+        <div class="w3-col m12">
+          <%= f.label :address, class: "w3-label" %>
+          <%= f.text_field :address, class: "w3-input w3-round w3-medium" %>
+        </div>
+      </div>
+
+      <div class="w3-row-padding">
+        <div class="w3-col m6">
+          <%= f.label :city, class: "w3-label" %>
+          <%= f.text_field :city, class: "w3-input w3-round w3-medium" %>
+        </div>
+        <div class="w3-col m6">
+          <%= f.label :region, class: "w3-label" %>
+          <%= f.text_field :region, class: "w3-input w3-round w3-medium" %>
+        </div>
+      </div>
+
+      <div class="w3-row-padding">
+        <div class="w3-col m6">
+          <%= f.label :phone, class: "w3-label" %>
+          <div><%= f.text_field :phone, class: "w3-input w3-round w3-medium" %></div>
+        </div>
+        <div class="w3-col m6">
+          <div><%= f.label :email, class: "w3-label" %></div>
+          <div><%= f.text_field :email, class: "w3-input w3-round w3-medium" %></div>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset class="w3-input-group w3-round w3-theme-l4 w3-margin-bottom" >
+      <legend class="w3-container w3-white">Ward Relation to Guardian</legend>
+      <div class="w3-row-padding">
+        <div class="w3-col s2">
+          <%= f.label :relation, class: "w3-label" %>
+        </div>
+        <div class="w3-col s10">
+          <%= f.text_field :relation, class: "w3-input" %>
+        </div>
+      </div>
+    </fieldset>
+
+    <div class="w3-row-padding">
+      <%= f.submit :Finish, class: "w3-btn w3-round w3-theme-d4 w3-left w3-margin-top" %>
+    </div>
+    <% end %>
+  </div>
+
+  <div id="form-exist" class="w3-margin-top guardian-details" style="display: none;">
+    <fieldset class="w3-input-group w3-round w3-theme-l4 w3-margin-bottom" >
+      <legend class="w3-container w3-white">Choose Guardian</legend>
+      <div class="w3-row-padding">
+        <div class="w3-col s3">
+          <%= label_tag(:q, "Search for:", class: "w3-label") %>
+        </div>
+        <div class="w3-col s9">
+          <%= text_field_tag(:q, class: "w3-input") %>
+        </div>
+      </div>
+    </fieldset>
+  </div>

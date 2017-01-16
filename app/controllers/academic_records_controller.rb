@@ -1,4 +1,4 @@
-class AcademicRecordsController < ApplicationController
+class AcademicRecordsController < DashboardController
   layout "admin"
   before_action :set_academic_record, only: [:show, :edit, :update, :destroy]
 

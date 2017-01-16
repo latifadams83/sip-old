@@ -1,0 +1,4 @@
+$("#updateProgramme<%= @programme.id%>").fadeOut(1000);
+$("#progRow_<%= @programme.id%>").fadeOut(500, function() {
+  $(this).remove();
+});

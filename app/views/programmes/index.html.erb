@@ -1,0 +1,41 @@
+<%= provide(:page_title, "Programmes")%>
+<%= provide(:settings_active, "activelink")%>
+
+<h3>Programmes</h3>
+<table class="w3-table-all">
+  <thead>
+    <tr class="w3-theme-d4">
+      <th>Programme</th>
+      <th >Code</th>
+      <th >Actions</th>
+    </tr>
+  </thead>
+
+  <tbody id="programmes_tbody">
+    <%= render @programmes %>
+  </tbody>
+</table>
+<button onclick="$('#newProgramme').show();" class="w3-btn w3-tiny  w3-theme-d2 w3-right">+</button>
+
+<%= form_for(@programme, method: :post, remote: true) do |f| %>
+  <div id="newProgramme" class="w3-modal w3-round">
+    <div class="w3-modal-content w3-card-8 w3-animate-opacity w3-round" style="max-width:500px">
+      <div class="w3-container w3-border-bottom  w3-light-grey w3-round">
+        <h5>New Programme</h5>
+      </div>
+        <div class="w3-container">
+          <%= f.label :name, class: "w3-label" %>
+          <%= f.text_field :name, class: "p_name w3-input w3-border w3-round", required: true%>
+        </div>
+        <div class="w3-container">
+          <%= f.label :code, class: "w3-label" %>
+          <%= f.text_field :code, class: "p_code w3-input w3-border w3-round" %>
+        </div>
+
+      <div class="w3-container w3-border-top w3-padding w3-light-grey">
+        <%= f.submit :Submit,  class: "w3-btn w3-theme-d4 w3-round w3-right w3-margin-bottom " %>
+        <button onclick="$('#newProgramme').hide();" type="button" class="w3-btn w3-red">Cancel</button>
+      </div>
+    </div>
+  </div>
+<% end %>

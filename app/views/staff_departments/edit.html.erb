@@ -1,0 +1,6 @@
+<%= provide(:page_title, "Edit staff Department")%>
+<%= provide(:staff_active, "activelink")%>
+
+<%= render 'form', staff_department: @staff_department, url: staff_department_url(@staff_department) %>
+
+<%= link_to 'Cancel', staff_departments_path, class: "w3-btn w3-round w3-left w3-margin-right" %>

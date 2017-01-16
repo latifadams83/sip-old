@@ -1,0 +1,8 @@
+<%= provide(:page_title, "New student")%>
+<%= provide(:students_active, "activelink")%>
+
+  <%= render 'form', student: @student, url: students_url %>
+
+      <%= link_to 'Cancel', students_path, class: "w3-btn w3-round w3-left w3-margin-top" %>
+    </div>
+  </div>

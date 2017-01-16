@@ -1,0 +1,5 @@
+$("#newProgramme").fadeOut(1000);
+$(".p_name").val("");
+$(".p_code").val("");
+$("#programmes_tbody").append("<%= j render @programme %>");
+$("#programme_<%= @programme.id%>").hide().fadeIn(1000);
