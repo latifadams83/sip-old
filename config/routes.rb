@@ -16,7 +16,7 @@ Rails.application.routes.draw do
       member do
         get :delete
         get :confirm_archive
-        post :archive
+        patch :archive
       end
 
       collection do

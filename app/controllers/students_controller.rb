@@ -20,14 +20,22 @@ class StudentsController < DashboardController
 
   def create
     @student = Student.new(student_params)
-    respond_to do |format|
-      if @student.save
-
-        format.html {redirect_to add_guardian_student_path(@student),  notice: "Student Record Saved Successfully. Please fill the Parent Details." }
-        format.json { render :show, status: :created, location: @student }
+    role = Role.where({:name => "student"}).first.id.to_i
+    if @student.email.present? && role.present?
+      generated_password = Devise.friendly_token.first(8)
+      @user = User.new(:email => @student.email, :password => generated_password, :role_id => role)
+      @user.students << @student
+      if @user.save
+        UserMailer.welcome_msg(@user, generated_password).deliver
+        redirect_to add_guardian_student_path(@student), notice: "Add Guardian Details, Password: #{generated_password}"
       else
-        format.html { render :new }
-        format.json { render json: @student.errors, status: :unprocessable_entity }
+        render "new"
+      end
+    else
+      if @student.save
+        redirect_to add_guardian_student_path(@student), notice: "Add Guardian Details"
+      else
+        render "new"
       end
     end
   end

@@ -1,15 +1,13 @@
 class StaffsController < DashboardController
-  before_action :set_staff, only: [:show, :edit, :update, :destroy]
+  before_action :set_staff, only: [:show, :edit, :update, :confirm_archive, :archive, :delete, :destroy]
 
   def index
     @searchstaff = Searchstaff.new
-
   end
 
   def list
     @staffs = Staff.all
   end
-
 
   def show
   end
@@ -22,16 +20,15 @@ class StaffsController < DashboardController
   end
 
   def create
-    r = Role.where({:name => "staff"}).first.id.to_i
     @staff = Staff.new(staff_params)
-    if @staff.email.present? && r.present?
+    role = Role.where({:name => "staff"}).first.id.to_i
+    if @staff.email.present? && role.present?
       generated_password = Devise.friendly_token.first(8)
-      if @staff.save
-        @user = User.new(:email => @staff.email, :password => generated_password, :role_id => r)
-        if @user.save
-          UserMailer.welcome_msg(@user, generated_password).deliver_now
-          redirect_to staff_path(@staff), notice: "staff created with email: #{generated_password}"
-        end
+      @user = User.new(:email => @staff.email, :password => generated_password, :role_id => role)
+      @user.staffs << @staff
+      if @user.save
+        UserMailer.welcome_msg(@user, generated_password).deliver_later
+        redirect_to staff_path(@staff), notice: "staff created with Password: #{generated_password}"
       else
         render "new"
       end
@@ -56,25 +53,23 @@ class StaffsController < DashboardController
     end
   end
 
-
   #View staff member to be archived
   def confirm_archive
-    @staff = Staff.find(params[:id])
   end
 
   #Move staff member from staff table to the Archive staff table
   def archive
-    @staff = Staff.find(params[:id])
-    @archive_staff = ArchiveStaff.new(archive_staff_params(params[:id]))
-    if @archive_staff.save
-      @staff.destroy
-      User.find(@staff.user_id).destroy
-      redirect_to staffs_path, notice: 'Staff Archive Succcessfully'
+    if @staff.update(staff_params)
+      if @staff.user.present?
+        @staff.user.destroy
+        redirect_to staff_path(@staff), notice: 'Staff Archive Succcessfully'
+      else
+        redirect_to staff_path(@staff), notice: 'Staff Archive Succcessfully'
+      end
     end
   end
 
   def delete
-    @staff = Staff.find(params[:id])
   end
 
   def destroy
@@ -112,7 +107,6 @@ class StaffsController < DashboardController
       @staff = Staff.find(params[:id])
     end
 
-
     def staff_params
       params.require(:staff).permit(:staff_id, :date_join, :first_name, :last_name, :gender, :date_of_birth, :staff_category_id, :staff_grade_id, :staff_department_id, :staff_position_id, :date_of_first_appointment, :marital_status, :spouse_name, :no_of_children, :image, :address, :city, :region, :phone, :mobile, :status, :religion, :user_id, :qualification, :email)
     end
@@ -122,15 +116,8 @@ class StaffsController < DashboardController
       return {id: @staff.id, staff_id: @staff.staff_id, date_join: @staff.date_join, first_name: @staff.first_name, last_name: @staff.last_name, gender: @staff.gender, date_of_birth: @staff.date_of_birth, qualification: @staff.qualification, staff_category_id: @staff.staff_category_id, staff_grade_id: @staff.staff_grade_id, staff_department_id: @staff.staff_department_id, date_of_first_appointment: @staff.date_of_first_appointment, marital_status: @staff.marital_status, spouse_name: @staff.spouse_name, no_of_children: @staff.no_of_children, image: @staff.image, address: @staff.address, city: @staff.city, region: @staff.region, religion: @staff.religion, user_id: @staff.user_id}
     end
 
-    def user_params(password)
-      params.permit(:email, password: password)
-    end
-
     def search_params
       params.require(:searchstaff).permit(:staff_id, :first_name, :last_name, :staff_category_id, :staff_department_id)
     end
-
-
-
 
 end

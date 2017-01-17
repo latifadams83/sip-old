@@ -2,8 +2,8 @@
 class UserMailerPreview < ActionMailer::Preview
 
   # Preview this email at http://localhost:3000/rails/mailers/user_mailer/welcome
-  def welcome
-    UserMailer.welcome
+  def welcome_msg_preview
+    UserMailer.welcome_msg(User.first, "password")
   end
 
 end

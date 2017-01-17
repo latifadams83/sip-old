@@ -1,12 +1,20 @@
 <%= provide(:page_title, "Archive #{@staff.first_name.capitalize+' '+@staff.last_name.capitalize}")%>
 <%= provide(:staff_active, "activelink")%>
 
-  <%= form_for(@staff,url: archive_staff_path, :method => 'post') do |f| %>
-    <fieldset class="w3-round">
-      <p >
-        Are you sure you want to do this, this action is irreversible
-        <strong><%= @staff.first_name.capitalize+" "+@staff.last_name.capitalize%></strong>
-      </p>
-      <%= f.submit("Archive", class: "w3-btn w3-theme-d4 w3-round w3-right")%>
-    </fieldset>
+<%= form_for(@staff, url: archive_staff_path) do |f| %>
+<%= error_messages_for(f.object)%>
+<fieldset class="w3-input-group w3-round w3-theme-l4 w3-margin-bottom">
+  <legend class="w3-container w3-white">Comment</legend>
+    <p >
+      Are you sure you want to archive
+      <strong><%= @staff.first_name.capitalize+" "+@staff.last_name.capitalize%> ?</strong>
+    </p>
+    <div class="w3-container w3-margin-bottom">
+        <div><%= f.label :status,"Reason", class: "w3-label" %></div>
+        <div><%= f.select(:status, {Retired: :Retired, Transferred: :Transferred, Released: :Released, Dead: :Dead}, {:include_blank => true}, { :class => "w3-input", :required=>true }) %></div>
+      </div>
+    <div class="w3-container">
+      <%= f.submit("Archive", class: "w3-btn w3-theme-d1")%>
+    </div>
+  </fieldset>
   <% end %>

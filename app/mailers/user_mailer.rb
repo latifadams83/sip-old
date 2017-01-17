@@ -1,5 +1,5 @@
 class UserMailer < ApplicationMailer
-
+  default from: "latiftanga@gmail.com"
 
   def welcome_msg(user, password)
     @user = user
@@ -8,5 +8,4 @@ class UserMailer < ApplicationMailer
     mail to: @user.email, subject: "Login In Details"
     @password = password
   end
-
 end
