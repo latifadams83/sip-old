@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170117082634) do
+ActiveRecord::Schema.define(version: 20170120214343) do
 
   create_table "academic_records", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "type"
@@ -112,6 +112,14 @@ ActiveRecord::Schema.define(version: 20170117082634) do
     t.string  "last_name"
     t.integer "staff_category_id"
     t.integer "staff_department_id"
+  end
+
+  create_table "searchstudents", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string  "placed_id"
+    t.integer "programme_id"
+    t.integer "level_id"
+    t.integer "badge_id"
+    t.integer "status"
   end
 
   create_table "staff_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|

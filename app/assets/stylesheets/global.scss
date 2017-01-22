@@ -1,9 +1,3 @@
-body{
-  // background: #696969
-}
-#navbar{
-
-}
 
 fieldset{
   border: none;
@@ -44,4 +38,21 @@ fieldset{
   position: relative;
   margin: auto auto auto auto;
   max-width: 980px;
+}
+
+#searchTable{
+  .w3-input{
+    max-width: 100px !important;
+  }
+}
+.current-column {
+  background-repeat: no-repeat;
+  background-position: right center;
+  padding-right: 12px;
+}
+.asc{
+  background-image: image-url("asc.gif");
+}
+.desc{
+  background-image: image-url("desc.gif");
 }

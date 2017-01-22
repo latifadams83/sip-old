@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
 
+  resources :models
   devise_for :users
   devise_scope :user do
     authenticated :user do
-      root :to => 'staffs#index'
+      root :to => 'students#index'
     end
     unauthenticated :user do
       root :to => 'devise/sessions#new'
@@ -20,8 +21,8 @@ Rails.application.routes.draw do
       end
 
       collection do
-        get :list
         get :search
+        get :list
         post :search_create
         get :search_results
       end
@@ -35,10 +36,7 @@ Rails.application.routes.draw do
       end
 
       collection do
-        get :list
         get :search
-        post :search_create
-        get :search_results
       end
 
     end

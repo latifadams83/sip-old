@@ -16,3 +16,19 @@
     <%= submit_tag("Search") %>
   <% end %>
 </fieldset>
+
+def current_students
+  students = Student.current
+  students = students.where(["status = 'current' AND programme_id = ? AND level_id = ? AND badge_id = ?", programme_id, level_id, badge_id]) if programme_id.present? && level_id.present? && badge_id.present?
+  students = students.where(["status = 'currrent' AND programme_id = ? AND level_id = ?", programme_id, level_id]) if programme_id.present? && level_id.present?
+  students = students.where(["status = 'currrent' AND programme_id = ?", programme_id]) if programme_id.present?
+  return students
+end
+
+def past_students
+  students = Student.past
+  students = students.where(["status <> 'current' AND programme_id = ? AND level_id = ? AND badge_id = ?", programme_id, level_id, badge_id]) if programme_id.present? && level_id.present? && badge_id.present?
+  students = students.where(["status <> 'currrent' AND programme_id = ? AND level_id = ?", programme_id, level_id]) if programme_id.present? && level_id.present?
+  students = students.where(["status <> 'currrent' AND programme_id = ?", programme_id]) if programme_id.present?
+  return students
+end

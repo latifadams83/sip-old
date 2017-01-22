@@ -4,7 +4,7 @@ class Searchstaff < ApplicationRecord
 
   def staff_members
 
-    staffs = Staff.all
+    staffs = Staff.current
 
     staffs = staffs.where(["staff_category_id = ?", staff_category_id]) if staff_category_id.present?
     staffs = staffs.where(["staff_department_id = ?", staff_department_id]) if staff_department_id.present?

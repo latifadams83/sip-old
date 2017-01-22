@@ -1,0 +1,2 @@
+var list = $('#staffsPanel').html("<%= escape_javascript(render('staffs')) %>");
+$('#staffsPanel').replaceWith(list);

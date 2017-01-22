@@ -3,9 +3,12 @@ class StudentsController < DashboardController
 
   def index
     @students = Student.all
+    @programmes = Programme.all
+    @levels = Level.all
+    @badges = Badge.all
   end
 
-  def list
+  def search
   end
 
   def show

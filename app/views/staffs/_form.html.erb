@@ -1,7 +1,7 @@
 <%= form_for(staff, url: url) do |f| %>
 <%= error_messages_for(f.object)%>
-<div class="w3-btn-block w3-left-align w3-theme-d1">School Information</div>
-  <div class="w3-container w3-accordion-content w3-light-gray w3-card ">
+<fieldset class="w3-input-group w3-round w3-theme-l4 w3-margin-bottom">
+  <legend class="w3-container w3-white">School Details</legend>
     <div class="w3-row-padding">
       <div class="w3-col m6">
         <div><%= f.label :staff_id, "Staff ID", class: "w3-label" %></div>
@@ -43,11 +43,9 @@
         <div><%= f.text_field :qualification, class: "w3-input" %></div>
       </div>
     </div>
-  </div>
-
-  <br>
-  <div class="w3-btn-block w3-left-align w3-theme-d1">Personal Details</div>
-    <div class="w3-container w3-accordion-content w3-light-gray w3-card ">
+</fieldset>
+<fieldset class="w3-input-group w3-round w3-theme-l4 w3-margin-bottom">
+  <legend class="w3-container w3-white">Personal Details</legend>
     <div class="w3-row-padding">
       <div class="w3-col m6 ">
         <div><%= f.label :first_name, class: "w3-label" %></div>
@@ -90,7 +88,6 @@
         <div><%= f.number_field :no_of_children, class: "w3-input"  %></div>
       </div>
     </div>
-    <br>
     <div class="w3-row-padding">
       <div class="w3-col m12 w3-theme-l3 w3-round w3-margin-bottom">
         <div class="w3-padding w3-round ">
@@ -99,10 +96,9 @@
         </div>
       </div>
     </div>
-  </div>
-  <br>
-  <div class="w3-btn-block w3-left-align w3-theme-d1">Contact Details</div>
-    <div class="w3-container w3-accordion-content w3-light-gray w3-card ">
+</fieldset>
+  <fieldset class="w3-input-group w3-round w3-theme-l4 w3-margin-bottom">
+    <legend class="w3-container w3-white">Contact Details</legend>
     <div class="w3-row-padding">
       <div class="w3-col m12">
         <div><%= f.label :address, class: "w3-label" %></div>
@@ -133,7 +129,7 @@
         <div><%= f.email_field :email, class: "w3-input"  %></div>
       </div>
     </div>
-  </div>
+</fieldset>
   <br>
   <div class="w3-row-padding">
     <div class="w3-col m12">
