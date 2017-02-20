@@ -1,0 +1,30 @@
+<%= provide(:page_title, "Badges")%>
+<%= provide(:settings_active, "activelink")%>
+
+<table class="w3-table-all w3-small">
+  <thead>
+    <tr class="w3-theme-d4">
+      <th>Name</th>
+      <th>Programme</th>
+      <th>Level</th>
+      <th>Duration</th>
+      <th  class="w3-center">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @badges.each do |badge| %>
+      <tr>
+        <td><%= badge.full_name %></td>
+        <td><%= badge.programme.name %></td>
+        <td><%= badge.grade_level.name %></td>
+        <td><%= badge.duration %></td>
+        <td class="w3-center">
+          <span><%= link_to "#{content_tag(:i, '', :class => ("fa fa-pencil"))}".html_safe, edit_admin_badge_path(badge)%>&nbsp;&nbsp;
+          <%= link_to "#{content_tag(:i, '', :class => ("fa fa-trash"))}".html_safe, admin_badge_path(badge), method: :delete, data: { confirm: 'Are you sure?' } %></span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to "#{content_tag(:i, '', :class => ("fa fa-plus"))}".html_safe, new_admin_badge_path, class: "w3-right"%>

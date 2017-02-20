@@ -1,0 +1,18 @@
+<div class="w3-row">
+  <div class="w3-col s6 w3-margin-bottom w3-padding">
+    <%= f.label :title, class: "w3-label" %>
+    <%= f.select(:title, {Mr: :Mr, Mrs: :Mrs, Ms: :Ms, Master: :Master, Dr: :Dr, Prof: :Prof, Maulvi: :Maulvi, Mallam: :Mallam, Reverend: :Reverend, Sheik: :Sheik, Father: :Father, Brother: :Brother, Sister: :Sister, Pastor: :Pastor}, {:include_blank => true}, { :class => "w3-input" }) %>
+  </div>
+</div>
+
+
+<div class="w3-panel  w3-padding-32 w3-light-gray w3-round-large w3-small">
+  <span class="w3-padding-right">
+  <%= radio_button_tag(:choose, "new", true, class: "w3-radio") %>
+  <%= label_tag(:choose_new, "New Guardian", class: "w3-label") %>
+  </span>
+  <span class="w3-padding-left">
+    <%= radio_button_tag(:choose, "exist", false, class: "w3-radio") %>
+    <%= label_tag(:choose_exist, "Existing Guardian", class: "w3-label") %>
+  </span>
+</div>

@@ -1,0 +1,14 @@
+<%= provide(:page_title, "Editing #{@staff_category.name.capitalize}")%>
+<%= provide(:staff_active, "activelink")%>
+
+<fieldset class="w3-panel w3-round-large w3-card-2 w3-light-gray w3-small">
+  <legend class="w3-container w3-padding">
+    <a href="javascript:void();" onclick="$('#newCategory').toggle(300);"><b>New Badge</b> <i class="fa fa-caret-down"></i></a>
+  </legend>
+  <div id="newCategory">
+    <%= render 'form', staff_category: @staff_category, url: admin_staff_category_url(@staff_category) %>
+    <%= link_to 'Cancel', admin_staff_categories_path, class: "w3-btn w3 w3-round w3-left w3-margin-bottom" %>
+    </div>
+  </div>
+  </div>
+</fieldset>

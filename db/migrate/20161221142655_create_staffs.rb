@@ -24,7 +24,7 @@ class CreateStaffs < ActiveRecord::Migration[5.0]
       t.string :phone
       t.string :mobile
       t.string :email
-      t.string :status, null: false, default: :Current
+      t.string :status, null: false, default: :current
       t.string :religion
       t.integer :user_id
 

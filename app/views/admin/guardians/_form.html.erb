@@ -1,0 +1,136 @@
+<div class="w3-container" id="new-guardian">
+  <div  class="w3-container"  id="nf">
+    <%= form_for(guardian, url: url) do |f| %>
+    <fieldset class="w3-panel w3-round-large w3-card w3-light-gray w3-small">
+      <legend class="w3-container w3-padding">
+        <a href="javascript:void();" onclick="$('#personalDetails').toggle(300);"><b>Personal Details</b> <i class="fa fa-caret-down"></i></a>
+      </legend>
+      <div id="personalDetails">
+      <div class="w3-row">
+        <div class="w3-col s6 w3-margin-bottom w3-padding">
+          <%= f.label :first_name, class: "w3-label" %>
+          <%= f.text_field :first_name, class: "w3-input" %>
+        </div>
+        <div class="w3-col s6 w3-margin-bottom w3-padding">
+          <div><%= f.label :last_name, class: "w3-label" %></div>
+          <div><%= f.text_field :last_name, class: "w3-input" %></div>
+        </div>
+      </div>
+
+      <div class="w3-row">
+        <div class="w3-col s6 w3-margin-bottom w3-padding">
+          <div><%= f.label :education, class: "w3-label" %></div>
+          <%= f.text_field :education, class: "w3-input" %>
+        </div>
+        <div class="w3-col s6 w3-margin-bottom w3-padding">
+          <%= f.label :occupation, class: "w3-label" %>
+          <%= f.text_field :occupation, class: "w3-input" %>
+        </div>
+      </div>
+    </div>
+    </fieldset>
+
+    <fieldset class="w3-panel w3-round-large w3-card w3-light-gray w3-small">
+      <legend class="w3-container w3-padding">
+        <a href="javascript:void();" onclick="$('#contactDetails').toggle(300);"><b>Contact Details</b> <i class="fa fa-caret-down"></i></a>
+      </legend>
+      <div id="contactDetails">
+      <div class="w3-row">
+        <div class="w3-col s12 w3-margin-bottom w3-padding">
+          <%= f.label :address, class: "w3-label" %>
+          <%= f.text_field :address, class: "w3-input" %>
+        </div>
+      </div>
+
+      <div class="w3-row">
+        <div class="w3-col s6 w3-margin-bottom w3-padding">
+          <%= f.label :city, class: "w3-label" %>
+          <%= f.text_field :city, class: "w3-input" %>
+        </div>
+        <div class="w3-col s6 w3-margin-bottom w3-padding">
+          <%= f.label :region, class: "w3-label" %>
+          <%= f.select(:region, {"Upper West" => "Upper West", "Upper East" => "Upper East", "Northern" => "Northern", "Brong Ahafo" => "Brong Ahafo", "Asanti" => "Asanti", "Eastern" => "Eastern", "Central" => "Central", "Western" => "Western", "Volta" => "Volta", "Greater Accra" => "Greater Accra", "Other" => "Other"}, {:include_blank => true}, { :class => "w3-input w3-card w3-round-large" }) %>
+        </div>
+      </div>
+      <div class="w3-row">
+        <div class="w3-col s6 w3-margin-bottom w3-padding">
+          <%= f.label :phone, class: "w3-label" %>
+          <div><%= f.text_field :phone, class: "w3-input" %></div>
+        </div>
+        <div class="w3-col s6 w3-margin-bottom w3-padding">
+          <div><%= f.label :email, class: "w3-label" %></div>
+          <div><%= f.text_field :email, class: "w3-input" %></div>
+        </div>
+      </div>
+    </div>
+    </fieldset>
+    <div class="w3-row w3-padding-large w3-round-large w3-small">
+      <div class="w3-col s3">
+        <%= f.label :relation, "Relation To Ward", class: "w3-label" %>
+      </div>
+      <div class="w3-col s9">
+        <%= f.select(:relation, {Father: :Father, Mother: :Mother, Uncle: :Uncle, Aunt: :Aunt, Brother: :Brother, Sister: :Sister, Grandfather: :Grandfather, Grandmother: :Grandmother, Other: :Other}, {:include_blank => true}, { :class => "w3-input" }) %>
+      </div>
+    </div>
+    <fieldset class="w3-panel w3-round-large w3-card w3-light-gray w3-small w3-hide" id="fatherDetails">
+      <legend class="w3-container w3-padding">
+        <a href="javascript:void();" onclick="$('#father').toggle(300);"><b>Father Details</b> <i class="fa fa-caret-down"></i></a>
+      </legend>
+      <div id="father">
+        <div class="w3-row">
+          <div class="w3-col s12 w3-margin-bottom w3-padding">
+            <%= f.label :father_name,"Full Name", class: "w3-label" %>
+            <%= f.text_field :father_name, class: "w3-input", placeholder: "first name, lastname" %>
+          </div>
+        </div>
+        <div class="w3-row">
+          <div class="w3-col s12 w3-margin-bottom w3-padding">
+            <%= f.label :father_occupation, "Occupation", class: "w3-label" %>
+            <%= f.text_field :father_occupation, class: "w3-input" %>
+          </div>
+        </div>
+          <div class="w3-row">
+            <div class="w3-col s6 w3-margin-bottom w3-padding">
+              <%= f.label :father_hometown, "Home Town", class: "w3-label" %>
+              <%= f.text_field :father_hometown, class: "w3-input" %>
+            </div>
+            <div class="w3-col s6 w3-margin-bottom w3-padding">
+              <%= f.label :father_homeregion, "Home Region", class: "w3-label" %>
+              <%= f.select(:father_homeregion, {"Upper West" => "Upper West", "Upper East" => "Upper East", "Northern" => "Northern", "Brong Ahafo" => "Brong Ahafo", "Asanti" => "Asanti", "Eastern" => "Eastern", "Central" => "Central", "Western" => "Western", "Volta" => "Volta", "Greater Accra" => "Greater Accra", "Other" => "Other"}, {:include_blank => true}, { :class => "w3-input" }) %>
+            </div>
+          </div>
+      </div>
+    </fieldset>
+
+    <fieldset class="w3-panel w3-round-large w3-card w3-light-gray w3-small w3-hide" id="motherDetails">
+      <legend class="w3-container w3-padding">
+        <a href="javascript:void();" onclick="$('#mother').toggle(300);"><b>Mother Details</b> <i class="fa fa-caret-down"></i></a>
+      </legend>
+      <div id="mother">
+        <div class="w3-row">
+          <div class="w3-col s12 w3-margin-bottom w3-padding">
+            <%= f.label :mother_name,"Full Name", class: "w3-label" %>
+            <%= f.text_field :mother_name, class: "w3-input", placeholder: "first name, lastname" %>
+          </div>
+        </div>
+        <div class="w3-row">
+          <div class="w3-col s12 w3-margin-bottom w3-padding">
+            <%= f.label :mother_occupation, "Occupation", class: "w3-label" %>
+            <%= f.text_field :mother_occupation, class: "w3-input" %>
+          </div>
+        </div>
+          <div class="w3-row">
+            <div class="w3-col s6 w3-margin-bottom w3-padding">
+              <%= f.label :mother_hometown, "Home Town", class: "w3-label" %>
+              <%= f.text_field :mother_hometown, class: "w3-input" %>
+            </div>
+            <div class="w3-col s6 w3-margin-bottom w3-padding">
+              <%= f.label :mother_homeregion, "Home Region", class: "w3-label" %>
+              <%= f.select(:mother_homeregion, {"Upper West" => "Upper West", "Upper East" => "Upper East", "Northern" => "Northern", "Brong Ahafo" => "Brong Ahafo", "Asanti" => "Asanti", "Eastern" => "Eastern", "Central" => "Central", "Western" => "Western", "Volta" => "Volta", "Greater Accra" => "Greater Accra", "Other" => "Other"}, {:include_blank => true}, { :class => "w3-input" }) %>
+            </div>
+          </div>
+    </fieldset>
+
+      <div class="w3-row-padding">
+        <%= f.submit :Save, class: "w3-btn w3-round w3-theme-d4 w3-right w3-margin-top" %>
+    <% end %>

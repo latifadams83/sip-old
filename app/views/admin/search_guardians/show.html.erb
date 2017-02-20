@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @search_guardian.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @search_guardian.last_name %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @search_guardian.phone %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @search_guardian.email %>
+</p>
+
+<p>
+  <strong>Student:</strong>
+  <%= @search_guardian.student_id %>
+</p>
+
+<%= link_to 'Edit', edit_search_guardian_path(@search_guardian) %> |
+<%= link_to 'Back', search_guardians_path %>

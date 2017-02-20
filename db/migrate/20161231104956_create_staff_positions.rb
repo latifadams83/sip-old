@@ -3,7 +3,6 @@ class CreateStaffPositions < ActiveRecord::Migration[5.0]
     create_table :staff_positions do |t|
       t.string :name
       t.integer :staff_category_id
-      t.timestamps
     end
   end
 

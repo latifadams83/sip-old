@@ -1,0 +1,29 @@
+<% if @staffs.present?%>
+<table class="w3-table-all w3-small">
+  <thead>
+    <tr>
+      <th><%= sortable("first_name", "Name")%></th>
+      <th>Staff ID</th>
+      <th><%= sortable("staff_category_id", "Category") %></th>
+      <th><%= sortable("staff_department_id", "Department") %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @staffs.each do |staff| %>
+      <tr>
+        <td><%= link_to staff.full_name, admin_staff_path(staff.id) %></td>
+        <td><%= staff.staff_id %></td>
+        <td><%= staff.staff_category.name.capitalize %></td>
+        <td><%= staff.staff_department.name.capitalize %></td>
+      </tr>
+    <%end%>
+  </tbody>
+</table>
+<%else%>
+  <div class="w3-panel w3-amber w3-tiny w3-round w3-card-8">
+    <p>
+      No staff found
+    </p>
+  </div>
+<%end%>

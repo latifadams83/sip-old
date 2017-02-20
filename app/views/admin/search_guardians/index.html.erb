@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Search Guardians</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Phone</th>
+      <th>Email</th>
+      <th>Student</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @search_guardians.each do |search_guardian| %>
+      <tr>
+        <td><%= search_guardian.first_name %></td>
+        <td><%= search_guardian.last_name %></td>
+        <td><%= search_guardian.phone %></td>
+        <td><%= search_guardian.email %></td>
+        <td><%= search_guardian.student_id %></td>
+        <td><%= link_to 'Show', search_guardian %></td>
+        <td><%= link_to 'Edit', edit_search_guardian_path(search_guardian) %></td>
+        <td><%= link_to 'Destroy', search_guardian, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Search Guardian', new_search_guardian_path %>

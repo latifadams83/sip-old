@@ -1,0 +1,47 @@
+<%= provide(:page_title, "Students")%>
+<%= provide(:students_active, "activelink")%>
+
+<div class="w3-row-padding w3-margin-bottom w3-small">
+  <%= form_tag(admin_students_path, method: "get") do %>
+    <div class="w3-col s3 w3-padding-right">
+      <%= select_tag "p", options_from_collection_for_select(@programmes, :id, :name, params[:p]), prompt: "Programme", class: "w3-input"%>
+    </div>
+    <div class="w3-col s3 w3-padding-right">
+      <%= select_tag "l", options_from_collection_for_select(@levels, :id, :name, params[:l]), prompt: "Grade Level", class: "w3-input"%>
+    </div>
+    <div class="w3-col s3 w3-padding-right">
+      <%= select_tag "b", options_from_collection_for_select(@badges, :id, :full_name, params[:b]), prompt: "Badge", class: "w3-input"%>
+    </div>
+    <div class="w3-col s3">
+
+      <%= submit_tag("Search", name:nil, class: "w3-btn w3-round w3-tiny w3-right w3-theme-d1") %>
+    </div>
+  <% end %>
+</div>
+<div class="w3-row w3-small">
+  <table class="w3-table-all w3-small">
+    <thead>
+      <tr class="w3-theme-d1">
+        <th>Placed ID</th>
+        <th>Name</th>
+        <th>Gender</th>
+        <th class="w3-center" >Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% if @students.present?%>
+        <% @students.each do |student| %>
+          <tr>
+            <td><%= student.placed_id %></td>
+            <td><%= student.last_name+ " "+student.first_name %></td>
+            <td><%= student.gender %></td>
+            <td class="w3-center">
+              <span><%= link_to "#{content_tag(:i, '', :class => ("fa fa-eye"))}".html_safe, admin_student_path(student)%>
+            </td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>

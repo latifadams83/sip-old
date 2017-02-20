@@ -4,27 +4,36 @@
     <title>SIP | <%= yield(:page_title)%></title>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-<body class="w3-gray">
-
+<body class="w3-light-gray">
   <!-- Navbar -->
-  <%= user_menu(current_user)%>
-
-  <!-- Page Messages -->
-  <%= notice_messages(notice) %>
-  <%= alert_messages(alert) %>
-  
-  <!-- Content -->
-  <div class="w3-row-padding" id="page-container">
-      <div class="w3-content" id="page-content">
-
-        <%= yield %>
-
-      </div>
+  <div class="w3-top center-position">
+    <ul class="w3-navbar w3-padding head w3-theme-d1 w3-left-align w3-large center-position" >
+      <li class="w3-margin-right">
+        <%= link_to image_tag("logo.png", size:"40", class:"w3-circle"), root_path %>
+      </li>
+      <li class="w3-hide-medium w3-hide-small w3-right ">
+        <%= link_to "#{content_tag(:i, '', :class => ("fa fa-sign-out"))}".html_safe, destroy_user_session_path, :method => :delete%>
+      </li>
+    </ul>
+    <%= render "layouts/admin_menu"%>
   </div>
 
-  <!-- Footer -->
-  <footer class="w3-container w3-padding-64 w3-opacity center-position">
-   <p>&copy <%= Time.now.year()%></p>
+  <div class="w3-main center-position w3-card">
+
+    <div class="w3-panel w3-padding-large w3-white w3-round-large">
+      <div class="w3-row">
+          <h5 class="w3-padding-left"><b><%= yield(:page_title)%></b></h5>
+      </div>
+
+      <div class="w3-row">
+        <div class="w3-panel w3-tiny">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="w3-panel w3-padding center-position"id="myFooter">
+    <p>powered by latif</p>
   </footer>
 
 </body>

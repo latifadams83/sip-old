@@ -1,0 +1,46 @@
+<%= form_for(find_student, url: url) do |f| %>
+  <%= error_messages_for(f.object)%>
+  <fieldset class="w3-panel w3-round-large w3-card w3-light-gray w3-tiny" style="width: 400px;">
+    <legend class="w3-container w3-padding">
+      <a href="javascript:void();" onclick="$('#findStudents').toggle(300);">Find Students <i class="fa fa-caret-down"></i></a>
+    </legend>
+    <div id="findStudents">
+      <div class="w3-row">
+        <%= f.label :first_name, class: "w3-label" %>
+        <%= f.text_field :first_name, class: "w3-input" %>
+      </div>
+      <div class="w3-row">
+        <%= f.label :last_name, class: "w3-label" %>
+        <%= f.text_field :last_name, class: "w3-input" %>
+      </div>
+
+      <div class="w3-row">
+        <%= f.label :student_id, class: "w3-label" %>
+        <%= f.text_field :student_id, class: "w3-input" %>
+      </div>
+
+      <div class="w3-row">
+        <%= f.label :programme_id, class: "w3-label" %>
+        <%= f.select(:programme_id, Programme.all.map{|p| [p.name, p.id]}, {prompt: "Programme"}, { :class => "w3-input"}) %>
+      </div>
+
+      <div class="w3-row">
+        <%= f.label :level_id, "Grade Level", class: "w3-label" %>
+        <%= f.select(:level_id, GradeLevel.all.map{|l| [l.name, l.id]}, {prompt: "Level"}, { :class => "w3-input"}) %>
+      </div>
+
+      <div class="w3-row">
+        <%= f.label :badge_id, class: "w3-label" %>
+        <%= f.select(:badge_id, Badge.all.map{|b| [b.name, b.id]}, {prompt: "Programme"}, { :class => "w3-input"}) %>
+      </div>
+
+      <div class="w3-row">
+        <%= f.label :status, class: "w3-label" %>
+        <%= f.text_field :status, class: "w3-input" %>
+      </div>
+      <br>
+    </div>
+  </fieldset>
+    <div class="w3-row-padding" style="width:400px;">
+      <%= f.submit :Submit, class: "w3-btn w3-theme-d1 w3-round w3-tiny w3-right" %>
+  <% end %>

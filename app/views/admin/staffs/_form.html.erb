@@ -1,0 +1,146 @@
+<%= form_for(staff, url: url) do |f| %>
+<%= error_messages_for(f.object)%>
+
+<fieldset class="w3-panel w3-round-large w3-card w3-light-gray w3-small">
+  <legend class="w3-container w3-padding">
+    <a href="javascript:void();" onclick="$('#personalDetails').toggle(300);"><b>Personal Details</b> <i class="fa fa-caret-down"></i></a>
+  </legend>
+  <div id="personalDetails">
+    <div class="w3-row">
+      <div class="w3-col s6 w3-margin-bottom w3-padding">
+        <div><%= f.label :first_name, class: "w3-label" %></div>
+        <div><%= f.text_field :first_name, class: "w3-input w3-card w3-round-large", :required=>true %></div>
+      </div>
+      <div class="w3-col s6 w3-margin-bottom w3-padding">
+        <div><%= f.label :last_name, class: "w3-label" %></div>
+        <div><%= f.text_field :last_name, class: "w3-input w3-card w3-round-large", :required=>true %></div>
+      </div>
+    </div>
+    <div class="w3-row">
+      <div class="w3-col s6 w3-margin-bottom w3-padding">
+        <div><%= f.label :gender, class: "w3-label" %></div>
+        <div><%= f.select(:gender, {Male: :M, Female: :F}, {:include_blank => true}, { :class => "w3-input w3-card w3-round-large", :required=>true }) %></div>
+      </div>
+
+      <div class="w3-col s6 w3-margin-bottom w3-padding">
+        <div><%= f.label :date_of_birth, class: "w3-label" %></div>
+        <div><%= f.text_field :date_of_birth, class: "w3-input w3-round-large w3-card datepicker", :required=>true %></div>
+      </div>
+    </div>
+    <div class="w3-row">
+      <div class="w3-col s6 w3-margin-bottom w3-padding">
+        <%= f.label :religion, class: "w3-label" %>
+        <%= f.select(:religion, {Islam: :Islam, Christianity: :Christianity, Traditional: :Traditional, Other: :Other}, {:include_blank => true}, { :class => "w3-input w3-card w3-round-large" }) %>
+      </div>
+      <div class="w3-col s6 w3-margin-bottom w3-padding">
+        <%= f.label :marital_, class: "w3-label" %>
+        <%= f.select(:marital_status, {Single: :Single, Married: :Married}, {:include_blank => true}, { :class => "w3-input w3-card w3-round-large"}) %>
+      </div>
+    </div>
+    <div class="w3-row">
+      <div class="w3-col s6 w3-margin-bottom w3-padding">
+        <%= f.label :spouse_name, class: "w3-label" %>
+        <%= f.text_field :spouse_name, class: "w3-input w3-card w3-round-large"%>
+      </div>
+      <div class="w3-col s6 w3-margin-bottom w3-padding">
+        <%= f.label :no_of_children, class: "w3-label" %>
+        <%= f.number_field :no_of_children, class: "w3-input w3-card w3-round-large"  %>
+      </div>
+    </div>
+    <div class="w3-row">
+      <div class="w3-col s12 w3-margin-bottom w3-padding">
+        <%= f.label :image, "Headshot", class: "w3-label" %>
+        <%= f.file_field :image%>
+      </div>
+    </div>
+  </div>
+</fieldset>
+
+<fieldset class="w3-panel w3-round-large w3-card w3-light-gray w3-small">
+  <legend class="w3-container w3-padding">
+    <a href="javascript:void();" onclick="$('#contactDetails').toggle(300);"><b>Contact Details</b> <i class="fa fa-caret-down"></i></a>
+  </legend>
+  <div id="contactDetails">
+    <div class="w3-row">
+      <div class="w3-col s12 w3-margin-bottom w3-padding">
+        <%= f.label :address, class: "w3-label" %>
+        <%= f.text_field :address, class: "w3-input w3-card w3-round-large" %>
+      </div>
+    </div>
+    <div class="w3-row">
+      <div class="w3-col s6 w3-margin-bottom w3-padding">
+        <%= f.label :city, class: "w3-label" %>
+        <%= f.text_field :city, class: "w3-input w3-card w3-round-large" %>
+      </div>
+      <div class="w3-col s6 w3-margin-bottom w3-padding">
+        <%= f.label :region, class: "w3-label" %>
+        <%= f.select(:region, {"Upper West" => "Upper West", "Upper East" => "Upper East", "Northern" => "Northern", "Brong Ahafo" => "Brong Ahafo", "Asanti" => "Asanti", "Eastern" => "Eastern", "Central" => "Central", "Western" => "Western", "Volta" => "Volta", "Greater Accra" => "Greater Accra", "Other" => "Other"}, {:include_blank => true}, { :class => "w3-input w3-card w3-round-large" }) %>
+      </div>
+    </div>
+
+    <div class="w3-row">
+      <div class="w3-col s6 w3-margin-bottom w3-padding">
+        <%= f.label :phone, class: "w3-label" %>
+        <%= f.text_field :phone, class: "w3-input w3-card w3-round-large"  %>
+      </div>
+      <div class="w3-col s6 w3-margin-bottom w3-padding">
+        <%= f.label :email, class: "w3-label" %>
+        <%= f.email_field :email, class: "w3-input w3-card w3-round-large"  %>
+      </div>
+    </div>
+  </div>
+</fieldset>
+
+<fieldset class="w3-panel w3-round-large w3-card w3-light-gray w3-small">
+  <legend class="w3-container w3-padding">
+    <a href="javascript:void();" onclick="$('#schoolDetails').toggle(300);"><b>Employment Details</b> <i class="fa fa-caret-down"></i></a>
+  </legend>
+  <div id="schoolDetails">
+    <div class="w3-row">
+      <div class="w3-col s6 w3-margin-bottom w3-padding">
+        <%= f.label :staff_id, "Staff ID", class: "w3-label" %>
+        <%= f.text_field :staff_id, class: "w3-input w3-card w3-round-large", :required=>true %>
+      </div>
+      <div class="w3-col s6 w3-margin-bottom w3-padding">
+        <%= f.label :date_join, class: "w3-label" %>
+        <%= f.text_field :date_join, class: "w3-input w3-card w3-round-large datepicker", :required=>true %>
+      </div>
+    </div>
+    <div class="w3-row">
+      <div class="w3-col s6 w3-margin-bottom w3-padding">
+        <%= f.label :date_of_first_appointment, class: "w3-label" %>
+        <%= f.text_field :date_of_first_appointment, class: "w3-input w3-round-large w3-card datepicker", :required=>true %>
+      </div>
+      <div class="w3-col s6 w3-margin-bottom w3-padding">
+        <%= f.label :qualification, class: "w3-label" %>
+        <%= f.text_field :qualification, class: "w3-input w3-card w3-round-large" %>
+      </div>
+    </div>
+    <div class="w3-row">
+      <div class="w3-col s6 w3-margin-bottom w3-padding">
+        <%= f.label :Category, class: "w3-label" %>
+        <%= f.collection_select :staff_category_id, StaffCategory.order(:name), :id, :name, {include_blank:true}, {class: "w3-input w3-round-large w3-card "} %>
+      </div>
+      <div class="w3-col s6 w3-margin-bottom w3-padding">
+        <div><%= f.label :Department, class: "w3-label" %></div>
+        <%= f.grouped_collection_select :staff_department_id, StaffCategory.order(:name), :staff_departments,:name, :id, :name, {include_blank:true}, {class: "w3-input w3-card w3-round-large"} %>
+      </div>
+    </div>
+    <div class="w3-row">
+      <div class="w3-col s6 w3-margin-bottom w3-padding">
+        <%= f.label :staff_position, "Position",class: "w3-label" %>
+        <%= f.grouped_collection_select :staff_position_id, StaffCategory.order(:name), :staff_positions,:name, :id, :name, {include_blank:true}, {class: "w3-input w3-card w3-round-large"} %>
+      </div>
+      <div class="w3-col s6 w3-margin-bottom w3-padding">
+        <%= f.label :staff_grade, "Grade", class: "w3-label" %>
+        <%= f.grouped_collection_select :staff_grade_id, StaffCategory.order(:name), :staff_grades,:name, :id, :name, {include_blank:true}, {class: "w3-input w3-card w3-round-large"} %>
+      </div>
+    </div>
+  </div>
+</fieldset>
+
+  <br>
+  <div class="w3-row">
+    <div class="w3-col s12 w3-margin-bottom">
+      <%= f.submit "Save", class: "w3-btn w3-round  w3-right w3-theme-d1" %>
+<% end %>

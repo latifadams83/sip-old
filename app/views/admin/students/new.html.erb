@@ -1,0 +1,11 @@
+<%= provide(:page_title, "New student")%>
+<%= provide(:students_active, "activelink")%>
+
+<div class="w3-panel w3-round-large w3-light-gray w3-small">
+  <%= render 'form', student: @student, url: admin_students_url %>
+
+    <%= link_to 'Cancel', admin_students_path, class: "w3-btn w3-round w3-left w3-margin-top" %>
+    </div>
+  </div>
+
+</div>

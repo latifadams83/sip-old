@@ -1,0 +1,16 @@
+<%= form_for(staff_category, url: url) do |f| %>
+<%= error_messages_for(f.object)%>
+
+    <div class="w3-row-padding">
+      <br>
+      <div class="w3-col s12">
+        <%= f.label :name, class: "w3-label" %>
+        <%= f.text_field :name, class: "w3-input w3-medium w3-border w3-round", :required=>true %>
+      </div>
+    </div>
+    <br>
+    <div class="w3-row-padding">
+    <div class="w3-col s12">
+      <%= f.submit "Save", class: "w3-btn w3-right w3-round w3-theme-d4" %>
+
+<% end %>

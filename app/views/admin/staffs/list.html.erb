@@ -1,0 +1,17 @@
+<%= provide(:page_title, "All Staff members")%>
+<%= provide(:staff_active, "activelink")%>
+
+<%= form_tag(admin_staffs_path, method: "get") do %>
+  <%= hidden_field_tag(:sort, params[:sort])%>
+  <%= hidden_field_tag(:direction, params[:direction])%>
+  <div class="w3-row-padding w3-round">
+    <div class="w3-col s1"><%= label_tag(:keyword, "Keyword:", class: "w3-label")%></div>
+    <div class="w3-col s10"><%= search_field_tag(:k, params[:k], class: "w3-input", placeholder: "Name")%></div>
+    <div class="w3-col s1"><%= submit_tag(:Search, :name => nil, class: "w3-btn w3-tiny w3-theme-d1")%></div>
+  </div>
+<% end %>
+<div class="w3-container">
+  <%= render "staffs" %>
+</div>
+
+<%= link_to 'New Staff', new_admin_staff_path %>

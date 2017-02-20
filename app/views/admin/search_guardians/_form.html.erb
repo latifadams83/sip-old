@@ -1,0 +1,39 @@
+<%= form_for(search_guardian, url: url) do |f| %>
+<%= error_messages_for(f.object)%>
+  <fieldset>
+    <legend>Search Parent</legend>
+    <div class="w3-row-padding">
+      <div class="w3-col s12">
+        <%= f.label :first_name %>
+        <%= f.text_w3-col s12 :first_name %>
+      </div>
+    </div>
+    <div class="w3-row-padding">
+      <div class="w3-col s12">
+        <%= f.label :last_name %>
+        <%= f.text_w3-col s12 :last_name %>
+      </div>
+    </div>
+
+    <div class="w3-row-padding">
+      <div class="w3-col s12">
+        <%= f.label :phone %>
+        <%= f.text_w3-col s12 :phone %>
+      </div>
+    </div>
+    <div class="w3-row-padding">
+      <div class="w3-col s12">
+        <%= f.label :email %>
+        <%= f.text_w3-col s12 :email %>
+      </div>
+    </div>
+    <div class="w3-row-padding">
+      <div class="w3-col s12">
+        <%= f.label :ward_id %>
+        <%= f.text_w3-col s12 :ward_id %>
+      </div>
+    </div>
+  <div>
+    <div class="w3-col s12">
+      <%= f.submit, :Search, class: "w3btn w3-round w3-theme-d1 w3-right w3-tiny" %>
+<% end %>

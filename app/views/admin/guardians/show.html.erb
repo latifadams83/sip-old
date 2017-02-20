@@ -1,0 +1,93 @@
+<%= provide(:page_title, "guardian")%>
+<%= provide(:students_active, "activelink")%>
+
+  <div class="w3-row ">
+      <!-- Tabs -->
+    <div class="w3-dropdown-hover  w3-right w3-margin-left w3-tiny">
+     <button class="w3-btn w3-theme-d1">Actions  <i class="fa fa-caret-down"></i></button>
+     <div class="w3-dropdown-content w3-border w3-theme-d1" style="right:0;">
+         <%= link_to "Edit Guardian", edit_admin_guardian_path(@guardian)%>
+      </div>
+     </div>
+  </div>
+
+  <!--Content -->
+  <div class="w3-row w3-small">
+    <div class="w3-content w3-col s12 w3-margin-top  page-content">
+        <table class="w3-table w3-table-striped w3-bordered ">
+          <th>
+            Personal Information
+          </th>
+          <tr>
+            <td class="w3-right" ><strong>First name:</strong></td>
+            <td><%= @guardian.first_name %></td>
+            <td class="w3-right" ><strong>Last name:</strong></td>
+            <td><%= @guardian.last_name %></td>
+          </tr>
+          <tr>
+            <td class="w3-right" ><strong>Education:</strong></td>
+            <td><%= @guardian.education %></td>
+            <td class="w3-right" ><strong>Occupation:</strong></td>
+            <td><%= @guardian.occupation %></td>
+          </tr>
+
+          <th>
+            Contact Information
+          </th>
+          <tr>
+            <td class="w3-right" ><strong>Address:</strong></td>
+            <td colspan="3"><%= @guardian.address %></td>
+          </tr>
+          <tr>
+            <td class="w3-right" ><strong>Region:</strong></td>
+            <td><%= @guardian.region %></td>
+            <td class="w3-right" ><strong>Town/City:</strong></td>
+            <td><%= @guardian.city %></td>
+          </tr>
+          <tr>
+            <td class="w3-right" ><strong>Phone/Mobile:</strong></td>
+            <td><%= @guardian.phone %></td>
+            <td class="w3-right" ><strong>Email:</strong></td>
+            <td><%= @guardian.email %></td>
+            <tr>
+              <td class="w3-right"><strong>Ward:</strong></td>
+              <td colspan="3">
+                <%= link_to "#{@guardian.ward_name}", admin_student_path(@guardian.student) %>
+              </td>
+            </tr>
+          </tr>
+          <th>
+            Father Information
+          </th>
+          <tr>
+            <td class="w3-right" ><strong>Name:</strong></td>
+            <td><%= @guardian.father_name %></td>
+            <td class="w3-right" ><strong>Occupation:</strong></td>
+            <td><%= @guardian.father_occupation %></td>
+          </tr>
+          <tr>
+            <td class="w3-right" ><strong>Home Town:</strong></td>
+            <td><%= @guardian.father_hometown %></td>
+            <td class="w3-right" ><strong>Region:</strong></td>
+            <td><%= @guardian.father_homeregion %></td>
+          </tr>
+
+          <th>
+            Mother Information
+          </th>
+          <tr>
+            <td class="w3-right" ><strong>Name:</strong></td>
+            <td><%= @guardian.mother_name %></td>
+            <td class="w3-right" ><strong>Occupation:</strong></td>
+            <td><%= @guardian.mother_occupation %></td>
+          </tr>
+          <tr>
+            <td class="w3-right" ><strong>Home Town:</strong></td>
+            <td><%= @guardian.mother_hometown %></td>
+            <td class="w3-right" ><strong>Region:</strong></td>
+            <td><%= @guardian.mother_homeregion %></td>
+          </tr>
+        </table>
+    </div>
+  </div>
+</div>

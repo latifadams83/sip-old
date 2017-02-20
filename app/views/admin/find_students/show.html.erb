@@ -1,0 +1,38 @@
+<%= provide(:page_title, "Find Students")%>
+<%= provide(:students_active, "activelink")%>
+
+  <strong>First name:</strong>
+  <%= @find_student.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @find_student.last_name %>
+</p>
+
+<p>
+  <strong>Student:</strong>
+  <%= @find_student.student_id %>
+</p>
+
+<p>
+  <strong>Programme:</strong>
+  <%= @find_student.programme_id %>
+</p>
+
+<p>
+  <strong>Level:</strong>
+  <%= @find_student.level_id %>
+</p>
+
+<p>
+  <strong>Badge:</strong>
+  <%= @find_student.badge_id %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @find_student.status %>
+</p>
+
+<%= link_to 'Back', admin_students_path %> |

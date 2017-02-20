@@ -1,0 +1,22 @@
+<%= provide(:page_title, "Edit House")%>
+<%= provide(:settings_active, "activelink")%>
+
+<div class="w3-panel w3-light-gray">
+  <p>
+    <strong>Name:</strong>
+    <%= @house.name %>
+  </p>
+
+  <p>
+    <strong>Capacity:</strong>
+    <%= @house.capacity %>
+  </p>
+
+  <p>
+    <strong>Description:</strong>
+    <%= @house.description %>
+  </p>
+
+  <%= link_to "#{content_tag(:i, '', :class => ("fa fa-lg fa-toggle-left"))}".html_safe, admin_houses_path %> |
+  <%= link_to "#{content_tag(:i, '', :class => ("fa fa-lg fa-pencil"))}".html_safe, edit_admin_house_path(@house) %>
+</div>

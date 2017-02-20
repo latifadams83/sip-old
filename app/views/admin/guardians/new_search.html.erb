@@ -1,0 +1,52 @@
+<%= form_for(@searchguardian, url: create_search_admin_guardians_path) do |f| %>
+<div class="w3-panel w3-light-gray w3-round-large w3-tiny">
+  <fieldset class="w3-panel w3-round-large w3-card w3-light-gray w3-tiny">
+    <legend class="w3-container w3-padding">
+      <a href="javascript:void();" onclick="$('#searchGuardian').toggle(300);"><b>Search Guardians</b> <i class="fa fa-caret-down"></i></a>
+    </legend>
+    <div id="searchGuardian">
+      <div class="w3-row-padding">
+        <div class="w3-col s12">
+          <%= f.label :first_name, "First name", class: "w3-label" %>
+          <%= f.text_field :first_name, class: "w3-input" %>
+        </div>
+      </div>
+      <br>
+      <div class="w3-row-padding">
+        <div class="w3-col s12">
+          <%= f.label :last_name, "Last name", class: "w3-label" %>
+          <%= f.text_field :last_name, class: "w3-input" %>
+        </div>
+      </div>
+      <br>
+      <div class="w3-row-padding">
+        <div class="w3-col s12">
+          <%= f.label :phone, "Phone/Mobile", class: "w3-label" %>
+          <%= f.telephone_field :phone, class: "w3-input" %>
+        </div>
+      </div>
+      <br>
+      <div class="w3-row-padding">
+        <div class="w3-col s12">
+          <%= f.label :email, class: "w3-label" %>
+          <%= f.text_field :email, class: "w3-input" %>
+        </div>
+      </div>
+      <br>
+      <div class="w3-row-padding">
+        <div class="w3-col s12">
+          <%= f.label :ward_id, "Existing Ward ID", class: "w3-label"%>
+          <%= f.text_field :ward_id, class: "w3-input" %>
+        </div>
+      </div>
+      <div>
+        <br>
+        <div class="w3-col s12 w3-margin-bottom">
+          <%= f.submit :Search, class: "w3-btn w3-round w3-theme-d1 w3-right" %>
+          <%= link_to 'Back', admin_search_guardians_path, class: "w3-btn w3-round w3-left" %>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+</div>
+<% end %>

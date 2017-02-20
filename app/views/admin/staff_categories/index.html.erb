@@ -1,0 +1,24 @@
+<%= provide(:page_title, "Staff Categories")%>
+<%= provide(:staff_active, "activelink")%>
+
+<table class="w3-table-all w3-small">
+  <thead>
+    <tr class="w3-theme-d4">
+      <th>Category</th>
+      <th class="w3-center">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @staff_categories.each do |category| %>
+      <tr>
+        <td><%= category.name %></td>
+        <td class="w3-center w3-bottom-group">
+          <span><%= link_to "#{content_tag(:i, '', :class => ("fa fa-pencil"))}".html_safe, edit_admin_staff_category_path(category)%>&nbsp;&nbsp;
+          <%= link_to "#{content_tag(:i, '', :class => ("fa fa-trash"))}".html_safe, admin_staff_category_path(category), method: :delete, data: { confirm: 'Are you sure?' } %></span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to "#{content_tag(:i, '', :class => ("fa fa-plus"))}".html_safe, new_admin_staff_category_path, class: "w3-right"%>

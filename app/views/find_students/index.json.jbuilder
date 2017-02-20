@@ -1,0 +1,1 @@
+json.array! @find_students, partial: 'find_students/find_student', as: :find_student

@@ -1,0 +1,31 @@
+<%= provide(:page_title, "Houses")%>
+<%= provide(:settings_active, "activelink")%>
+
+<table class="w3-table-all w3-small">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Capacity</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @houses.each do |house| %>
+      <tr>
+        <td><%= house.name %></td>
+        <td><%= house.capacity %></td>
+        <td>
+          <td class="w3-center">
+          <span>
+            <%= link_to "#{content_tag(:i, '', :class => ("fa fa-eye"))}".html_safe, admin_house_path(house) %>&nbsp;&nbsp;
+            <%= link_to "#{content_tag(:i, '', :class => ("fa fa-pencil"))}".html_safe, edit_admin_house_path(house)%>&nbsp;&nbsp;
+            <%= link_to "#{content_tag(:i, '', :class => ("fa fa-trash"))}".html_safe, admin_house_path(house), method: :delete, data: { confirm: 'Are you sure?' } %>
+          </span>
+          </td>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to "#{content_tag(:i, '', :class => ("fa fa-plus"))}".html_safe, new_admin_house_path, class: "w3-right"%>

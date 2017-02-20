@@ -1,0 +1,1 @@
+json.partial! "find_students/find_student", find_student: @find_student

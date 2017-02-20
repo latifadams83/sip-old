@@ -1,7 +1,6 @@
 <% if msg.present? %>
-<div class="w3-row-padding">
-  <div class="w3-panel w3-margin-top w3-small w3-round w3-theme-l2 center-position">
+  <div class="w3-panel w3-tiny w3-round w3-theme-l2 center-position" id="msg-pl">
+    <span onclick="$('#msg-pl').hide();" class="w3-closebtn">&times;</span>
     <p><%= msg %></p>
   </div>
-</div>
 <% end %>

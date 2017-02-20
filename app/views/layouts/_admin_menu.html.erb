@@ -1,0 +1,25 @@
+<ul class="w3-navbar menu w3-topbar w3-theme-d1 w3-small">
+  <li><%= link_to "Dashboard", root_path, class: "#{yield(:dashboard_active)}"%></li>
+  <li><%= link_to "Settings", admin_settings_path, class: "#{yield(:settings_active)}"%></li>
+  <li><%= link_to "Students", admin_students_path, class: "#{yield(:students_active)}"%></li>
+  <li><%= link_to "Teachers", admin_staffs_path, class: "#{yield(:staff_active)}"%></li>
+</ul>
+
+<ul class="w3-navbar w3-hide menu-tab w3-theme-d4 w3-tiny <%= yield(:settings_active)%>">
+  <li><%= link_to "Programmes", admin_programmes_path%></li>
+  <li><%= link_to "Grade Levels", admin_grade_levels_path%></li>
+  <li><%= link_to "Badges", admin_badges_path%></li>
+</ul>
+
+<ul class="w3-navbar w3-hide menu-tab w3-theme-d4 w3-tiny <%= yield(:dashboard_active) %>">
+  <li><%= link_to "School Information System", "" %></li>
+</ul>
+
+<ul class="w3-navbar w3-hide menu-tab w3-theme-d4 w3-tiny <%= yield(:students_active)%>">
+  <li><%= link_to "Find Student", new_admin_find_student_path %></li>
+  <li><%= link_to "Add Student", new_admin_student_path %></li>
+</ul>
+
+<ul class="w3-navbar w3-hide menu-tab w3-theme-d4 w3-tiny <%= yield(:staff_active)%>">
+  <li><%= link_to "Add Student", new_admin_staff_path %></li>
+</ul>

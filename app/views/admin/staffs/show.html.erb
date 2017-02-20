@@ -1,0 +1,132 @@
+<%= provide(:page_title, "Staff Profile")%>
+<%= provide(:staff_active, "activelink")%>
+
+<div class="w3-container">
+  <div class="w3-row">
+    <div class="w3-panel">
+      <ul class="w3-navbar w3-card-2 w3-light-grey">
+        <li><%= link_to "Profile", admin_staff_path(@staff)%></li>
+
+        <li class="w3-dropdown-hover w3-right ">
+          <%= link_to "Actions #{content_tag(:i, '', :class => ("fa fa-caret-down"))}".html_safe%>
+          <div class="w3-dropdown-content w3-card-4 w3-theme-d1 w3-tiny w3-clear" style="right:0">
+            <%= link_to 'Edit', edit_admin_staff_path(@staff)%>
+            <%= link_to 'Arichive', confirm_archive_admin_staff_path(@staff.id)%>
+            <%= link_to 'Remove', delete_admin_staff_path(@staff.id)%>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="w3-row">
+    <div class="w3-col s2 w3-panel">
+        <%= image_tag @staff.image_url.to_s,size: "100", class: "w3-card-2 w3-round" %>
+        <div >
+          <p><b><%= @staff.full_name.titleize %></b></p>
+        </div>
+    </div>
+    <div class="w3-col s10 w3-panel">
+      <table class="w3-table w3-table-striped w3-bordered w3-small">
+        <tr class="w3-theme-l4" >
+          <td colspan="4">Personal Information</td>
+        </tr>
+        <tr>
+          <td class="w3-right" ><strong>First name:</strong></td>
+          <td><%= @staff.first_name %></td>
+          <td class="w3-right" ><strong>Last name:</strong></td>
+          <td><%= @staff.last_name %></td>
+        </tr>
+        <tr>
+          <td class="w3-right" ><strong>Gender:</strong></td>
+          <td><%= @staff.gender %></td>
+          <td class="w3-right" ><strong>Date of Birth:</strong></td>
+          <td><%= @staff.date_of_birth %></td>
+        </tr>
+        <tr>
+          <td class="w3-right" ><strong>Religion:</strong></td>
+          <td colspan="3"><%= @staff.religion %></td>
+        </tr>
+        <tr>
+          <td class="w3-right" ><strong>Marital Status:</strong></td>
+          <td><%= @staff.marital_status %></td>
+          <td class="w3-right" ><strong>No of Children:</strong></td>
+          <td><%= @staff.no_of_children %></td>
+        </tr>
+        <tr>
+          <td class="w3-right" ><strong>Spouse:</strong></td>
+          <td colspan="3"><%= @staff.spouse_name %></td>
+        </tr>
+
+
+        <tr class="w3-theme-l4" >
+          <td colspan="4">Contact Information</td>
+        </tr>
+        <tr>
+          <td class="w3-right" ><strong>Address:</strong></td>
+          <td colspan="3"><%= @staff.address %></td>
+        </tr>
+        <tr>
+          <td class="w3-right" ><strong>Region:</strong></td>
+          <td><%= @staff.region %></td>
+          <td class="w3-right" ><strong>Town/City:</strong></td>
+          <td><%= @staff.city %></td>
+        </tr>
+        <tr>
+          <td class="w3-right" ><strong>Phone/Mobile:</strong></td>
+          <td><%= @staff.phone %></td>
+          <td class="w3-right" ><strong>Email:</strong></td>
+          <td><%= @staff.email %></td>
+        </tr>
+
+        <tr class="w3-theme-l4" >
+          <td colspan="4">School Information</td>
+        </tr>
+        <tr>
+          <td class="w3-right" ><strong>Date Join:</strong></td>
+          <td colspan="3"><%= @staff.date_join %></td>
+        </tr>
+        <tr>
+          <td class="w3-right" ><strong>Category:</strong></td>
+          <td><%= StaffCategory.find(@staff.staff_category_id).name %></td>
+          <td class="w3-right" ><strong>Department:</strong></td>
+          <td><%= StaffDepartment.find(@staff.staff_department_id).name %></td>
+        </tr>
+        <tr>
+          <td class="w3-right" ><strong>Role:</strong></td>
+          <td>
+            <% if @staff.staff_position_id.present? %>
+              <%= StaffPosition.find(@staff.staff_position_id).name%>
+            <% end%>
+          </td>
+          <td class="w3-right" ><strong>Status:</strong></td>
+          <td><%= @staff.status %></td>
+        </tr>
+
+
+        <tr class="w3-theme-l4" >
+          <td colspan="4">Professional Information</td>
+        </tr>
+        <tr>
+          <td class="w3-right" ><strong>Staff ID:</strong></td>
+          <td><%= @staff.staff_id %></td>
+          <td class="w3-right" ><strong>First Appointment Date:</strong></td>
+          <td><%= @staff.date_of_first_appointment %></td>
+        </tr>
+        <tr>
+          <td class="w3-right" ><strong>Qualification:</strong></td>
+          <td colspan="3">
+            <%= "#{@staff.qualification}    " %>
+            <% if @staff.academic_records %>
+              <% @staff.academic_records.each do |ac|%>
+                <% link_to ac.cert_earned, academic_record_path(ac) %>
+              <% end %>
+                <%= link_to "Add Academic Record", new_admin_academic_record_path %>
+            <% end %>
+          </td>
+        </tr>
+
+      </table>
+
+    </div>
+  </div>
+</div>

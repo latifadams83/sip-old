@@ -11,8 +11,9 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery_ujs
 //= require jquery-ui
+//= require jquery_ujs
+//= require w3
 //= require staffs
 //= require searchstaffs
 //= require turbolinks

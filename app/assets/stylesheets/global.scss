@@ -2,6 +2,7 @@
 fieldset{
   border: none;
   legend a{
+    background-color: inherit !important;
     text-decoration: none;
   }
   a:hover{
@@ -11,11 +12,6 @@ fieldset{
 
 .date-select{
   max-width: 95px !important;
-}
-
-.main{
-  max-width: 980px;
-  margin: 0px auto 0px auto;
 }
 
 .img-frame{
@@ -29,7 +25,6 @@ fieldset{
   border: 1px solid red;
 }
 
-
 .caret{
   display: inline-block;
   vertical-align: middle;
@@ -37,7 +32,7 @@ fieldset{
 .center-position{
   position: relative;
   margin: auto auto auto auto;
-  max-width: 980px;
+  max-width: 900px;
 }
 
 #searchTable{
@@ -48,6 +43,11 @@ fieldset{
 .current-column {
   background-repeat: no-repeat;
   background-position: right center;
+  padding-right: 12px;
+}
+
+.fa-caret-up{
+  position: right center;
   padding-right: 12px;
 }
 .asc{

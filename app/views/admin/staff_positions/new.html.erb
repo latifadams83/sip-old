@@ -1,0 +1,10 @@
+<%= provide(:page_title, "New Staff Position")%>
+<%= provide(:staff_active, "activelink")%>
+
+  <fieldset class="w3-panel w3-round-large w3-card-2 w3-light-gray w3-small">
+    <legend class="w3-container w3-white">Staff Position</legend>
+    <%= render 'form', staff_position: @staff_position, url: admin_staff_positions_url(@staff_position) %>
+    <%= link_to 'Cancel', admin_staff_positions_path, class: "w3-btn w3-round w3-margin-bottom" %>
+    </div>
+  </div>
+  </fieldset>

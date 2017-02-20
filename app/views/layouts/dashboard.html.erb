@@ -4,28 +4,51 @@
     <title>SIP | <%= yield(:page_title)%></title>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-<body class="w3-gray">
 
-  <!-- Navbar -->
-  <%= user_menu(current_user)%>
+  <body class="w3-light-grey">
+    <!-- Top container -->
+    <div class="w3-container w3-top w3-theme-d2 w3-large w3-padding" >
+      <button class="w3-btn w3-hide-large w3-padding-0 w3-hover-text-grey" onclick="open_sidenav();"><i class="fa fa-bars"></i></button>
+      <span class="w3-right">
+      <%= link_to image_tag("logo.png", size: "30", class: "w3-circle"), root_path, class: ""%></span>
+    </div>
 
-  <!-- Page Messages -->
-  <%= notice_messages(notice) %>
-  <%= alert_messages(alert) %>
-
-  <!-- Content -->
-  <div class="w3-row-padding" id="page-container">
-      <div class="w3-content" id="page-content">
-
-        <%= yield %>
-
+    <!-- Sidenav/menu -->
+    <nav class="w3-sidenav w3-collapse w3-white"  id="pageSidenav">
+      <div class="w3-container w3-row">
+        <div class="w3-col s12">
+          <span>Welcome, <strong><%= current_user.email.capitalize%></strong></span><br><br>
+        </div>
       </div>
-  </div>
+      <%= render "layouts/admin_menu"%>
+    </nav>
 
-  <!-- Footer -->
-  <footer class="w3-container w3-padding-64 w3-opacity center-position">
-   <p>&copy <%= Time.now.year()%></p>
-  </footer>
+    <!-- Overlay effect when opening sidenav on small screens -->
+    <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="close_sidenav()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-main w3-padding-top w3-gray" >
+      <%= notice_messages(notice) %>
+      <%= alert_messages(alert) %>
+      <!-- Header -->
+      <header class="w3-container" >
+        <h5><b><%= yield(:page_title)%></b></h5>
+      </header>
+
+      <div class="w3-row-padding w3-margin-bottom  w3-round">
+        <div class="w3-panel w3-white w3-round w3-margin-8">
+          <%= yield %>
+        </div>
+      </div>
+
+
+      <!-- Footer -->
+      <footer class="w3-container w3-padding-8 w3-light-grey w3-topbar">
+        <p>Powered by Latif</p>
+      </footer>
+
+      <!-- End page content -->
+    </div>
 
 </body>
 <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>

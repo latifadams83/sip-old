@@ -1,0 +1,1 @@
+json.array! @search_guardians, partial: 'search_guardians/search_guardian', as: :search_guardian

@@ -1,0 +1,107 @@
+<%= provide(:page_title, "Student")%>
+<%= provide(:students_active, "activelink")%>
+
+<div class="w3-container w3-small">
+
+  <!--Profil Image -->
+  <div class="w3-row-padding">
+    <div class="w3-col s2 profile-img">
+        <%= image_tag @student.image_url.to_s, class: " w3-container w3-padding-0 w3-round img-frame" %>
+    </div>
+
+      <!-- Tabs -->
+    <div class="w3-col s10 page-nav">
+      <ul class="w3-navbar w3-card-2 w3-light-grey">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Link 1</a></li>
+        <li class="w3-dropdown-hover">
+          <a href="#">Dropdown <i class="fa fa-caret-down"></i></a>
+          <div class="w3-dropdown-content w3-white w3-card-4">
+            <a href="#">Link 1</a>
+            <a href="#">Link 2</a>
+            <a href="#">Link 3</a>
+          </div>
+        </li>
+    </ul>
+    </div>
+  </div>
+
+  <!--Content -->
+  <div class="w3-row-padding">
+    <div class="w3-content w3-col s12 w3-margin-top  page-content">
+        <table class="w3-table w3-table-striped w3-bordered ">
+          <tr class="w3-theme-l4" >
+            <td colspan="4">Personal Information</td>
+          </tr>
+          <tr>
+            <td class="w3-right" ><strong>First name:</strong></td>
+            <td><%= @student.first_name %></td>
+            <td class="w3-right" ><strong>Last name:</strong></td>
+            <td><%= @student.last_name %></td>
+          </tr>
+          <tr>
+            <td class="w3-right" ><strong>Gender:</strong></td>
+            <td><%= @student.gender %></td>
+            <td class="w3-right" ><strong>Date of Birth:</strong></td>
+            <td><%= @student.date_of_birth %></td>
+          </tr>
+          <tr>
+            <td class="w3-right" ><strong>Religion:</strong></td>
+            <td colspan="2"><%= @student.religion %></td>
+          </tr>
+          <tr class="w3-theme-l4" >
+            <td colspan="4">Contact Information</td>
+          </tr>
+          <tr>
+            <td class="w3-right" ><strong>Address:</strong></td>
+            <td colspan="3"><%= @student.address %></td>
+          </tr>
+          <tr>
+            <td class="w3-right" ><strong>Region:</strong></td>
+            <td><%= @student.region %></td>
+            <td class="w3-right" ><strong>Town/City:</strong></td>
+            <td><%= @student.city %></td>
+          </tr>
+          <tr>
+            <td class="w3-right" ><strong>Phone/Mobile:</strong></td>
+            <td><%= @student.phone %></td>
+            <td class="w3-right" ><strong>Email:</strong></td>
+            <td><%= @student.email %></td>
+          </tr>
+
+          <tr class="w3-theme-l4" >
+            <td colspan="4">Placement Information</td>
+          </tr>
+          <tr>
+            <td class="w3-right" ><strong>Placed ID:</strong></td>
+            <td><%= @student.placed_id %></td>
+            <td class="w3-right" ><strong>Placed Date:</strong></td>
+            <td><%= @student.placed_date %></td>
+          </tr>
+          <tr>
+            <td class="w3-right" ><strong>Programme:</strong></td>
+            <td><%= @student.programme.name %></td>
+            <td class="w3-right" ><strong>Class:</strong></td>
+            <td><%= @student.grade_level.name %></td>
+          </tr>
+          <tr>
+            <td class="w3-right" ><strong>Class:</strong></td>
+            <td><%= @student.badge.full_name %></td>
+            <td class="w3-right" ><strong>House of Affiliation:</strong></td>
+            <td><%=@student.house.name  %></td>
+          </tr>
+          <tr>
+            <td class="w3-right" ><strong>Guardian:</strong></td>
+            <td colspan="3">
+              <% if @student.guardian.present? %>
+                <%= link_to "#{student_guardian(@student)}", admin_guardian_path(@student.guardian_id) %>
+              <% else %>
+              <%= link_to "Add Guardian", add_guardian_admin_student_path(@student)%>
+              <% end %>
+            </td>
+          </tr>
+
+        </table>
+    </div>
+  </div>
+</div>

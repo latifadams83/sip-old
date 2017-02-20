@@ -1,7 +1,8 @@
 class Staff < ApplicationRecord
   mount_uploader :image, ImageUploader
-  belongs_to :category
-  belongs_to :department
+  belongs_to :staff_category
+  belongs_to :staff_department
+  belongs_to :staff_position
   belongs_to :user
   has_many :academic_records
   accepts_nested_attributes_for :academic_records

@@ -1,0 +1,6 @@
+<%= provide(:page_title, "New Term")%>
+<%= provide(:settings_active, "activelink")%>
+
+<%= render 'form', term: @term %>
+
+<%= link_to 'Back', terms_path %>

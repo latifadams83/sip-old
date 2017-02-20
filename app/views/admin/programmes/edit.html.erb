@@ -1,0 +1,13 @@
+<%= provide(:page_title, "Edit Programme")%>
+<%= provide(:settings_active, "activelink")%>
+
+<fieldset class="w3-panel w3-round-large w3-card-2 w3-light-gray w3-small">
+  <legend class="w3-container w3-padding">
+    <a href="javascript:void();" onclick="$('#editProg').toggle(300);"><b>Programme Details</b> <i class="fa fa-caret-down"></i></a>
+  </legend>
+  <div id="editProg">
+  <%= render 'form', programme: @programme, url: admin_programme_path(@programme) %>
+  <%= link_to 'Cancel', admin_programmes_path, class: "w3-btn w3 w3-round w3-left w3-margin-bottom" %>
+  </div>
+</div>
+</fieldset>

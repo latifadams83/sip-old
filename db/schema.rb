@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170120214343) do
+ActiveRecord::Schema.define(version: 20170218225104) do
 
   create_table "academic_records", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "type"
@@ -22,46 +22,17 @@ ActiveRecord::Schema.define(version: 20170120214343) do
     t.datetime "updated_at",  null: false
   end
 
-  create_table "archive_staffs", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.integer  "id"
-    t.string   "staff_id"
-    t.date     "date_join"
-    t.string   "first_name",                default: "",   null: false
-    t.string   "last_name",                 default: "",   null: false
-    t.string   "gender",                    default: "",   null: false
-    t.date     "date_of_birth"
-    t.string   "qualification"
-    t.integer  "staff_grade_id"
-    t.integer  "staff_category_id"
-    t.integer  "staff_department_id"
-    t.integer  "staff_position_id"
-    t.date     "date_of_first_appointment"
-    t.string   "marital_status"
-    t.string   "spouse_name"
-    t.integer  "no_of_children"
-    t.string   "image"
-    t.string   "address"
-    t.string   "city"
-    t.string   "region"
-    t.string   "phone"
-    t.string   "mobile"
-    t.string   "email"
-    t.boolean  "active",                    default: true, null: false
-    t.string   "religion"
-    t.integer  "user_id"
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
-  end
-
   create_table "badges", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "name"
     t.integer  "programme_id"
-    t.integer  "level_id"
+    t.integer  "grade_level_id"
     t.date     "start_date"
     t.date     "end_date"
-    t.boolean  "active",       default: true
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.boolean  "active",         default: true
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.index ["grade_level_id"], name: "index_badges_on_grade_level_id", using: :btree
+    t.index ["programme_id"], name: "index_badges_on_programme_id", using: :btree
   end
 
   create_table "calendars", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
@@ -73,28 +44,50 @@ ActiveRecord::Schema.define(version: 20170120214343) do
     t.datetime "updated_at",                null: false
   end
 
+  create_table "find_students", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string  "first_name"
+    t.string  "last_name"
+    t.string  "student_id"
+    t.integer "programme_id"
+    t.integer "level_id"
+    t.integer "badge_id"
+    t.string  "status"
+  end
+
+  create_table "grade_levels", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer "level"
+    t.string  "name"
+  end
+
   create_table "guardians", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.string   "title"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "occupation"
-    t.string   "relation"
     t.string   "address"
     t.string   "city"
     t.string   "region"
     t.string   "phone"
     t.string   "email"
     t.string   "education"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "relation"
+    t.string   "father_name"
+    t.string   "father_occupation"
+    t.string   "father_hometown"
+    t.string   "father_homeregion"
+    t.string   "mother_name"
+    t.string   "mother_occupation"
+    t.string   "mother_hometown"
+    t.string   "mother_homeregion"
     t.integer  "user_id"
+    t.string   "status",            default: "current", null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
   end
 
-  create_table "levels", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.string   "lev"
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "houses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string  "name"
+    t.integer "capacity"
+    t.text    "description", limit: 65535
   end
 
   create_table "programmes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
@@ -115,6 +108,8 @@ ActiveRecord::Schema.define(version: 20170120214343) do
   end
 
   create_table "searchstudents", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string  "first_name"
+    t.string  "last_name"
     t.string  "placed_id"
     t.integer "programme_id"
     t.integer "level_id"
@@ -123,30 +118,22 @@ ActiveRecord::Schema.define(version: 20170120214343) do
   end
 
   create_table "staff_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "name"
   end
 
   create_table "staff_departments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.string   "name"
-    t.integer  "staff_category_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.string  "name"
+    t.integer "staff_category_id"
   end
 
   create_table "staff_grades", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.string   "name"
-    t.integer  "staff_category_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.string  "name"
+    t.integer "staff_category_id"
   end
 
   create_table "staff_positions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.string   "name"
-    t.integer  "staff_category_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.string  "name"
+    t.integer "staff_category_id"
   end
 
   create_table "staffs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
@@ -173,7 +160,7 @@ ActiveRecord::Schema.define(version: 20170120214343) do
     t.string   "phone"
     t.string   "mobile"
     t.string   "email"
-    t.string   "status",                    default: "Current", null: false
+    t.string   "status",                    default: "current", null: false
     t.string   "religion"
     t.integer  "user_id"
     t.datetime "created_at",                                    null: false
@@ -190,19 +177,22 @@ ActiveRecord::Schema.define(version: 20170120214343) do
     t.date     "date_of_birth"
     t.string   "religion"
     t.integer  "programme_id"
+    t.integer  "grade_level_id"
     t.integer  "badge_id"
-    t.string   "house"
+    t.integer  "house_id"
     t.string   "address"
     t.string   "city"
     t.string   "region"
     t.string   "phone"
     t.string   "email"
+    t.string   "image"
     t.integer  "guardian_id"
     t.integer  "user_id"
-    t.string   "image"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.string   "status",         default: "current", null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
     t.index ["badge_id"], name: "index_students_on_badge_id", using: :btree
+    t.index ["grade_level_id"], name: "index_students_on_grade_level_id", using: :btree
     t.index ["placed_id"], name: "index_students_on_placed_id", using: :btree
     t.index ["programme_id"], name: "index_students_on_programme_id", using: :btree
   end

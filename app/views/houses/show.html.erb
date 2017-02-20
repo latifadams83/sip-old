@@ -1,0 +1,19 @@
+<div class="w3-panel w3-light-gray">
+  <p>
+    <strong>Name:</strong>
+    <%= @admin_house.name %>
+  </p>
+
+  <p>
+    <strong>Capacity:</strong>
+    <%= @admin_house.capacity %>
+  </p>
+
+  <p>
+    <strong>Description:</strong>
+    <%= @admin_house.description %>
+  </p>
+
+  <%= link_to "#{content_tag(:i, '', :class => ("fa fa-lg fa-toggle-left"))}".html_safe, admin_houses_path %> |
+  <%= link_to "#{content_tag(:i, '', :class => ("fa fa-lg fa-pencil"))}".html_safe, edit_admin_house_path(@admin_house) %>
+</div>

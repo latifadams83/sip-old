@@ -1,0 +1,2 @@
+class SearchGuardian < ApplicationRecord
+end

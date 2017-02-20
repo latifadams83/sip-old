@@ -1,0 +1,7 @@
+<%= provide(:page_title, "Find Students")%>
+<%= provide(:students_active, "activelink")%>
+
+<%= render 'form', find_student: @find_student, url: admin_find_students_path %>
+
+<%= link_to 'Back', admin_students_path, class: "w3-btn w3-round w3-tiny w3-left" %>
+</div>

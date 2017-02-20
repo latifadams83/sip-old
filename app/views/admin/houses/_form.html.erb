@@ -1,0 +1,34 @@
+<%= form_for(house, url: url) do |f| %>
+<%= error_messages_for(f.object)%>
+
+<fieldset class="w3-panel w3-round-large w3-card w3-light-gray w3-small">
+  <legend class="w3-container w3-padding">
+    <a href="javascript:void();" onclick="$('#newHouse').toggle(300);"><b>New House</b> <i class="fa fa-caret-down"></i></a>
+  </legend>
+    <div id="newHouse">
+      <div class="w3-row-padding">
+        <div class="w3-col s12">
+          <%= f.label :name, class: "w3-label" %>
+          <%= f.text_field :name, class: "w3-input" %>
+        </div>
+      </div>
+      <br>
+      <div class="w3-row-padding">
+        <div class="w3-col s12">
+          <%= f.label :capacity, class: "w3-label" %>
+          <%= f.number_field :capacity, class: "w3-input" %>
+        </div>
+      </div>
+      <br>
+      <div class="w3-row-padding">
+        <div class="w3-col s12">
+          <%= f.label :description, class: "w3-label" %>
+          <%= f.text_area :description, class: "w3-input" %>
+        </div>
+      </div>
+      <br>
+      <div class="w3-row-padding">
+        <div class="w3-col s12 w3-margin-bottom">
+          <%= f.submit "Save", class: "w3-btn w3-round w3-theme-d1 w3-right" %>
+
+<% end %>

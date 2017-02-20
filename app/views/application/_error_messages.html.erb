@@ -1,7 +1,6 @@
 <% if object.errors.any? %>
-  <div class="w3-row-padding" id="error_explanation">
-    <div class="w3-alert">
-      <h6><%= pluralize(object.errors.count, "error") %> prohibited this object from being saved:</h6>
+    <div class="w3-alert w3-small" id="error_explanation">
+      <p><%= pluralize(object.errors.count, "error") %> prohibits this object from being saved:</p>
 
       <ul>
       <% object.errors.full_messages.each do |message| %>
@@ -9,5 +8,4 @@
       <% end %>
       </ul>
     </div>
-  </div>
 <% end %>

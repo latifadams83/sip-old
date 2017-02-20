@@ -1,25 +1,24 @@
 Rails.application.routes.draw do
 
-  resources :models
   devise_for :users
   devise_scope :user do
     authenticated :user do
-      root :to => 'students#index'
+      root :to => 'dashboard#index'
     end
     unauthenticated :user do
       root :to => 'devise/sessions#new'
     end
   end
-  resources :academic_records
-
-    resources :staff_categories, :staff_grades, :staff_positions, :staff_departments, :searchstaffs, :roles, :users
+  namespace :admin do
+    get '', to: 'dashboard#index', as: '/'
+    get "settings", to: 'settings#index'
+    resources :staff_categories, :staff_grades, :staff_positions, :staff_departments, :searchstaffs, :roles, :users, :academic_records
     resources :staffs do
       member do
         get :delete
         get :confirm_archive
         patch :archive
       end
-
       collection do
         get :search
         get :list
@@ -28,18 +27,30 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :calendars, :terms, :levels, :badges, :programmes, :guardians
+    resources :calendars, :terms, :grade_levels, :badges, :houses, :programmes, :search_guardians
+    resources :find_students, only: [:new, :create, :show]
+    resources :guardians do
+      collection do
+        get :new_search
+        post :create_search
+        get :searched_results
+      end
+    end
     resources :students do
       member do
         get :add_guardian
+        post :choose_type
         post :create_guardian
+        get :add_parent
+        post :create_parent
       end
 
       collection do
-        get :search
+        get :find_guardian
+        get :list
       end
 
     end
 
-
+  end
 end

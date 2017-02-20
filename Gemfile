@@ -29,6 +29,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'friendly_id', '~> 5.1.0' # Note: You MUST use 5.0.0 or greater for Rails 4.0+
 gem 'wicked'
 gem 'carrierwave', '>= 1.0.0.rc', '< 2.0'
+gem "font-awesome-rails"
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'

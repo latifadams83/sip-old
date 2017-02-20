@@ -1,0 +1,5 @@
+<h1>New Academic Record</h1>
+
+<%= render 'form', academic_record: @academic_record, url: admin_academic_records_url%>
+
+<%= link_to 'Back', admin_academic_records_path(@academic_record) %>
