@@ -1,0 +1,5 @@
+$('#updateLevel_<%= @grade_level.id %>').slideUp();
+$('#grade_level_<%= @grade_level.id%>').fadeOut(300, function() {
+  $(this).remove();
+  $('#grade_level_tbody').prepend('<%= j render @grade_level %>');
+});

@@ -1,0 +1,6 @@
+$('#newLevel').slideUp();
+$('#l-name').val('');
+$('#c-level').prop('selectedIndex',0);
+$('#n-level').val('');
+$('#grade_level_tbody').append('<%= j render @grade_level %>');
+$('#grade_level_<% @grade_level.id%>').hide().fadeIn(3000);

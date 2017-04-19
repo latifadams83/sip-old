@@ -1,8 +1,9 @@
 class CreateGradeLevels < ActiveRecord::Migration[5.0]
   def up
     create_table :grade_levels do |t|
-      t.integer :level
       t.string :name
+      t.integer :level
+      t.integer :next_level
     end
   end
 

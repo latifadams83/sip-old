@@ -1,0 +1,22 @@
+<%= provide(:page_title, "Programmes")%>
+<%= provide(:settings_active, "activelink")%>
+
+<% content_for :page_actions do %>
+   <div class="w3-tiny w3-right w3-margin-right">
+    <button class="w3-bar-item w3-button w3-teal" onclick="$('#newProgramme').show();">Add</button>
+  </div> <% end %>
+
+ <table class="w3-table w3-striped">
+
+ <tbody id="programmes_tbody">
+   <tr>
+     <td>Name:</td>
+     <td><%= @programme.name %></td>
+   </tr>
+   <tr>
+     <td>Code:</td>
+     <td><%= @programme.code %></td>
+   </tr>
+
+ </tbody>
+ </table>

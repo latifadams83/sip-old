@@ -1,4 +1,4 @@
-<%= provide(:page_title, "Dashboard")%>
+<%= provide(:page_title, "Dashboard".html_safe)%>
 <%= provide(:dashboard_active, "activelink")%>
-
+<%= provide(:page_icon, "#{content_tag(:i, '', :class => ("fa fa-dashboard"))} ".html_safe)%>
 <h2>Hello Dashboard</h2>

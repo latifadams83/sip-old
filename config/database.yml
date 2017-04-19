@@ -13,8 +13,8 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: 5
-  username: sip_user
-  password: sip_password
+  username: sip
+  password: sippassword
   socket: /var/run/mysqld/mysqld.sock
 
 development:

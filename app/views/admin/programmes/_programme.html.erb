@@ -1,0 +1,34 @@
+<tr id="progRow_<%= programme.id%>">
+  <td><%= programme.name %></td>
+  <td>
+    <%= link_to programme.students.count, admin_students_path(), class: "w3-badge w3-green" %>
+  </td>
+  <td class="w3-center">
+    <%= link_to "#{content_tag(:i, '', :class => ("fa fa-eye"))}".html_safe, admin_programme_path(programme) %>&nbsp;&nbsp;
+    <a href="javascript:void();" onclick="$('#updateProgramme_<%= programme.id%>').show();" ><i class="fa fa-pencil"></i></a> &nbsp;&nbsp;
+    <%= link_to "#{content_tag(:i, '', :class => ("fa fa-trash"))}".html_safe, admin_programme_path(programme), method: :delete, data: { confirm: 'Are you sure?' } %>
+
+    <div id="updateProgramme_<%= programme.id%>" class="w3-modal w3-round">
+    <%= form_for(programme, url: admin_programme_path(programme),method: :put, remote: true) do |f| %>
+        <div class="w3-modal-content w3-card-8 w3-animate-opacity w3-round" style="width:600px">
+          <div class="w3-container w3-border-bottom  w3-light-grey w3-round">
+            <h4 class="w3-left"><i class="fa fa-pencil"></i> Programme</h4>
+          </div>
+            <div class="w3-container">
+              <%= f.label :name, class: "w3-label w3-left" %>
+              <%= f.text_field :name, class: "programme_name w3-input w3-border w3-round", required: true%>
+            </div>
+            <div class="w3-container w3-margin-bottom">
+              <%= f.label :code, class: "w3-label w3-left" %>
+              <%= f.text_field :code, class: "programme_code w3-input w3-border w3-round" %>
+            </div>
+
+          <div class="w3-container w3-border-top w3-padding w3-light-grey">
+            <%= f.submit :Update,  class: "w3-btn w3-theme-d4 w3-round w3-left w3-margin-bottom w3-tiny " %>
+            <button onclick="$('#updateProgramme_<%= programme.id%>').fadeOut();" type="button" class="w3-btn w3-red w3-right w3-tiny w3-round">Cancel</button>
+          </div>
+        </div>
+        <% end %>
+      </div>
+  </td>
+</tr>

@@ -1,32 +1,32 @@
 <%= provide(:page_title, "Sign In")%>
 
-<div class="w3-container w3-round w3-animate-zoom">
+<div class="w3-container w3-center w3-round w3-animate-zoom w3-margin-top">
   <div class="w3-margin-top w3-modal-content w3-card-8 " style="max-width:600px">
 
     <div class="w3-container w3-border-bottom w3-padding w3-light-grey">
-      <%= link_to image_tag("logo.png", size: "40x40", class: "w3-circle"), root_path, class: "w3-center"%>
+      <%= link_to image_tag("logo.png", size: "70x70", class: "w3-circle"), root_path, class: "w3-center"%>
     </div>
 
-    <div class="w3-container w3-container">
+    <div class="w3-container">
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <% if alert.present? %>
           <p class="w3-text-red"><%= alert%></p>
       <% end %>
         <div class="w3-section">
           <div class="field">
-            <%= f.label :email, class: "w3-label" %><br />
+            <%= f.label :email, class: "w3-label w3-left" %><br />
             <%= f.email_field :email, autofocus: true, class: "w3-input"%>
           </div>
 
           <div class="field">
-            <%= f.label :password, class: "w3-label"%><br />
+            <%= f.label :password, class: "w3-label w3-left"%><br />
             <%= f.password_field :password, autocomplete: "off",class: "w3-input" %>
           </div>
           <%= f.submit "Log in", class: "w3-btn-block w3-round w3-section w3-padding w3-theme-d1" %>
           <% if devise_mapping.rememberable? -%>
             <div class="field">
-              <%= f.check_box :remember_me, class: "w3-chekbox" %>
-              <%= f.label :remember_me, class: "w3-label" %>
+              <%= f.check_box :remember_me, class: "w3-chekbox w3-left" %>
+              <%= f.label :remember_me, class: "w3-label w3-left" %>
             </div>
           <% end -%>
         </div>

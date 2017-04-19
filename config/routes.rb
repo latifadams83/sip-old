@@ -12,6 +12,11 @@ Rails.application.routes.draw do
   namespace :admin do
     get '', to: 'dashboard#index', as: '/'
     get "settings", to: 'settings#index'
+
+     resources :programmes do
+
+     end
+
     resources :staff_categories, :staff_grades, :staff_positions, :staff_departments, :searchstaffs, :roles, :users, :academic_records
     resources :staffs do
       member do
@@ -27,7 +32,7 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :calendars, :terms, :grade_levels, :badges, :houses, :programmes, :search_guardians
+    resources :calendars, :terms, :grade_levels, :grades, :badges, :houses, :search_guardians
     resources :find_students, only: [:new, :create, :show]
     resources :guardians do
       collection do

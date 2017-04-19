@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170218225104) do
+ActiveRecord::Schema.define(version: 20170414105308) do
 
   create_table "academic_records", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "type"
@@ -55,8 +55,17 @@ ActiveRecord::Schema.define(version: 20170218225104) do
   end
 
   create_table "grade_levels", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.integer "level"
     t.string  "name"
+    t.integer "level"
+    t.integer "next_level"
+  end
+
+  create_table "grades", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer  "level"
+    t.string   "name"
+    t.integer  "next_level"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "guardians", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
@@ -91,8 +100,11 @@ ActiveRecord::Schema.define(version: 20170218225104) do
   end
 
   create_table "programmes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.string "name"
-    t.string "code"
+    t.string   "name",       null: false
+    t.string   "code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user_id"
   end
 
   create_table "roles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|

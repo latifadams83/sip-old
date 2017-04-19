@@ -1,9 +1,10 @@
 module Admin
   class ProgrammesController < AdminController
-    before_action :set_programme, only: [:edit, :update, :destroy]
+    before_action :set_programme, only: [:edit, :update, :destroy, :show]
 
     def index
       @programmes = Programme.all
+      @programme = Programme.new
     end
 
     def new
@@ -19,10 +20,15 @@ module Admin
       respond_to do |format|
         if @programme.save
           format.html { redirect_to admin_programmes_path, notice: 'Programme was successfully created.' }
+          format.js
         else
           format.html { render :new }
+          format.js
         end
       end
+    end
+
+    def show
     end
 
     def update
@@ -30,9 +36,11 @@ module Admin
         if @programme.update(programme_params)
           format.html { redirect_to admin_programmes_path, notice: 'Programme was successfully updated.' }
           format.json { render :show, status: :ok, location: @programme }
+          format.js
         else
           format.html { render :edit }
           format.json { render json: @programme.errors, status: :unprocessable_entity }
+          format.js
         end
       end
     end
@@ -53,7 +61,7 @@ module Admin
 
       # Never trust parameters from the scary internet, only allow the white list through.
       def programme_params
-        params.require(:programme).permit(:name, :code)
+        params.require(:programme).permit(:name, :code, :user_id)
       end
   end
 

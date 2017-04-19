@@ -5,37 +5,70 @@
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 <body class="w3-light-gray">
-  <!-- Navbar -->
-  <div class="w3-top center-position">
-    <ul class="w3-navbar w3-padding head w3-theme-d1 w3-left-align w3-large center-position" >
-      <li class="w3-margin-right">
-        <%= link_to image_tag("logo.png", size:"40", class:"w3-circle"), root_path %>
-      </li>
-      <li class="w3-hide-medium w3-hide-small w3-right ">
-        <%= link_to "#{content_tag(:i, '', :class => ("fa fa-sign-out"))}".html_safe, destroy_user_session_path, :method => :delete%>
-      </li>
-    </ul>
-    <%= render "layouts/admin_menu"%>
+  <!-- Top container -->
+<div class="w3-bar w3-top w3-white w3-large" style="z-index:4;">
+  <span class="w3-bar-item w3-left w3-hide-medium w3-hide-small" style="width: 250px; background:#333333; color: white;">School
+  </span>
+
+  <span class="w3-bar-item w3-left w3-hide-large">School
+  </span>
+  <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-right" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
+</div>
+
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-collapse" style="z-index:3;width:250px; background: #333333; color: white;" id="mySidebar"><br>
+  <div class="w3-container w3-row">
+
+    <div class="w3-col s4">
+      <img src="" class="w3-circle w3-margin-right" style="width:46px">
+    </div>
+    <div class="w3-col s8 w3-bar">
+      <span>Welcome, <strong>Mike</strong></span><br>
+    </div>
+
   </div>
+  <hr>
+  <div class="w3-container">
+    <h5>Dashboard</h5>
+  </div>
+  <div class="w3-bar-block">
+    <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-users fa-fw"></i>  Overview</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>  Views</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Traffic</a>
+  </div>
+</nav>
 
-  <div class="w3-main center-position w3-card">
 
-    <div class="w3-panel w3-padding-large w3-white w3-round-large">
-      <div class="w3-row">
-          <h5 class="w3-padding-left"><b><%= yield(:page_title)%></b></h5>
-      </div>
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
 
-      <div class="w3-row">
-        <div class="w3-panel w3-tiny">
-          <%= yield %>
-        </div>
-      </div>
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:280px;margin-top:43px;">
+
+
+  <div class="w3-row-padding w3-margin-bottom">
+
+    <div class=" w3-margin-top pageActions">
+      <span class="w3-bar-item w3-left w3-margin-left">
+        <i><%= yield :page_icon %> <%= yield :page_title%></i>
+      </span>
+      <%= yield :page_actions %>
+    </div> <br>
+
+    <div class="w3-white w3-panel w3-round w3-padding-16 w3-topbar">
+     <%= yield %>
     </div>
   </div>
-  <footer class="w3-panel w3-padding center-position"id="myFooter">
-    <p>powered by latif</p>
+
+
+  <!-- Footer -->
+  <footer class="w3-container w3-padding-16 w3-light-grey">
+    <h6>Footer</h6>
   </footer>
+  <!-- End page content -->
+</div>
 
 </body>
-<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 </html>
